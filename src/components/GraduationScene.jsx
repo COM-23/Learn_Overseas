@@ -77,7 +77,14 @@ export default function GraduationScene() {
         startRenderLoop();
       }
     };
-    prime();
+    // Defer prime decoder so we don't block initial page load (LCP)
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        prime();
+        observer.disconnect();
+      }
+    }, { rootMargin: '1000px' });
+    if (containerRef.current) observer.observe(containerRef.current);
 
     return () => {
       video.removeEventListener('loadedmetadata', onMeta);
@@ -169,7 +176,7 @@ export default function GraduationScene() {
         {/* Hidden decoder-only video */}
         <video
           ref={videoRef}
-          muted playsInline preload="auto"
+          muted playsInline preload="none"
           webkit-playsinline="true"
           style={{ display: 'none' }}
         >
