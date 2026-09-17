@@ -6,6 +6,7 @@ export default function UniversityDetail() {
   const { name } = useParams();
   const decodedName = decodeURIComponent(name || 'Global University');
   const [activeTab, setActiveTab] = useState('Overview');
+  const [isFullStoryOpen, setIsFullStoryOpen] = useState(false);
 
   return (
     <div style={{ background: '#020205', minHeight: '100vh', color: 'white', position: 'relative' }}>
