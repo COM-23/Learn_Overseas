@@ -29,7 +29,7 @@ export const TEAM_MEMBERS = [
   { id: "tharun-m", name: "Tharun M", role: "Executive - Advisor Application", category: "Advisors" , image: "/tharun_m.png" },
   { id: "aswajith-m", name: "Aswajith M", role: "Executive - Advisor Application", category: "Advisors" , image: "/aswajith_m.png" },
   { id: "sharathi-r", name: "Sharathi R", role: "Executive - Advisor Application", category: "Advisors" , image: "/sharathi_r.png" },
-  { id: "anusha", name: "Anusha", role: "Associate Product Development", category: "Operations" , image: "/anusha.png" },
+  { id: "anusha", name: "Anusha Gopal", role: "Associate Product Development", category: "Operations" , image: "/anusha.png" },
   { id: "keerthana-v", name: "Keerthana V", role: "CRM/IT Specialist", category: "Operations" , image: "/keerthana.png" },
   { id: "ganesh-b-s", name: "Ganesh B S", role: "Document Editor", category: "Operations" , image: "/ganesh_b_s.png" }
 ];
