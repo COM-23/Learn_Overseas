@@ -20,7 +20,7 @@ const INITIAL_BLOGS = [
     catColor: '#6c91e0',
     title: "Australia Updates Skilled Migration Points System",
     excerpt: "Critical skill shortages drive sweeping changes to the 189 and 190 visa categories, with STEM graduates now receiving a 15-point bonus.",
-    img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=90&w=800',
+    img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=90&w=400',
     featured: false,
   },
   {
@@ -31,7 +31,7 @@ const INITIAL_BLOGS = [
     catColor: '#52c78a',
     title: "New $50M Fund Opens for Tech Graduates Worldwide",
     excerpt: "The Luminary Tech Foundation launches a landmark scholarship for international students pursuing AI, robotics, and green energy degrees.",
-    img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=90&w=800',
+    img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=90&w=400',
     featured: false,
   },
   {
@@ -42,7 +42,7 @@ const INITIAL_BLOGS = [
     catColor: '#e07c6c',
     title: "Top 10 Safest University Cities in Europe Ranked for 2026",
     excerpt: "Copenhagen, Vienna, and Zürich lead the pack as students increasingly prioritise safety and quality of life when choosing their destination.",
-    img: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=90&w=800',
+    img: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=90&w=400',
     featured: false,
   },
   {
@@ -53,7 +53,7 @@ const INITIAL_BLOGS = [
     catColor: '#c47ed4',
     title: "Canada Adjusts Study Permit Cap — Here's What It Means for You",
     excerpt: "IRCC announces new province-specific permit allocations for 2027, significantly affecting Ontario and British Columbia intake numbers.",
-    img: 'https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&q=90&w=800',
+    img: 'https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&q=90&w=400',
     featured: false,
   },
 ];

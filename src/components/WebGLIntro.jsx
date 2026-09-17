@@ -7,7 +7,7 @@ import gsap from 'gsap';
 function PassportBook({ onClick, phase }) {
   const group = useRef();
   const coverTexture = useTexture('/realistic_passport_cover.jpg');
-  const insideTexture = useTexture('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=800&auto=format&fit=crop');
+  const insideTexture = useTexture('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=400&auto=format&fit=crop');
   
   const [hovered, setHovered] = useState(false);
 

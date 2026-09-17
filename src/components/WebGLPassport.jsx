@@ -34,7 +34,7 @@ function PassportBook({ onDive, phase }) {
 
   // Realistic passport textures
   const coverTex = useTexture('/realistic_passport_cover.jpg');
-  const pageTex  = useTexture('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=800&auto=format&fit=crop');
+  const pageTex  = useTexture('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=400&auto=format&fit=crop');
 
   // Idle float animation
   useFrame((state) => {

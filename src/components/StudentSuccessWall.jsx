@@ -60,18 +60,18 @@ const BellIcon = ({ size = 24, color }) => (
    Data
 ══════════════════════════════════════════════════════════════ */
 const STUDENTS = [
-  { name: 'Vishnu E.', uni: 'NCSU', country: '🇺🇸', course: 'MS', year: '2023', color: '#B4783C', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Pehal K.', uni: 'Purdue', country: '🇺🇸', course: 'Undergraduate', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Mukta R.', uni: 'Parsons', country: '🇺🇸', course: 'Design', year: '2021', color: '#F9D440', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Ishita M.', uni: 'Cardiff', country: '🇬🇧', course: 'Urban Design', year: '2022', color: '#B4783C', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Sai S.', uni: 'UC San Diego', country: '🇺🇸', course: 'MS', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Raj K.', uni: 'CU Boulder', country: '🇺🇸', course: 'MS', year: '2022', color: '#F9D440', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Vishnu E.', uni: 'NCSU', country: '🇺🇸', course: 'MS', year: '2023', color: '#B4783C', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Pehal K.', uni: 'Purdue', country: '🇺🇸', course: 'Undergraduate', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Mukta R.', uni: 'Parsons', country: '🇺🇸', course: 'Design', year: '2021', color: '#F9D440', img: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Ishita M.', uni: 'Cardiff', country: '🇬🇧', course: 'Urban Design', year: '2022', color: '#B4783C', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Sai S.', uni: 'UC San Diego', country: '🇺🇸', course: 'MS', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Raj K.', uni: 'CU Boulder', country: '🇺🇸', course: 'MS', year: '2022', color: '#F9D440', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800' },
+  { name: 'Vishnu E.', uni: 'NCSU', country: '🇺🇸', course: 'MS', year: '2023', color: '#B4783C', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Pehal K.', uni: 'Purdue', country: '🇺🇸', course: 'Undergraduate', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Mukta R.', uni: 'Parsons', country: '🇺🇸', course: 'Design', year: '2021', color: '#F9D440', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Ishita M.', uni: 'Cardiff', country: '🇬🇧', course: 'Urban Design', year: '2022', color: '#B4783C', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Sai S.', uni: 'UC San Diego', country: '🇺🇸', course: 'MS', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Raj K.', uni: 'CU Boulder', country: '🇺🇸', course: 'MS', year: '2022', color: '#F9D440', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Vishnu E.', uni: 'NCSU', country: '🇺🇸', course: 'MS', year: '2023', color: '#B4783C', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Pehal K.', uni: 'Purdue', country: '🇺🇸', course: 'Undergraduate', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Mukta R.', uni: 'Parsons', country: '🇺🇸', course: 'Design', year: '2021', color: '#F9D440', img: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Ishita M.', uni: 'Cardiff', country: '🇬🇧', course: 'Urban Design', year: '2022', color: '#B4783C', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Sai S.', uni: 'UC San Diego', country: '🇺🇸', course: 'MS', year: '2023', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?auto=format&fit=crop&q=80&w=400' },
+  { name: 'Raj K.', uni: 'CU Boulder', country: '🇺🇸', course: 'MS', year: '2022', color: '#F9D440', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400' },
 ];
 
 const FEATURES = [
@@ -99,9 +99,9 @@ const TICKER_ITEMS = [
   '🏅 Mukta → Parsons', '🎖️ Raj → CU Boulder',
 ];
 const TESTIMONIALS = [
-  { quote: "As a confused B-Tech graduate, I approached this consultancy a year back and asked them to assist me through the application process for my masters. Right from providing clarity about the courses to one on one visa interview training, they had my back throughout the process.", name: 'Vishnu Erapalli', course: 'MS', uni: 'North Carolina State University', country: '🇺🇸', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800', color: '#4A90D9' },
-  { quote: "This consultancy has really made the process of applying for masters so much easier and approachable. A huge thanks to the entire team for helping me every step of the way. Truly the best investment I've made with regards to my career so far.", name: 'Ishita Mathur', course: 'Urban Design', uni: 'Cardiff University', country: '🇬🇧', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800', color: '#F9D440' },
-  { quote: "They were very cooperative, especially my counsellor. They guided my son and us in a very approachable way. My son's visa is approved and I'm very much thankful to the entire team. Thanks once again.", name: 'Sai Sumeet', course: 'MS', uni: 'University of California, San Diego', country: '🇺🇸', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800', color: '#B4783C' },
+  { quote: "As a confused B-Tech graduate, I approached this consultancy a year back and asked them to assist me through the application process for my masters. Right from providing clarity about the courses to one on one visa interview training, they had my back throughout the process.", name: 'Vishnu Erapalli', course: 'MS', uni: 'North Carolina State University', country: '🇺🇸', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400', color: '#4A90D9' },
+  { quote: "This consultancy has really made the process of applying for masters so much easier and approachable. A huge thanks to the entire team for helping me every step of the way. Truly the best investment I've made with regards to my career so far.", name: 'Ishita Mathur', course: 'Urban Design', uni: 'Cardiff University', country: '🇬🇧', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400', color: '#F9D440' },
+  { quote: "They were very cooperative, especially my counsellor. They guided my son and us in a very approachable way. My son's visa is approved and I'm very much thankful to the entire team. Thanks once again.", name: 'Sai Sumeet', course: 'MS', uni: 'University of California, San Diego', country: '🇺🇸', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400', color: '#B4783C' },
 ];
 const DESTINATIONS = [
   { flag: '🇬🇧', country: 'United Kingdom', unis: '130+', students: '85', topUni: 'Oxford, LSE, Imperial', color: '#4A90D9', img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=900' },

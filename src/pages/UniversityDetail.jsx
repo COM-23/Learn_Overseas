@@ -134,10 +134,10 @@ export default function UniversityDetail() {
                 </p>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                   <div style={{ height: 250, borderRadius: 16, overflow: 'hidden' }}>
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800" alt="Campus Life" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=400" alt="Campus Life" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ height: 250, borderRadius: 16, overflow: 'hidden' }}>
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Students" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400" alt="Students" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ gridColumn: 'span 2', height: 300, borderRadius: 16, overflow: 'hidden' }}>
                     <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&q=80&w=1200" alt="Library" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

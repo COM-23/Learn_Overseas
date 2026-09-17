@@ -161,10 +161,10 @@
 
 /* Scroll indicator dot */
 @keyframes scroll-bounce {
-  0%, 100% { transform: translateY(0); opacity: 0.3; height: 6px; }
-  50%       { transform: translateY(16px); opacity: 1; height: 12px; }
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.3; }
+  50%       { transform: translateY(16px) scaleY(2); opacity: 1; }
 }
-.scroll-dot { animation: scroll-bounce 1.8s ease-in-out infinite; }
+.scroll-dot { height: 6px; animation: scroll-bounce 1.8s ease-in-out infinite; }
 
 /* Ambient CTA orbs */
 @keyframes orb-float-1 {
