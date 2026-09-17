@@ -51,11 +51,11 @@ export default function Footer() {
             {/* Social */}
             <div style={{ display: 'flex', gap: 8 }}>
               {[
-                { icon: <LinkedInIcon />, href: '#' },
-                { icon: <InstagramIcon />, href: '#' },
-                { icon: <Mail size={15} />, href: 'mailto:info@learnoverseas.com' },
+                { icon: <LinkedInIcon />, href: '#', label: 'LinkedIn' },
+                { icon: <InstagramIcon />, href: '#', label: 'Instagram' },
+                { icon: <Mail size={15} />, href: 'mailto:info@learnoverseas.com', label: 'Email' },
               ].map((s, i) => (
-                <a key={i} href={s.href} style={{
+                <a key={i} href={s.href} aria-label={s.label} style={{
                   width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
                   borderRadius: '50%', border: '1px solid rgba(249,212,64,0.2)',
                   background: 'rgba(249,212,64,0.04)', color: 'var(--accent-gold)',

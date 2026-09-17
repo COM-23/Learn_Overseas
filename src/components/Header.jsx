@@ -233,7 +233,7 @@ export default function Header() {
         }}
       >
         <Link to="/" style={{ display: 'flex', alignItems: 'center', marginRight: 'auto', textDecoration: 'none' }}>
-          <img src="/stencil-logo.png" alt="Learn Overseas" style={{ height: scrolled ? 44 : 64, objectFit: 'contain', transition: 'height 0.3s ease' }} />
+          <img src="/stencil-logo.png" alt="Learn Overseas" width="121" height="64" style={{ height: scrolled ? 44 : 64, width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease' }} />
         </Link>
 
         <nav style={{ display: 'flex', gap: 8, alignItems: 'center' }} className="hide-mobile">

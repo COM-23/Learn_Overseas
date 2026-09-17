@@ -1,13 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Globe from 'react-globe.gl';
+
+const Globe = React.lazy(() => import('react-globe.gl'));
 
 export const COUNTRIES = [
   {
     id: 'usa', name: 'United States', lat: 38.0, lng: -97.0,
     tagline: 'The land of infinite possibility',
-    img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '4,500+', l: 'Institutions' }, { n: '3 Yrs', l: 'OPT Work Permit' }, { n: '$50B+', l: 'Scholarships' }],
     universities: ['Harvard University', 'MIT', 'Stanford University', 'Yale University'],
     desc: 'The American degree is the gold standard — paired with OPT, you can work in Silicon Valley or Wall Street for 3 years after graduation.',
@@ -16,7 +17,7 @@ export const COUNTRIES = [
   {
     id: 'uk', name: 'United Kingdom', lat: 55.3781, lng: -3.4360,
     tagline: 'Where tradition meets excellence',
-    img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '160+', l: 'Universities' }, { n: '2 Yrs', l: 'Post-Study Visa' }, { n: 'Top 5', l: 'Global Ranking' }],
     universities: ['University of Oxford', 'University of Cambridge', 'Imperial College', 'UCL'],
     desc: 'Home to Oxford and Cambridge — universities shaping world leaders for centuries. A 2-year post-study visa lets you launch your career at global companies headquartered in London.',
@@ -25,7 +26,7 @@ export const COUNTRIES = [
   {
     id: 'aus', name: 'Australia', lat: -25.2744, lng: 133.7751,
     tagline: 'Education under southern stars',
-    img: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '43', l: 'Top-Ranked Unis' }, { n: '4 Yrs', l: 'Post-Study Visa' }, { n: '#1', l: 'Quality of Life' }],
     universities: ['University of Melbourne', 'ANU', 'University of Sydney', 'UNSW'],
     desc: 'Australia offers one of the world\'s most generous post-study work visa programs — up to 4 years after graduation. World-class universities and outstanding quality of life.',
@@ -34,7 +35,7 @@ export const COUNTRIES = [
   {
     id: 'can', name: 'Canada', lat: 56.1304, lng: -106.3468,
     tagline: 'Welcoming the world\'s best minds',
-    img: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '3 Yrs', l: 'PGWP Visa' }, { n: '96%', l: 'Visa Approval' }, { n: '#1', l: 'Most Welcoming' }],
     universities: ['University of Toronto', 'UBC', 'McGill University', 'University of Waterloo'],
     desc: 'Canada combines world-class education with PR pathways that are unmatched globally. With strong multicultural values and a booming tech sector, it\'s the smart strategic choice.',
@@ -43,7 +44,7 @@ export const COUNTRIES = [
   {
     id: 'nz', name: 'New Zealand', lat: -40.9006, lng: 174.8860,
     tagline: 'A natural environment for learning',
-    img: 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '8', l: 'Top Universities' }, { n: '3 Yrs', l: 'Post-Study Visa' }, { n: '#2', l: 'Safest Country' }],
     universities: ['University of Auckland', 'University of Otago', 'Victoria University', 'Massey University'],
     desc: 'New Zealand offers a progressive education system with globally recognized qualifications in a safe, beautiful environment.',
@@ -52,7 +53,7 @@ export const COUNTRIES = [
   {
     id: 'ger', name: 'Germany', lat: 51.1657, lng: 10.4515,
     tagline: 'The heart of engineering and innovation',
-    img: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '400+', l: 'Institutions' }, { n: '18 Mos', l: 'Post-Study Visa' }, { n: 'Low', l: 'Tuition Fees' }],
     universities: ['TU Munich', 'LMU Munich', 'Heidelberg University', 'Humboldt University'],
     desc: 'Germany is a global powerhouse in engineering and technology, offering world-class education with minimal tuition fees.',
@@ -61,7 +62,7 @@ export const COUNTRIES = [
   {
     id: 'fra', name: 'France', lat: 46.2276, lng: 2.2137,
     tagline: 'Art, science, and a rich cultural legacy',
-    img: 'https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '3500+', l: 'Institutions' }, { n: '2 Yrs', l: 'Post-Study Visa' }, { n: 'Top 10', l: 'Global Economy' }],
     universities: ['Sorbonne University', 'Ecole Polytechnique', 'Sciences Po', 'HEC Paris'],
     desc: 'France offers elite education in business, art, and sciences, with strong industry connections and a vibrant cultural experience.',
@@ -70,7 +71,7 @@ export const COUNTRIES = [
   {
     id: 'sg', name: 'Singapore', lat: 1.3521, lng: 103.8198,
     tagline: 'The dynamic hub of Asia',
-    img: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '6', l: 'Public Unis' }, { n: 'Top 15', l: 'Global Unis' }, { n: 'Hub', l: 'Asian Business' }],
     universities: ['NUS', 'NTU', 'SMU', 'SUTD'],
     desc: 'Singapore is a global financial and technological hub, offering world-leading universities at the crossroads of East and West.',
@@ -79,7 +80,7 @@ export const COUNTRIES = [
   {
     id: 'esp', name: 'Spain', lat: 40.4637, lng: -3.7492,
     tagline: 'Sun, culture, and top business schools',
-    img: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '76', l: 'Universities' }, { n: 'Top', l: 'Business Schools' }, { n: 'Low', l: 'Living Cost' }],
     universities: ['University of Barcelona', 'IE Business School', 'ESADE', 'Autonomous University of Madrid'],
     desc: 'Spain is renowned for its world-class business schools and vibrant lifestyle, making it a top destination for international students.',
@@ -88,7 +89,7 @@ export const COUNTRIES = [
   {
     id: 'pol', name: 'Poland', lat: 51.9194, lng: 19.1451,
     tagline: 'Quality education at the heart of Europe',
-    img: 'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '400+', l: 'Institutions' }, { n: 'Low', l: 'Tuition Fees' }, { n: 'EU', l: 'Member State' }],
     universities: ['University of Warsaw', 'Jagiellonian University', 'Warsaw University of Technology', 'Adam Mickiewicz University'],
     desc: 'Poland offers high-quality education with affordable tuition and living costs, making it an increasingly popular European destination.',
@@ -97,7 +98,7 @@ export const COUNTRIES = [
   {
     id: 'ire', name: 'Ireland', lat: 53.1424, lng: -7.6921,
     tagline: 'The Silicon Valley of Europe',
-    img: 'https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?auto=format&fit=crop&q=80&w=800',
     stats: [{ n: '9', l: 'Universities' }, { n: '2 Yrs', l: 'Post-Study Visa' }, { n: 'HQ', l: 'Global Tech' }],
     universities: ['Trinity College Dublin', 'University College Dublin', 'University of Galway', 'UCC'],
     desc: 'Ireland is home to the European headquarters of many top tech and pharma companies, offering excellent career prospects for graduates.',
@@ -194,17 +195,19 @@ export default function Countries() {
       <div className="countries-globe-wrapper" style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
         {/* Ambient Backlight to illuminate the globe */}
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)', pointerEvents: 'none', zIndex: -1 }} />
-        <Globe
-          ref={globeRef}
-          globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-          bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
-          atmosphereColor="#f9d440"
-          atmosphereAltitude={0.25}
-          backgroundColor="rgba(0,0,0,0)"
-          enablePointerInteraction={true} 
-          htmlElementsData={COUNTRIES}
-          htmlElement={createMarker}
-        />
+        <Suspense fallback={<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)' }}>Loading 3D Globe...</div>}>
+          <Globe
+            ref={globeRef}
+            globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+            bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
+            atmosphereColor="#f9d440"
+            atmosphereAltitude={0.25}
+            backgroundColor="rgba(0,0,0,0)"
+            enablePointerInteraction={true} 
+            htmlElementsData={COUNTRIES}
+            htmlElement={createMarker}
+          />
+        </Suspense>
         {/* Light overlay to ensure text readability without hiding globe - Reduced opacity for brightness */}
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, transparent 0%, rgba(2,2,5,0.15) 100%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(2,2,5,0.6) 0%, rgba(2,2,5,0) 40%, rgba(2,2,5,0.1) 100%)', pointerEvents: 'none' }} />

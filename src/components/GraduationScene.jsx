@@ -173,8 +173,8 @@ export default function GraduationScene() {
           webkit-playsinline="true"
           style={{ display: 'none' }}
         >
+          <source src="/A_vast_dim_crowd_of_identical.webm" type="video/webm" />
           <source src="/A_vast_dim_crowd_of_identical.mov" type="video/quicktime" />
-          <source src="/A_vast_dim_crowd_of_identical.mov" type="video/mp4" />
         </video>
 
         {/* Top cinematic fade */}
