@@ -1,0 +1,175 @@
+.university-section-wrapper {
+    position: relative;
+    background-color: transparent;
+    color: white;
+}
+
+.univ-webgl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0; 
+    position: sticky;
+}
+
+.univ-container {
+    position: relative;
+    z-index: 1;
+}
+
+.univ-step {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.univ-text-content {
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.align-right {
+    margin-left: auto;
+    text-align: right;
+}
+
+.univ-btn {
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 100px;
+    transition: all 0.3s;
+}
+
+.univ-btn:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+}
+
+.univ-btn.highlight {
+    background: #e6b741;
+    color: #000;
+}
+
+.univ-btn.highlight:hover {
+    background: #ffd659;
+    box-shadow: 0 0 15px rgba(230, 183, 65, 0.5);
+}
+
+.pricing-card {
+    transition: all 0.3s ease;
+}
+.pricing-card:hover {
+    border-color: rgba(255,255,255,0.3);
+}
+
+/* Modal */
+.univ-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(2, 2, 5, 0.95);
+    
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.univ-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.univ-modal-content {
+    width: 80vw;
+    height: 80vh;
+    max-width: 1200px;
+    background: linear-gradient(135deg, rgba(20,20,25,1) 0%, rgba(10,10,15,1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.univ-close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    background: none; border: none;
+    color: white; font-size: 2.5rem;
+    cursor: pointer; z-index: 10;
+}
+
+.univ-modal-sidebar {
+    width: 30%;
+    background: rgba(0,0,0,0.3);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.univ-nav-item {
+    padding: 20px 40px;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.univ-nav-item:hover {
+    color: white;
+    background: rgba(255,255,255,0.02);
+}
+
+.univ-nav-item.active {
+    color: var(--accent-gold, #F9D428);
+    border-left: 3px solid var(--accent-gold, #F9D428);
+    background: rgba(249, 212, 64, 0.05);
+    font-weight: bold;
+}
+
+.univ-modal-pages {
+    flex: 1;
+    position: relative;
+    padding: 60px;
+}
+
+.univ-page {
+    position: absolute;
+    top: 60px; left: 60px; right: 60px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.univ-page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.univ-page h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #fff;
+    font-family: var(--font-serif);
+}
+
+.univ-page p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+}

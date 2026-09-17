@@ -1,0 +1,1137 @@
+
+> learn-overseas@0.0.0 lint
+> oxlint
+
+
+  ! eslint(no-unused-vars): Identifier 'fs' is imported but never used.
+   ,-[test_colors.mjs:1:8]
+ 1 | import fs from 'fs';
+   :        ^|
+   :         `-- 'fs' is imported here
+ 2 | import { createCanvas, loadImage } from 'canvas';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'motion' is imported but never used.
+   ,-[src/pages/Universities.jsx:6:10]
+ 5 | import AspireSection from '../components/AspireSection';
+ 6 | import { motion } from 'framer-motion';
+   :          ^^^|^^
+   :             `-- 'motion' is imported here
+ 7 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'newBg' is declared but never used. Unused variables should start with a '_'.
+   ,-[fix_backgrounds.cjs:7:7]
+ 6 | 
+ 7 | const newBg = `<div style={{ position: 'relative', background: '#020205', minHeight: '100vh', overflow: 'hidden' }}>
+   :       ^^|^^
+   :         `-- 'newBg' is declared here
+ 8 |       <motion.div
+   `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'SmoothScroll' is imported but never used.
+    ,-[src/App.jsx:9:8]
+  8 | import PremiumCursor from './components/PremiumCursor';
+  9 | import SmoothScroll from './components/SmoothScroll';
+    :        ^^^^^^|^^^^^
+    :              `-- 'SmoothScroll' is imported here
+ 10 | 
+    `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useEffect' is imported but never used.
+   ,-[src/components/ImmersiveGlobe.jsx:1:34]
+ 1 | import React, { useRef, useMemo, useEffect } from 'react';
+   :                                  ^^^^|^^^^
+   :                                      `-- 'useEffect' is imported here
+ 2 | import { useFrame, useLoader } from '@react-three/fiber';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'OrbitControls' is imported but never used.
+   ,-[src/components/ImmersiveGlobe.jsx:3:18]
+ 2 | import { useFrame, useLoader } from '@react-three/fiber';
+ 3 | import { Sphere, OrbitControls, Line } from '@react-three/drei';
+   :                  ^^^^^^|^^^^^^
+   :                        `-- 'OrbitControls' is imported here
+ 4 | import * as THREE from 'three';
+   `----
+  help: Consider removing this import.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'duration'
+    ,-[src/components/HeroStats.jsx:11:5]
+  7 |     if (!inView) return;
+  8 |     let start=0, step=end/((duration*1000)/16);
+    :                             ^^^^|^^^
+    :                                 `-- useEffect uses `duration` here
+  9 |     const t = setInterval(() => { start+=step; if(start>=end){setCount(end);clearInterval(t);}else{setCount(Math.floor(start));} },16);
+ 10 |     return ()=>clearInterval(t);
+ 11 |   },[inView,end]);
+    :     ^^^^^^^^^^^^
+ 12 |   return count;
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! eslint(no-unused-vars): Parameter 'catIndex' is declared but never used. Unused parameters should start with a '_'.
+    ,-[src/components/TeamSection.jsx:30:44]
+ 29 | 
+ 30 |                 {categories.map((category, catIndex) => {
+    :                                            ^^^^|^^^
+    :                                                `-- 'catIndex' is declared here
+ 31 |                     const categoryMembers = TEAM_MEMBERS.filter(m => m.category === category);
+    `----
+  help: Consider removing this parameter.
+
+  ! react(jsx-no-duplicate-props): No duplicate props allowed. The prop "style" is duplicated.
+     ,-[src/components/CinemaControls.jsx:106:10]
+ 105 |   return (
+ 106 |     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }} className={className} style={style}>
+     :          ^^^^^                                                                                   ^^^^^
+ 107 |       {label && <span style={{ fontSize: 12, color: 'var(--white-50)', fontWeight: 500, letterSpacing: 0.5 }}>{label}</span>}
+     `----
+  help: Remove one of the props, or rename them so each prop is distinct.
+
+  ! eslint(no-unused-vars): Variable 'planeDisplay' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/pages/Home.jsx:40:9]
+ 39 |   const planeScale = useTransform(scrollYProgress, [0.70, 0.80, 0.95, 1.0], [0.5, 1, 1, 0.5]);
+ 40 |   const planeDisplay = useTransform(scrollYProgress, (v) => v < 0.70 ? 'none' : 'flex');
+    :         ^^^^^^|^^^^^
+    :               `-- 'planeDisplay' is declared here
+ 41 | 
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'Tag' is imported but never used.
+   ,-[src/pages/NewsFeed.jsx:3:29]
+ 2 | import { motion, AnimatePresence } from 'framer-motion';
+ 3 | import { ArrowRight, Clock, Tag, Search } from 'lucide-react';
+   :                             ^|^
+   :                              `-- 'Tag' is imported here
+ 4 | 
+   `----
+  help: Consider removing this import.
+
+  ! react(jsx-no-duplicate-props): No duplicate props allowed. The prop "transition" is duplicated.
+     ,-[src/pages/NewsFeed.jsx:302:21]
+ 301 |                     animate={{ opacity: 1, y: 0 }}
+ 302 |                     transition={{ delay: i * 0.08, duration: 0.5 }}
+     :                     ^^^^^^^^^^
+ 303 |                     style={{
+ 304 |                       position: 'relative', borderRadius: 20, overflow: 'hidden',
+ 305 |                       height: 340, cursor: 'pointer',
+ 306 |                       border: '1px solid rgba(255,255,255,0.06)',
+ 307 |                       background: '#0c0c14',
+ 308 |                     }}
+ 309 |                     whileHover={{ y: -4, borderColor: 'rgba(249,212,64,0.2)' }}
+ 310 |                     transition={{ duration: 0.3 }}
+     :                     ^^^^^^^^^^
+ 311 |                   >
+     `----
+  help: Remove one of the props, or rename them so each prop is distinct.
+
+  ! eslint(no-unused-vars): Function 'SatelliteMap' is declared but never used.
+    ,-[src/pages/ContactUs.jsx:64:10]
+ 63 | 
+ 64 | function SatelliteMap({ office }) {
+    :          ^^^^^^|^^^^^
+    :                `-- 'SatelliteMap' is declared here
+ 65 |   const zoom = 12;
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'hoveredState' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/pages/ContactUs.jsx:109:10]
+ 108 |   const [envOpen, setEnvOpen] = useState(false);
+ 109 |   const [hoveredState, setHoveredState] = useState(null);
+     :          ^^^^^^|^^^^^
+     :                `-- 'hoveredState' is declared here
+ 110 |   const [formStep, setFormStep] = useState(1);
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'setHoveredState' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/pages/ContactUs.jsx:109:24]
+ 108 |   const [envOpen, setEnvOpen] = useState(false);
+ 109 |   const [hoveredState, setHoveredState] = useState(null);
+     :                        ^^^^^^^|^^^^^^^
+     :                               `-- 'setHoveredState' is declared here
+ 110 |   const [formStep, setFormStep] = useState(1);
+     `----
+  help: Consider removing this declaration.
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/pages/ContactUs.jsx:316:35]
+ 315 |                             animate={{ 
+ 316 |                               x: (Math.random() - 0.5) * 200, 
+     :                                   ^^^^^^|^^^^^^
+     :                                         `-- Cannot call impure function
+ 317 |                               y: (Math.random() - 1) * 150, 
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/pages/ContactUs.jsx:317:35]
+ 316 |                               x: (Math.random() - 0.5) * 200, 
+ 317 |                               y: (Math.random() - 1) * 150, 
+     :                                   ^^^^^^|^^^^^^
+     :                                         `-- Cannot call impure function
+ 318 |                               opacity: [0, 1, 0],
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/pages/ContactUs.jsx:319:42]
+ 318 |                               opacity: [0, 1, 0],
+ 319 |                               scale: [0, Math.random() + 0.5, 0]
+     :                                          ^^^^^^|^^^^^^
+     :                                                `-- Cannot call impure function
+ 320 |                             }}
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/pages/ContactUs.jsx:321:59]
+ 320 |                             }}
+ 321 |                             transition={{ duration: 1.5 + Math.random(), delay: Math.random() * 0.5, ease: 'easeOut' }}
+     :                                                           ^^^^^^|^^^^^^
+     :                                                                 `-- Cannot call impure function
+ 322 |                             style={{
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/pages/ContactUs.jsx:321:81]
+ 320 |                             }}
+ 321 |                             transition={{ duration: 1.5 + Math.random(), delay: Math.random() * 0.5, ease: 'easeOut' }}
+     :                                                                                 ^^^^^^|^^^^^^
+     :                                                                                       `-- Cannot call impure function
+ 322 |                             style={{
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! eslint(no-unused-vars): Identifier 'useEffect' is imported but never used.
+   ,-[src/pages/Services.jsx:1:35]
+ 1 | import React, { useRef, useState, useEffect } from 'react';
+   :                                   ^^^^|^^^^
+   :                                       `-- 'useEffect' is imported here
+ 2 | import { motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValueEvent } from 'framer-motion';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useSpring' is imported but never used.
+   ,-[src/pages/Services.jsx:2:43]
+ 1 | import React, { useRef, useState, useEffect } from 'react';
+ 2 | import { motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValueEvent } from 'framer-motion';
+   :                                           ^^^^|^^^^
+   :                                               `-- 'useSpring' is imported here
+ 3 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'AnimatePresence' is imported but never used.
+   ,-[src/pages/Services.jsx:2:54]
+ 1 | import React, { useRef, useState, useEffect } from 'react';
+ 2 | import { motion, useScroll, useTransform, useSpring, AnimatePresence, useMotionValueEvent } from 'framer-motion';
+   :                                                      ^^^^^^^|^^^^^^^
+   :                                                             `-- 'AnimatePresence' is imported here
+ 3 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Parameter 'index' is declared but never used. Unused parameters should start with a '_'.
+    ,-[src/pages/Services.jsx:79:29]
+ 78 | 
+ 79 | function ServiceCard({ svc, index }) {
+    :                             ^^|^^
+    :                               `-- 'index' is declared here
+ 80 |   return (
+    `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Identifier 'useState' is imported but never used.
+   ,-[src/pages/TeamMemberProfile.jsx:1:25]
+ 1 | import React, { useRef, useState, useEffect } from 'react';
+   :                         ^^^^|^^^
+   :                             `-- 'useState' is imported here
+ 2 | import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useEffect' is imported but never used.
+   ,-[src/pages/TeamMemberProfile.jsx:1:35]
+ 1 | import React, { useRef, useState, useEffect } from 'react';
+   :                                   ^^^^|^^^^
+   :                                       `-- 'useEffect' is imported here
+ 2 | import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'AnimatePresence' is imported but never used.
+   ,-[src/pages/TeamMemberProfile.jsx:2:43]
+ 1 | import React, { useRef, useState, useEffect } from 'react';
+ 2 | import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
+   :                                           ^^^^^^^|^^^^^^^
+   :                                                  `-- 'AnimatePresence' is imported here
+ 3 | import { TEAM_MEMBERS } from '../data/teamData';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'blurAmount' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/pages/TeamMemberProfile.jsx:22:9]
+ 21 |   const bgColor = useTransform(scrollYProgress, [0, 0.5, 1], ["#080a12", "#0f1525", "#080a12"]);
+ 22 |   const blurAmount = useTransform(scrollYProgress, [0, 0.5, 1], ["blur(0px)", "blur(10px)", "blur(20px)"]);
+    :         ^^^^^|^^^^
+    :              `-- 'blurAmount' is declared here
+ 23 |   const marqueeX = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]);
+    `----
+  help: Consider removing this declaration.
+
+  ! react(immutability): Cannot access variable while it is being initialized
+    ,-[src/components/StudioIntro.jsx:11:7]
+ 10 |     if (skipIntro || introPlayed || !cinematicMode) {
+ 11 |       finishIntro();
+    :       ^^^^^|^^^^^
+    :            `-- `finishIntro` is read during its own initialization
+ 12 |       return;
+    `----
+  help: `finishIntro` is read while its declaration is still being initialized. Move the access after initialization. For a recursive callback, use a named function expression or restructure the callback so it does not capture itself during initialization
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/immutability
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has missing dependencies: 'finishIntro', 'cinematicMode', 'audioEnabled', 'openCurtain', 'startAmbient', 'introPlayed', 'playSFX', and 'skipIntro'
+    ,-[src/components/StudioIntro.jsx:34:6]
+  9 |   useEffect(() => {
+ 10 |     if (skipIntro || introPlayed || !cinematicMode) {
+    :         ^^^^^^^^^    ^^^^^^^^^^^     ^^^^^^^^^^^^^
+ 11 |       finishIntro();
+    :       ^^^^^^^^^^^
+ 12 |       return;
+ 13 |     }
+ 14 | 
+ 15 |     const t1 = setTimeout(() => {
+ 16 |       playSFX('projector');
+    :       ^^^^^^^
+ 17 |     }, 200);
+ 18 | 
+ 19 |     const t2 = setTimeout(() => {
+ 20 |       if (audioEnabled) startAmbient();
+    :           ^^^^^^^^^^^^  ^^^^^^^^^^^^
+ 21 |     }, 600);
+ 22 | 
+ 23 |     const t3 = setTimeout(() => {
+ 24 |       openCurtain();
+    :       ^^^^^^^^^^^
+ 25 |     }, 1800);
+ 26 | 
+ 27 |     const t4 = setTimeout(() => {
+ 28 |       finishIntro();
+ 29 |     }, 3800);
+ 30 | 
+ 31 |     return () => {
+ 32 |       clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4);
+ 33 |     };
+ 34 |   }, []);
+    :      ^^
+ 35 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! react(set-state-in-effect): Calling setState synchronously within an effect can trigger cascading renders
+     ,-[src/components/GlobeComponent.jsx:104:5]
+ 101 | 
+ 102 |   useEffect(() => {
+     :   ^^^^|^^^^
+     :       `-- This is the containing effect
+ 103 |     // Reset progress when destination changes
+ 104 |     setProgress(0);
+     :     ^^^^^|^^^^^
+     :          `-- Avoid calling setState() directly within an effect
+ 105 |     const interval = setInterval(() => {
+     `----
+  help: Effects should synchronize React with external systems. Calling setState synchronously inside an effect starts another render and is usually unnecessary. Derive the value during render, initialize state directly, or update it from the event that caused the change. Use an effect only when synchronizing with an external system.
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
+
+  ! eslint(no-unused-vars): Function 'Preloader' is declared but never used.
+   ,-[src/components/WebGLPassport.jsx:8:10]
+ 7 | /* ── CSS Preloader shown while WebGL loads ─────────────────────────── */
+ 8 | function Preloader() {
+   :          ^^^^|^^^^
+   :              `-- 'Preloader' is declared here
+ 9 |   return (
+   `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Parameter 'phase' is declared but never used. Unused parameters should start with a '_'.
+    ,-[src/components/WebGLPassport.jsx:29:33]
+ 28 | /* ─── 3D Passport Book ─────────────────────────────────────────────────── */
+ 29 | function PassportBook({ onDive, phase }) {
+    :                                 ^^|^^
+    :                                   `-- 'phase' is declared here
+ 30 |   const group = useRef();
+    `----
+  help: Consider removing this parameter.
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/components/WebGLPassport.jsx:115:25]
+ 114 |     for (let i = 0; i < count; i++) {
+ 115 |       arr[i * 3]     = (Math.random() - 0.5) * 60;
+     :                         ^^^^^^|^^^^^^
+     :                               `-- Cannot call impure function
+ 116 |       arr[i * 3 + 1] = (Math.random() - 0.5) * 60;
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/components/WebGLPassport.jsx:116:25]
+ 115 |       arr[i * 3]     = (Math.random() - 0.5) * 60;
+ 116 |       arr[i * 3 + 1] = (Math.random() - 0.5) * 60;
+     :                         ^^^^^^|^^^^^^
+     :                               `-- Cannot call impure function
+ 117 |       arr[i * 3 + 2] = -Math.random() * 200;
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/components/WebGLPassport.jsx:117:25]
+ 116 |       arr[i * 3 + 1] = (Math.random() - 0.5) * 60;
+ 117 |       arr[i * 3 + 2] = -Math.random() * 200;
+     :                         ^^^^^^|^^^^^^
+     :                               `-- Cannot call impure function
+ 118 |     }
+     `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'onComplete'
+     ,-[src/components/WebGLPassport.jsx:147:6]
+ 145 |       .to(cam.current.position, { z: -60, duration: 2.4, ease: 'power3.in' })
+ 146 |       .add(() => onComplete(), 2.0);
+     :                  ^^^^^|^^^^
+     :                       `-- useEffect uses `onComplete` here
+ 147 |   }, [phase]);
+     :      ^^^^^^^
+ 148 | 
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! react(set-state-in-effect): Calling setState synchronously within an effect can trigger cascading renders
+    ,-[src/pages/TeamMemberDetail.jsx:18:7]
+ 14 | 
+ 15 |   useEffect(() => {
+    :   ^^^^|^^^^
+    :       `-- This is the containing effect
+ 16 |     const found = TEAM_MEMBERS.find(m => toSlug(m.name) === id);
+ 17 |     if (found) {
+ 18 |       setMember(found);
+    :       ^^^^|^^^^
+    :           `-- Avoid calling setState() directly within an effect
+ 19 |       window.scrollTo(0, 0);
+    `----
+  help: Effects should synchronize React with external systems. Calling setState synchronously inside an effect starts another render and is usually unnecessary. Derive the value during render, initialize state directly, or update it from the event that caused the change. Use an effect only when synchronizing with an external system.
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
+
+  ! eslint(no-dupe-keys): Duplicate key 'color'
+     ,-[src/components/CinematicPage.jsx:150:55]
+ 149 |           style={{ position:'absolute', bottom: cinematicMode ? '10vh' : 28, left:'50%', transform:'translateX(-50%)', display:'flex', flexDirection:'column', alignItems:'center', gap:8, zIndex:3 }}>
+ 150 |           <span style={{ fontSize:9, letterSpacing:5, color:'rgba(255,255,255,0.25)', textTransform:'uppercase', color:'var(--gold)', opacity:0.6 }}>Scroll · Next Scene</span>
+     :                                                       ^^|^^                                                      ^^|^^
+     :                                                         |                                                          `-- and duplicated here
+     :                                                         `-- Key is first defined here
+ 151 |           <motion.div animate={{y:[0,10,0],opacity:[0.2,0.8,0.2]}} transition={{repeat:Infinity,duration:2}}
+     `----
+  help: Consider removing the duplicated key
+
+  ! react(set-state-in-effect): Calling setState synchronously within an effect can trigger cascading renders
+    ,-[src/components/StunningGlobe.jsx:23:7]
+ 16 | 
+ 17 |   useEffect(() => {
+    :   ^^^^|^^^^
+    :       `-- This is the containing effect
+ 18 |     // When destination changes, create an arc (airplane flight) and rings (radar pulses)
+ 19 |     if (activeDestination && destinations[activeDestination]) {
+ 20 |       const dest = destinations[activeDestination];
+ 21 |       
+ 22 |       // Emit arc from India to Destination
+ 23 |       setArcsData([{
+    :       ^^^^^|^^^^^
+    :            `-- Avoid calling setState() directly within an effect
+ 24 |         startLat: india.lat,
+    `----
+  help: Effects should synchronize React with external systems. Calling setState synchronously inside an effect starts another render and is usually unnecessary. Derive the value during render, initialize state directly, or update it from the event that caused the change. Use an effect only when synchronizing with an external system.
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has missing dependencies: 'india.lng', 'destinations', and 'india.lat'
+    ,-[src/components/StunningGlobe.jsx:42:6]
+ 18 |     // When destination changes, create an arc (airplane flight) and rings (radar pulses)
+ 19 |     if (activeDestination && destinations[activeDestination]) {
+    :                              ^^^^^^^^^^^^
+ 20 |       const dest = destinations[activeDestination];
+ 21 |       
+ 22 |       // Emit arc from India to Destination
+ 23 |       setArcsData([{
+ 24 |         startLat: india.lat,
+    :                   ^^^^^
+ 25 |         startLng: india.lng,
+    :                   ^^^^^
+ 26 |         endLat: dest.lat,
+ 27 |         endLng: dest.lng,
+ 28 |         color: ['#FC7133', '#F9D440'] // Orange to Yellow gradient
+ 29 |       }]);
+ 30 | 
+ 31 |       // Emit rings at destination
+ 32 |       setRingsData([
+ 33 |         { lat: dest.lat, lng: dest.lng, maxR: 5, propagationSpeed: 2, repeatPeriod: 1000 },
+ 34 |         { lat: india.lat, lng: india.lng, maxR: 3, propagationSpeed: 1, repeatPeriod: 1000 }
+ 35 |       ]);
+ 36 | 
+ 37 |       // Point camera at destination smoothly
+ 38 |       if (globeEl.current) {
+ 39 |         globeEl.current.pointOfView({ lat: dest.lat, lng: dest.lng, altitude: 2 }, 1500);
+ 40 |       }
+ 41 |     }
+ 42 |   }, [activeDestination]);
+    :      ^^^^^^^^^^^^^^^^^^^
+ 43 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! eslint(no-unused-vars): Identifier 'THREE' is imported but never used.
+   ,-[src/components/FaceAnimator.jsx:4:13]
+ 3 | import { useTexture } from '@react-three/drei';
+ 4 | import * as THREE from 'three';
+   :             ^^|^^
+   :               `-- 'THREE' is imported here
+ 5 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'motion' is imported but never used.
+   ,-[src/components/TrustBar.jsx:2:10]
+ 1 | import React from 'react';
+ 2 | import { motion } from 'framer-motion';
+   :          ^^^|^^
+   :             `-- 'motion' is imported here
+ 3 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useState' is imported but never used.
+   ,-[src/components/Globe3D.jsx:1:44]
+ 1 | import React, { Suspense, useRef, useMemo, useState } from 'react';
+   :                                            ^^^^|^^^
+   :                                                `-- 'useState' is imported here
+ 2 | import { Canvas, useFrame } from '@react-three/fiber';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useLocation' is imported but never used.
+   ,-[src/components/UniversityNav.jsx:2:16]
+ 1 | import React from 'react';
+ 2 | import { Link, useLocation } from 'react-router-dom';
+   :                ^^^^^|^^^^^
+   :                     `-- 'useLocation' is imported here
+ 3 | import { motion } from 'framer-motion';
+   `----
+  help: Consider removing this import.
+
+  x Unexpected token
+     ,-[src/components/InteractiveMapHero.jsx:420:6]
+ 419 |       mailHint.classList.add('hidden');
+ 420 |     }, 450);
+     :      ^
+ 421 |   }
+     `----
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+   ,-[src/pages/Countries.jsx:6:14]
+ 5 | 
+ 6 | export const COUNTRIES = [
+   :              ^^^^^^^^^
+ 7 |   {
+   `----
+
+  ! eslint(no-unused-vars): Identifier 'useState' is imported but never used.
+   ,-[src/components/CinematicEffects.jsx:1:36]
+ 1 | import React, { useEffect, useRef, useState } from 'react';
+   :                                    ^^^^|^^^
+   :                                        `-- 'useState' is imported here
+ 2 | import { useCinematic } from '../context/CinematicContext';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'AnimatePresence' is imported but never used.
+   ,-[src/components/ParticleTransition.jsx:2:18]
+ 1 | import React, { useEffect, useRef, useState } from 'react';
+ 2 | import { motion, AnimatePresence } from 'framer-motion';
+   :                  ^^^^^^^|^^^^^^^
+   :                         `-- 'AnimatePresence' is imported here
+ 3 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'particlesArray' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/ParticleTransition.jsx:41:12]
+ 40 |     const canvasRef = useRef(null);
+ 41 |     const [particlesArray, setParticlesArray] = useState([]);
+    :            ^^^^^^^|^^^^^^
+    :                   `-- 'particlesArray' is declared here
+ 42 |     const [isReassembling, setIsReassembling] = useState(false);
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'isReassembling' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/ParticleTransition.jsx:42:12]
+ 41 |     const [particlesArray, setParticlesArray] = useState([]);
+ 42 |     const [isReassembling, setIsReassembling] = useState(false);
+    :            ^^^^^^^|^^^^^^
+    :                   `-- 'isReassembling' is declared here
+ 43 |     const particlesRef = useRef([]);
+    `----
+  help: Consider removing this declaration.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'onComplete'
+    ,-[src/components/ParticleTransition.jsx:59:13]
+ 58 |             console.error("Failed to load /logo.png for ParticleTransition. Skipping transition.");
+ 59 |             onComplete();
+    :             ^^^^^|^^^^
+    :                  `-- useEffect uses `onComplete` here
+ 60 |         };
+    `----
+     ,-[src/components/ParticleTransition.jsx:128:8]
+ 127 |         };
+ 128 |     }, []);
+     :        ^^
+ 129 | 
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! eslint(no-unused-vars): Identifier 'useMotionValue' is imported but never used.
+   ,-[src/pages/AboutUs.jsx:2:54]
+ 1 | import React, { useRef } from 'react';
+ 2 | import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion';
+   :                                                      ^^^^^^^|^^^^^^
+   :                                                             `-- 'useMotionValue' is imported here
+ 3 | import { Plane, Globe2 } from 'lucide-react';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useMotionTemplate' is imported but never used.
+   ,-[src/pages/AboutUs.jsx:2:70]
+ 1 | import React, { useRef } from 'react';
+ 2 | import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion';
+   :                                                                      ^^^^^^^^|^^^^^^^^
+   :                                                                              `-- 'useMotionTemplate' is imported here
+ 3 | import { Plane, Globe2 } from 'lucide-react';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'imgBrightness' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/pages/AboutUs.jsx:34:9]
+ 33 |   const imgScale = useTransform(smooth, [0, 1], [1, 1.35]);
+ 34 |   const imgBrightness = useTransform(smooth, [0, 0.6], [0.45, 0.2]);
+    :         ^^^^^^|^^^^^^
+    :               `-- 'imgBrightness' is declared here
+ 35 |   const textY = useTransform(smooth, [0, 1], ['0%', '-30%']);
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'fs' is imported but never used.
+   ,-[test_airplane.mjs:2:8]
+ 1 | import { chromium } from 'playwright';
+ 2 | import fs from 'fs';
+   :        ^|
+   :         `-- 'fs' is imported here
+ 3 | 
+   `----
+  help: Consider removing this import.
+
+  ! react(set-state-in-effect): Calling setState synchronously within an effect can trigger cascading renders
+   ,-[src/components/AtmosphericTransition.jsx:8:20]
+ 6 | 
+ 7 |   useEffect(() => {
+   :   ^^^^|^^^^
+   :       `-- This is the containing effect
+ 8 |     if (!active) { setStage(0); return; }
+   :                    ^^^^|^^^
+   :                        `-- Avoid calling setState() directly within an effect
+ 9 |     setStage(1); // Space
+   `----
+  help: Effects should synchronize React with external systems. Calling setState synchronously inside an effect starts another render and is usually unnecessary. Derive the value during render, initialize state directly, or update it from the event that caused the change. Use an effect only when synchronizing with an external system.
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'onComplete'
+    ,-[src/components/AtmosphericTransition.jsx:14:6]
+ 11 |     const t3 = setTimeout(() => setStage(3), 3200); // City
+ 12 |     const t4 = setTimeout(() => onComplete?.(), 4600); // Done
+    :                                 ^^^^^|^^^^
+    :                                      `-- useEffect uses `onComplete` here
+ 13 |     return () => { clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
+ 14 |   }, [active]);
+    :      ^^^^^^^^
+ 15 | 
+    `----
+  help: Either include it or remove the dependency array.
+
+  ! react(set-state-in-effect): Calling setState synchronously within an effect can trigger cascading renders
+    ,-[src/components/PremiumCursor.jsx:11:5]
+  7 | 
+  8 |   useEffect(() => {
+    :   ^^^^|^^^^
+    :       `-- This is the containing effect
+  9 |     // Only enable on devices with a fine pointer (mouse/trackpad), disable on touch/mobile
+ 10 |     const mediaQuery = window.matchMedia('(pointer: fine)');
+ 11 |     setIsFinePointer(mediaQuery.matches);
+    :     ^^^^^^^^|^^^^^^^
+    :             `-- Avoid calling setState() directly within an effect
+ 12 |     
+    `----
+  help: Effects should synchronize React with external systems. Calling setState synchronously inside an effect starts another render and is usually unnecessary. Derive the value during render, initialize state directly, or update it from the event that caused the change. Use an effect only when synchronizing with an external system.
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
+
+  ! eslint(no-unused-vars): Variable 'insideTexture' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/WebGLIntro.jsx:10:9]
+  9 |   const coverTexture = useTexture('/realistic_passport_cover.jpg');
+ 10 |   const insideTexture = useTexture('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?q=80&w=800&auto=format&fit=crop');
+    :         ^^^^^^|^^^^^^
+    :               `-- 'insideTexture' is declared here
+ 11 |   
+    `----
+  help: Consider removing this declaration.
+
+  ! react(purity): Cannot call impure function during render
+    ,-[src/components/WebGLIntro.jsx:65:25]
+ 64 |   for (let i = 0; i < particleCount; i++) {
+ 65 |     positions[i * 3] = (Math.random() - 0.5) * 40;
+    :                         ^^^^^^|^^^^^^
+    :                               `-- Cannot call impure function
+ 66 |     positions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+    `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+    ,-[src/components/WebGLIntro.jsx:66:29]
+ 65 |     positions[i * 3] = (Math.random() - 0.5) * 40;
+ 66 |     positions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+    :                             ^^^^^^|^^^^^^
+    :                                   `-- Cannot call impure function
+ 67 |     positions[i * 3 + 2] = (Math.random() - 1.0) * 100; // Deep z-axis
+    `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! react(purity): Cannot call impure function during render
+    ,-[src/components/WebGLIntro.jsx:67:29]
+ 66 |     positions[i * 3 + 1] = (Math.random() - 0.5) * 40;
+ 67 |     positions[i * 3 + 2] = (Math.random() - 1.0) * 100; // Deep z-axis
+    :                             ^^^^^^|^^^^^^
+    :                                   `-- Cannot call impure function
+ 68 |   }
+    `----
+  help: `Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+  ! eslint(no-unused-vars): Identifier 'useRef' is imported but never used.
+   ,-[src/components/Preloader.jsx:1:28]
+ 1 | import React, { useEffect, useRef } from 'react';
+   :                            ^^^|^^
+   :                               `-- 'useRef' is imported here
+ 2 | import { motion, AnimatePresence } from 'framer-motion';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'AnimatePresence' is imported but never used.
+   ,-[src/components/Preloader.jsx:2:18]
+ 1 | import React, { useEffect, useRef } from 'react';
+ 2 | import { motion, AnimatePresence } from 'framer-motion';
+   :                  ^^^^^^^|^^^^^^^
+   :                         `-- 'AnimatePresence' is imported here
+ 3 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'useMotionValueEvent' is imported but never used.
+   ,-[src/components/StudentSuccessWall.jsx:2:70]
+ 1 | import React, { useRef, useState, useEffect } from 'react';
+ 2 | import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+   :                                                                      ^^^^^^^^^|^^^^^^^^^
+   :                                                                               `-- 'useMotionValueEvent' is imported here
+ 3 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'fadeIn' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/components/StudentSuccessWall.jsx:288:9]
+ 287 |   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'start start'] });
+ 288 |   const fadeIn = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+     :         ^^^|^^
+     :            `-- 'fadeIn' is declared here
+ 289 | 
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'scriptStartStr' is declared but never used. Unused variables should start with a '_'.
+   ,-[scripts/extractFlightScript.cjs:7:7]
+ 6 | // Let's find the script containing 'window.ASSET_PLANE_GLB_B64'
+ 7 | const scriptStartStr = '<script>';
+   :       ^^^^^^^|^^^^^^
+   :              `-- 'scriptStartStr' is declared here
+ 8 | const scriptEndStr = '</script>';
+   `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'scriptEndStr' is declared but never used. Unused variables should start with a '_'.
+   ,-[scripts/extractFlightScript.cjs:8:7]
+ 7 | const scriptStartStr = '<script>';
+ 8 | const scriptEndStr = '</script>';
+   :       ^^^^^^|^^^^^
+   :             `-- 'scriptEndStr' is declared here
+ 9 | 
+   `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Identifier 'useMemo' is imported but never used.
+   ,-[src/components/GlobeScene.jsx:1:46]
+ 1 | import React, { useRef, useEffect, useState, useMemo } from 'react';
+   :                                              ^^^|^^^
+   :                                                 `-- 'useMemo' is imported here
+ 2 | import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'Link' is imported but never used.
+   ,-[src/components/GlobeScene.jsx:4:10]
+ 3 | import Globe from 'react-globe.gl';
+ 4 | import { Link } from 'react-router-dom';
+   :          ^^|^
+   :            `-- 'Link' is imported here
+ 5 | import './DestinationsDashboard.css';
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'hoveredCountry' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/GlobeScene.jsx:66:10]
+ 65 |   const [selectedCountry, setSelectedCountry] = useState(null);
+ 66 |   const [hoveredCountry, setHoveredCountry] = useState(null);
+    :          ^^^^^^^|^^^^^^
+    :                 `-- 'hoveredCountry' is declared here
+ 67 |   const [liveRates, setLiveRates] = useState({});
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'setHoveredCountry' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/GlobeScene.jsx:66:26]
+ 65 |   const [selectedCountry, setSelectedCountry] = useState(null);
+ 66 |   const [hoveredCountry, setHoveredCountry] = useState(null);
+    :                          ^^^^^^^^|^^^^^^^^
+    :                                  `-- 'setHoveredCountry' is declared here
+ 67 |   const [liveRates, setLiveRates] = useState({});
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'planeX' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/GlobeScene.jsx:92:9]
+ 91 |   const planeAngle = useTransform(smooth, [0, 1], [0, Math.PI * 3]); 
+ 92 |   const planeX = useTransform(planeAngle, (a) => Math.cos(a) * 450); 
+    :         ^^^|^^
+    :            `-- 'planeX' is declared here
+ 93 |   const planeY = useTransform(planeAngle, (a) => Math.sin(a) * 450);
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'planeY' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/GlobeScene.jsx:93:9]
+ 92 |   const planeX = useTransform(planeAngle, (a) => Math.cos(a) * 450); 
+ 93 |   const planeY = useTransform(planeAngle, (a) => Math.sin(a) * 450);
+    :         ^^^|^^
+    :            `-- 'planeY' is declared here
+ 94 |   const planeRotate = useTransform(planeAngle, (a) => (a * 180) / Math.PI + 180);
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'planeRotate' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/GlobeScene.jsx:94:9]
+ 93 |   const planeY = useTransform(planeAngle, (a) => Math.sin(a) * 450);
+ 94 |   const planeRotate = useTransform(planeAngle, (a) => (a * 180) / Math.PI + 180);
+    :         ^^^^^|^^^^^
+    :              `-- 'planeRotate' is declared here
+ 95 | 
+    `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'totalUnis' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/components/GlobeScene.jsx:141:9]
+ 140 | 
+ 141 |   const totalUnis = DESTINATIONS.reduce((sum, d) => sum + d.totalUnis, 0).toLocaleString() + '+';
+     :         ^^^^|^^^^
+     :             `-- 'totalUnis' is declared here
+ 142 |   const totalCountries = DESTINATIONS.length;
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Variable 'totalCountries' is declared but never used. Unused variables should start with a '_'.
+     ,-[src/components/GlobeScene.jsx:142:9]
+ 141 |   const totalUnis = DESTINATIONS.reduce((sum, d) => sum + d.totalUnis, 0).toLocaleString() + '+';
+ 142 |   const totalCountries = DESTINATIONS.length;
+     :         ^^^^^^^|^^^^^^
+     :                `-- 'totalCountries' is declared here
+ 143 | 
+     `----
+  help: Consider removing this declaration.
+
+  ! eslint(no-unused-vars): Parameter 'scrolled' is declared but never used. Unused parameters should start with a '_'.
+    ,-[src/components/Header.jsx:18:36]
+ 17 | 
+ 18 | function NavItem({ link, isActive, scrolled }) {
+    :                                    ^^^^|^^^
+    :                                        `-- 'scrolled' is declared here
+ 19 |   const [isHovered, setIsHovered] = useState(false);
+    `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Parameter 'isActive' is declared but never used. Unused parameters should start with a '_'.
+     ,-[src/components/Header.jsx:109:33]
+ 108 | 
+ 109 | function UniversitiesDropdown({ isActive }) {
+     :                                 ^^^^|^^^
+     :                                     `-- 'isActive' is declared here
+ 110 |   return (
+     `----
+  help: Consider removing this parameter.
+
+  ! eslint(no-unused-vars): Identifier 'BookOpen' is imported but never used.
+   ,-[src/components/WebGLDiveHero.jsx:4:10]
+ 3 | import { motion, useScroll, useTransform } from 'framer-motion';
+ 4 | import { BookOpen, Scroll, Globe2, Plane, Trophy, Telescope } from 'lucide-react';
+   :          ^^^^|^^^
+   :              `-- 'BookOpen' is imported here
+ 5 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'Scroll' is imported but never used.
+   ,-[src/components/WebGLDiveHero.jsx:4:20]
+ 3 | import { motion, useScroll, useTransform } from 'framer-motion';
+ 4 | import { BookOpen, Scroll, Globe2, Plane, Trophy, Telescope } from 'lucide-react';
+   :                    ^^^|^^
+   :                       `-- 'Scroll' is imported here
+ 5 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'Globe2' is imported but never used.
+   ,-[src/components/WebGLDiveHero.jsx:4:28]
+ 3 | import { motion, useScroll, useTransform } from 'framer-motion';
+ 4 | import { BookOpen, Scroll, Globe2, Plane, Trophy, Telescope } from 'lucide-react';
+   :                            ^^^|^^
+   :                               `-- 'Globe2' is imported here
+ 5 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'Plane' is imported but never used.
+   ,-[src/components/WebGLDiveHero.jsx:4:36]
+ 3 | import { motion, useScroll, useTransform } from 'framer-motion';
+ 4 | import { BookOpen, Scroll, Globe2, Plane, Trophy, Telescope } from 'lucide-react';
+   :                                    ^^|^^
+   :                                      `-- 'Plane' is imported here
+ 5 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'Trophy' is imported but never used.
+   ,-[src/components/WebGLDiveHero.jsx:4:43]
+ 3 | import { motion, useScroll, useTransform } from 'framer-motion';
+ 4 | import { BookOpen, Scroll, Globe2, Plane, Trophy, Telescope } from 'lucide-react';
+   :                                           ^^^|^^
+   :                                              `-- 'Trophy' is imported here
+ 5 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Identifier 'Telescope' is imported but never used.
+   ,-[src/components/WebGLDiveHero.jsx:4:51]
+ 3 | import { motion, useScroll, useTransform } from 'framer-motion';
+ 4 | import { BookOpen, Scroll, Globe2, Plane, Trophy, Telescope } from 'lucide-react';
+   :                                                   ^^^^|^^^^
+   :                                                       `-- 'Telescope' is imported here
+ 5 | 
+   `----
+  help: Consider removing this import.
+
+  ! eslint(no-unused-vars): Variable 'flashRef' is declared but never used. Unused variables should start with a '_'.
+    ,-[src/components/WebGLDiveHero.jsx:31:9]
+ 30 |   const uiRef = useRef(null);
+ 31 |   const flashRef = useRef(null);
+    :         ^^^^|^^^
+    :             `-- 'flashRef' is declared here
+ 32 |   const cityRef = useRef(null);
+    `----
+  help: Consider removing this declaration.
+
+  ! react-hooks(exhaustive-deps): React Hook useEffect has a missing dependency: 'scrollYProgress'
+     ,-[src/components/WebGLDiveHero.jsx:361:6]
+ 244 |       // Hat animation logic tied to scroll (fade out AND fly up)
+ 245 |       const scrollVal = scrollYProgress.get();
+     :                         ^^^^^^^|^^^^^^^
+     :                                `-- useEffect uses `scrollYProgress` here
+ 246 |       if (hatGroup && capMat) {
+ 247 |         hatGroup.position.y = 3.8 + scrollVal * 40; // Flies up quickly
+ 248 |         capMat.opacity = Math.max(0, 1 - scrollVal * 3); // Fades out completely by 33% scroll
+ 249 |         // Keep hat facing the camera, but add a slight float based on time
+ 250 |         hatGroup.rotation.z = Math.sin(time * 2) * 0.05; 
+ 251 |       }
+ 252 | 
+ 253 |       // Shooting stars logic
+ 254 |       if (Math.random() < 0.04) createShootingStar(); // Higher spawn rate
+ 255 |       for (let i = shootingStars.length - 1; i >= 0; i--) {
+ 256 |         const star = shootingStars[i];
+ 257 |         star.life += delta;
+ 258 |         
+ 259 |         star.positions[3] += star.direction.x * star.speed;
+ 260 |         star.positions[4] += star.direction.y * star.speed;
+ 261 |         star.positions[5] += star.direction.z * star.speed;
+ 262 |         
+ 263 |         if (star.life > 0.1) {
+ 264 |           star.positions[0] += star.direction.x * star.speed * 1.1;
+ 265 |           star.positions[1] += star.direction.y * star.speed * 1.1;
+ 266 |           star.positions[2] += star.direction.z * star.speed * 1.1;
+ 267 |         }
+ 268 | 
+ 269 |         star.line.geometry.attributes.position.needsUpdate = true;
+ 270 |         
+ 271 |         if (star.life > 2) {
+ 272 |           scene.remove(star.line);
+ 273 |           star.line.geometry.dispose();
+ 274 |           shootingStars.splice(i, 1);
+ 275 |         }
+ 276 |       }
+ 277 | 
+ 278 |       // --- SCROLL LOGIC ---
+ 279 |       if (containerRef.current) {
+ 280 |         const rect = containerRef.current.getBoundingClientRect();
+ 281 |         const scrollDistance = -rect.top;
+ 282 |         const maxScroll = containerRef.current.offsetHeight - window.innerHeight;
+ 283 |         const progress = Math.max(0, Math.min(1, scrollDistance / maxScroll));
+ 284 | 
+ 285 |         // Plunge the camera from z=18 down to z=5.2 (skimming just above the clouds)
+ 286 |         camera.position.z = 18 - (progress * 12.8);
+ 287 |         
+ 288 |         // Tilt the camera forward slightly to create an "airplane window" horizon view as we get closer
+ 289 |         // At progress 0, we look straight down (rotation x = 0).
+ 290 |         // At progress 1, we look forward slightly (rotation x = ~25 degrees).
+ 291 |         // Reduced from 68 degrees (0.38 * PI) to prevent the Earth from disappearing off-screen.
+ 292 |         camera.rotation.x = progress * (Math.PI * 0.14);
+ 293 |         
+ 294 |         // Slight bank/roll to simulate airplane turning
+ 295 |         camera.rotation.z = Math.sin(progress * Math.PI) * 0.15;
+ 296 | 
+ 297 |         // UI Fade out (The main Learn Overseas title)
+ 298 |         if (uiRef.current) {
+ 299 |           // uiRef.current.style.opacity = 1 - Math.min(1, progress * 4);
+ 300 |           uiRef.current.style.transform = `translateY(${progress * -100}px)`;
+ 301 |         }
+ 302 | 
+ 303 |         // Removed fallText2 per user request
+ 304 | 
+ 305 |         // Removing complex transitions; keep camera logic simpler if needed.
+ 306 |         if (progress === 0) {
+ 307 |           camera.position.y = Math.sin(Date.now() * 0.0005) * 0.3;
+ 308 |           camera.position.x = Math.cos(Date.now() * 0.0003) * 0.2;
+ 309 |         } else {
+ 310 |           camera.position.y = 0;
+ 311 |           camera.position.x = 0;
+ 312 |         }
+ 313 |       }
+ 314 | 
+ 315 |       renderer.render(scene, camera);
+ 316 |     };
+ 317 |     animate();
+ 318 | 
+ 319 |     const handleResize = () => {
+ 320 |       camera.aspect = window.innerWidth / window.innerHeight;
+ 321 |       camera.updateProjectionMatrix();
+ 322 |       renderer.setSize(window.innerWidth, window.innerHeight);
+ 323 |     };
+ 324 |     window.addEventListener('resize', handleResize);
+ 325 | 
+ 326 |     return () => {
+ 327 |       cancelAnimationFrame(animationFrameId);
+ 328 |       observer.disconnect();
+ 329 |       window.removeEventListener('resize', handleResize);
+ 330 |       
+ 331 |       earthGeometry.dispose();
+ 332 |       earthMaterial.dispose();
+ 333 |       cloudGeometry.dispose();
+ 334 |       cloudMaterial.dispose();
+ 335 |       cloudGeometry2.dispose();
+ 336 |       cloudMaterial2.dispose();
+ 337 |       atmosphereGeometry.dispose();
+ 338 |       atmosphereMaterial.dispose();
+ 339 |       starGeometry.dispose();
+ 340 |       starMaterial.dispose();
+ 341 |       starGeometry2.dispose();
+ 342 |       starMaterial2.dispose();
+ 343 |       capGeo.dispose();
+ 344 |       capMat.dispose();
+ 345 | 
+ 346 |       
+ 347 |       earthDiffuse.dispose();
+ 348 |       earthBump.dispose();
+ 349 |       earthSpecular.dispose();
+ 350 |       cloudTexture.dispose();
+ 351 |       capTexture.dispose();
+ 352 | 
+ 353 |       shootingStars.forEach(star => {
+ 354 |           scene.remove(star.line);
+ 355 |           star.line.geometry.dispose();
+ 356 |       });
+ 357 |       shootingStarMaterial.dispose();
+ 358 | 
+ 359 |       renderer.dispose();
+ 360 |     };
+ 361 |   }, []);
+     :      ^^
+ 362 | 
+     `----
+  help: Either include it or remove the dependency array.
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+    ,-[src/context/CinematicContext.jsx:28:16]
+ 27 |         audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+ 28 |       } catch (e) {
+    :                |
+    :                `-- 'e' is declared here
+ 29 |         return null;
+    `----
+  help: Consider handling this error.
+
+  ! eslint(no-unused-vars): Catch parameter 'e' is caught but never used.
+     ,-[src/context/CinematicContext.jsx:138:56]
+ 137 |         if (ambientOscRef.current) {
+ 138 |           try { ambientOscRef.current.stop(); } catch (e) {}
+     :                                                        |
+     :                                                        `-- 'e' is declared here
+ 139 |           ambientOscRef.current = null;
+     `----
+  help: Consider handling this error.
+
+  ! react(only-export-components): Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.
+   ,-[src/context/CinematicContext.jsx:5:14]
+ 4 | 
+ 5 | export const useCinematic = () => {
+   :              ^^^^^^^^^^^^
+ 6 |   const ctx = useContext(CinematicContext);
+   `----
+
+Found 90 warnings and 1 error.
+Finished in 550ms on 118 files with 104 rules using 10 threads.

@@ -1,0 +1,782 @@
+/* ════════════════════════════════════════════════════════════
+   Learn Overseas — Mobile Responsive System  (v2 — full overhaul)
+   Breakpoints:
+     1024px  → tablet (header collapses)
+      900px  → footer reflows
+      768px  → major layout changes (main mobile target)
+      640px  → small mobile fine-tuning
+      480px  → extra small screens
+   ════════════════════════════════════════════════════════════ */
+
+/* ── PREVENT GLOBAL OVERFLOW-X ───────────────────────────── */
+@media (max-width: 1024px) {
+  html, body, #root {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative;
+  }
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ── HEADER ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .mobile-logo-img {
+    height: 40px !important;
+  }
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .footer-offices-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+  .footer-office-item {
+    border-left: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-top: 1px solid rgba(255,255,255,0.05) !important;
+    padding-top: 16px !important;
+  }
+  .footer-office-item:first-child {
+    border-top: none !important;
+    padding-top: 0 !important;
+  }
+}
+@media (max-width: 540px) {
+  .footer-offices-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .footer-bottom-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+  .footer-bottom-links {
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ── HOME — HERO (Section 1) ─────────────────────────────── */
+@media (max-width: 768px) {
+  /* Restore sticky scrolling mechanics for mobile (as per user request) */
+  /* Hide the duplicate flying metric cards since we have them in the HUD on mobile */
+  .metric-card-wrapper {
+    display: none !important;
+  }
+  
+  /* Destinations section (stack tabs & content) */
+  .destinations-showcase-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* The Journey Steps (single column) */
+  .process-steps-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Student Success Cards (horizontal scroll snapping) */
+  .glass-carousel-wrapper {
+    height: auto !important;
+    perspective: none !important;
+    overflow: hidden !important;
+    display: block !important;
+    padding: 100px 0 50px 0 !important;
+  }
+  .glass-carousel-title {
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    margin-bottom: 30px !important;
+  }
+  .glass-carousel-inner {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 20px !important;
+    padding: 20px !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .glass-carousel-inner::-webkit-scrollbar {
+    display: none !important;
+  }
+  .glass-carousel-item-wrapper {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    scroll-snap-align: center !important;
+    flex-shrink: 0 !important;
+  }
+  .glass-carousel-item {
+    transform: none !important;
+    width: 85vw !important;
+  }
+
+  /* University Card Badges */
+  .uni-card-badge-right {
+    top: 12px !important;
+    right: 12px !important;
+    transform: scale(0.85) !important;
+    transform-origin: top right !important;
+  }
+  .uni-card-badge-left {
+    top: 12px !important;
+    left: 12px !important;
+    transform: scale(0.85) !important;
+    transform-origin: top left !important;
+  }
+
+  /* University Stats Bar */
+  .uni-stats-bar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    border: none !important;
+    background: transparent !important;
+    gap: 12px !important;
+  }
+  .uni-stats-bar > div {
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+  }
+
+  /* About Us Page */
+  .about-nav-container {
+    height: auto !important;
+    padding: 15px !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    justify-content: center !important;
+    border-radius: 20px !important;
+  }
+  .about-nav-links {
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  .about-nav-back {
+    width: 100% !important;
+  }
+  .about-nav-back > div {
+    width: 100% !important;
+  }
+
+  .about-hero-container {
+    height: 100vh !important;
+  }
+  .about-hero-sticky {
+    position: relative !important;
+    height: 100% !important;
+  }
+  .about-hero-text {
+    transform: none !important;
+    padding-top: 150px !important;
+  }
+
+  /* Filter Pills Horizontal Scroll */
+  .filter-pills-scroll {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding-bottom: 15px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .filter-pills-scroll::-webkit-scrollbar {
+    display: none !important;
+  }
+  .filter-pills-scroll button {
+    flex-shrink: 0 !important;
+  }
+
+  /* Footer Layout Fixes */
+  .footer-top-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-offices-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .footer-office-item {
+    border: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .footer-bottom-bar {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .footer-bottom-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    margin-top: 10px !important;
+  }
+
+  /* Scale down corner metric badges instead of hiding them */
+  .home-hero-corner-badge {
+    transform: scale(0.65) !important;
+    transform-origin: top center !important;
+    padding: 8px 16px !important;
+  }
+  .home-hero-corner-badge span {
+    font-size: 1.1rem !important;
+  }
+  .home-hero-corner-badge span:last-child {
+    font-size: 0.6rem !important;
+  }
+  /* Hero body text */
+  .body-large {
+    font-size: 1rem !important;
+    max-width: 88vw !important;
+    margin-top: 18px !important;
+    padding: 0 !important;
+    line-height: 1.55 !important;
+  }
+  /* "A Global Perspective" pill size */
+  .hero-ui .glass-pill {
+    font-size: 10px !important;
+    padding: 9px 18px !important;
+    letter-spacing: 3px !important;
+  }
+}
+
+/* ── HOME — HUD (Section 3) ──────────────────────────────── */
+@media (max-width: 900px) {
+  .hud-pills-row {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    padding: 0 4px !important;
+  }
+  .hud-pill {
+    font-size: 0.65rem !important;
+    padding: 8px 14px !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* HUD section outer container */
+  .hud-outer {
+    padding: 40px 4vw !important;
+  }
+  /* HUD heading */
+  .hud-heading {
+    font-size: clamp(2.4rem, 8vw, 4.5rem) !important;
+  }
+
+  /* Stat cards → vertical stack, full width */
+  .hud-stat-cards {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+    width: 90vw !important;
+    margin: 0 auto !important;
+  }
+  .hud-stat-card {
+    padding: 22px 24px !important;
+    border-radius: 18px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  .hud-stat-value {
+    font-size: 2.4rem !important;
+  }
+  .hud-stat-label {
+    font-size: 0.6rem !important;
+    margin-top: 0 !important;
+    text-align: right !important;
+    max-width: 100px !important;
+  }
+
+  /* Description 2-col row → 1-col */
+  .hud-description-row {
+    flex-direction: column !important;
+    gap: 14px !important;
+    padding: 20px 18px !important;
+    border-radius: 16px !important;
+    margin-top: 16px !important;
+    max-width: 92vw !important;
+  }
+  .hud-description-col {
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    padding-left: 14px !important;
+    border-left-width: 2px !important;
+  }
+}
+
+/* ── HOME — STUDY ANYWHERE (Section 2) ──────────────────── */
+@media (max-width: 768px) {
+  .study-anywhere-desc {
+    font-size: 0.95rem !important;
+    padding: 14px 16px !important;
+    margin-bottom: 0 !important;
+    border-radius: 12px !important;
+    max-width: 90vw !important;
+    line-height: 1.65 !important;
+  }
+}
+
+/* ── HOME — CTA SECTION ──────────────────────────────────── */
+@media (max-width: 640px) {
+  .home-cta-heading {
+    font-size: clamp(3rem, 12vw, 6rem) !important;
+    line-height: 1.05 !important;
+  }
+  .home-cta-badge {
+    font-size: 0.7rem !important;
+    letter-spacing: 3px !important;
+    padding: 10px 20px !important;
+  }
+  .home-cta-body {
+    font-size: 0.95rem !important;
+    max-width: 88vw !important;
+    line-height: 1.65 !important;
+  }
+  .home-cta-button {
+    padding: 18px 36px !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 2px !important;
+    width: auto !important;
+  }
+}
+
+/* ── COUNTRIES ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Hero Stats Grid */
+  .hero-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  
+  /* Allow vertical scroll instead of fixed 100vh */
+  .countries-outer {
+    height: auto !important;
+    min-height: 100svh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  /* Stack left (list) above right (globe) */
+  .countries-main-grid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    gap: 0 !important;
+    align-items: start !important;
+  }
+
+  /* Left col: reset height, add horizontal padding */
+  .countries-left-col {
+    height: auto !important;
+    padding-top: 90px !important;
+    padding-bottom: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Country list → horizontal pill scroll strip */
+  .countries-list-scroll {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    gap: 8px !important;
+    flex: none !important;
+    padding-right: 20px !important;   /* breathing room for last item */
+    padding-bottom: 8px !important;
+    margin-left: -20px !important;    /* bleed to edge */
+    padding-left: 20px !important;
+    width: calc(100% + 20px) !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    mask-image: linear-gradient(to right, black 80%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%) !important;
+  }
+  .countries-list-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .countries-list-button {
+    white-space: nowrap !important;
+    padding: 10px 16px !important;
+    flex-shrink: 0 !important;
+    font-size: 0.85rem !important;
+    border-radius: 100px !important;
+  }
+
+  /* Globe / detail panel below the list */
+  .countries-right-col {
+    height: 60svh !important;
+    pointer-events: auto !important;
+    min-height: 320px !important;
+    padding: 0 !important;
+  }
+  
+  .countries-globe-wrapper {
+    position: fixed !important;
+    height: 100vh !important;
+    width: 100vw !important;
+  }
+}
+
+/* ── CONTACT ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Outer page padding — reduce top gap on mobile */
+  .contact-outer-wrap {
+    padding: 90px 4vw 60px !important;
+  }
+  .contact-header {
+    margin-bottom: 36px !important;
+  }
+
+  /* Main 2-col grid → 1-col */
+  .contact-main-grid {
+    grid-template-columns: 1fr !important;
+    padding: 18px !important;
+    gap: 24px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Form step 1: 2-col → 1-col */
+  .contact-form-step1 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .contact-form-phone {
+    grid-column: 1 !important;
+  }
+  .contact-form-next-btn {
+    grid-column: 1 !important;
+  }
+
+  /* Step 2 back/submit buttons — keep side by side but equal width */
+  .contact-step2-buttons {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Office selector: keep 2-col */
+  .contact-office-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* Envelope: scale to fit */
+  .contact-envelope-wrap {
+    max-width: 100% !important;
+    height: 200px !important;
+  }
+  /* Hide the envelope on very small screens */
+  .contact-envelope-section {
+    display: none !important;
+  }
+
+  /* Info cards strip: 2-col */
+  .contact-info-cards {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Map panel height */
+  .contact-map-panel {
+    min-height: 340px !important;
+  }
+}
+@media (max-width: 480px) {
+  .contact-info-cards {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-office-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .contact-step2-buttons {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-outer-wrap {
+    padding: 80px 16px 48px !important;
+  }
+}
+
+/* ── STUDENT SUCCESS WALL ────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Feature cards 3-col → 1-col */
+  .ssw-feature-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  /* Reduce container padding */
+  .ssw-container {
+    padding-top: 60px !important;
+    padding-bottom: 80px !important;
+  }
+  /* Reduce heading size */
+  .ssw-main-heading {
+    font-size: clamp(2.2rem, 9vw, 4rem) !important;
+    margin-bottom: 24px !important;
+  }
+  /* Body text */
+  .ssw-overview-text {
+    font-size: 0.9rem !important;
+    margin-bottom: 32px !important;
+    line-height: 1.7 !important;
+  }
+  /* Alumni ring — reduce height so it doesn't create massive scroll */
+  .ssw-ring-stage {
+    height: 600px !important;
+    margin-top: 20px !important;
+  }
+  .ssw-ring-intro {
+    margin-bottom: 30px !important;
+  }
+  .ssw-ring-intro p {
+    display: none !important; /* hide "MOVE MOUSE" hint on mobile */
+  }
+  /* Outro text */
+  .ssw-outro {
+    margin-top: 40px !important;
+  }
+  .ssw-outro-heading {
+    font-size: 1.8rem !important;
+  }
+  .ssw-outro-body {
+    font-size: 0.9rem !important;
+    max-width: 90vw !important;
+  }
+}
+
+/* ── HOME EXPERTISE ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .home-expertise-section {
+    padding: 70px 5vw 60px !important;
+  }
+  .home-expertise-header {
+    margin-bottom: 48px !important;
+  }
+  .home-expertise-header h2 {
+    font-size: clamp(2.5rem, 10vw, 5rem) !important;
+  }
+  .home-expertise-grid {
+    gap: 16px !important;
+  }
+  /* Each step card */
+  .home-expertise-grid > div {
+    padding: 28px 24px !important;
+    border-radius: 18px !important;
+  }
+}
+
+/* ── INFINITE MARQUEE ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .marquee-wrapper {
+    padding: 50px 0 !important;
+  }
+}
+
+/* ── GRADUATION SCENE ────────────────────────────────────── */
+/* !! DO NOT TOUCH — Safari video fix is isolated here !! */
+
+/* ── SERVICES PAGE ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .services-sticky {
+    height: 100dvh !important;
+  }
+  /* Service section header text */
+  .services-header-title {
+    font-size: clamp(2.2rem, 9vw, 4rem) !important;
+  }
+}
+
+/* ── CONTAINER CLASS GLOBAL PADDING ─────────────────────── */
+/* .container is used globally; on mobile reduce horizontal padding */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ── MOBILE HERO STAR ANIMATION ─────────────────────────────── */
+@keyframes mobile-star-twinkle {
+  from { opacity: 0.2; }
+  to   { opacity: 1; }
+}
+
+/* ── MOBILE HERO CORNER BADGE FLOATS ────────────────────────── */
+@keyframes mobile-badge-float-1 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes mobile-badge-float-2 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(6px); }
+}
+
+/* ── GRADUATION SCENE — MOBILE STICKY FIX ───────────────────── */
+/* !! DO NOT TOUCH — Safari/Chrome code is in GraduationScene.jsx !! */
+/* On mobile, 100vh is unreliable (browser toolbar shows/hides).
+   Using 100dvh (dynamic viewport height) keeps sticky locked in place.
+   The outer container keeps 300vh so scroll travel is unchanged.      */
+@media (max-width: 768px) {
+  /* Outer container: keep 300vh scroll travel */
+  .graduation-outer {
+    height: 300vh !important;
+  }
+  /* Sticky panel: use dvh so it never jumps when toolbar appears */
+  .graduation-sticky {
+    height: 100dvh !important;
+    min-height: -webkit-fill-available !important;
+  }
+  /* Remove backdrop-filter blur — user rule: no blur anywhere */
+  .graduation-cta-btn {
+    -webkit-background: rgba(2,2,5,0.92) !important;
+  }
+  /* Scale down headline text for small screens */
+  .graduation-headline-main {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+  }
+  .graduation-headline-sub {
+    font-size: clamp(1.2rem, 6vw, 2.2rem) !important;
+  }
+  /* Sub-copy */
+  .graduation-subcopy {
+    font-size: 0.9rem !important;
+    max-width: 88vw !important;
+  }
+}
+
+/* Disable globe rotation on scroll for mobile */
+@media (max-width: 768px) {
+}
+
+/* ── HOME HERO SECTION ALIGNMENTS ──────────────────────────── */
+@media (max-width: 768px) {
+  /* Hide the top corner badges to prevent text overlap */
+  .home-hero-corner-badge {
+    display: none !important;
+  }
+  
+  /* Ensure metric cards are hidden on mobile to prevent clutter */
+  .metric-card-wrapper {
+    display: none !important;
+  }
+  
+  /* Study Anywhere description width and padding */
+  .study-anywhere-desc {
+    font-size: 1.1rem !important;
+    padding: 15px 20px !important;
+    margin-bottom: 30px !important;
+  }
+
+  /* HUD Description row: stack paragraphs vertically */
+  .hud-description-row {
+    flex-direction: column !important;
+    gap: 24px !important;
+    padding: 24px !important;
+  }
+  
+  .hud-description-col {
+    font-size: 1rem !important;
+    border-left: 2px solid !important;
+    padding-left: 16px !important;
+  }
+  
+  /* Shrink HUD stat cards padding */
+  .hud-stat-card {
+    padding: 24px 30px !important;
+  }
+  
+  .hud-stat-value {
+    font-size: 2.8rem !important;
+  }
+}
+
+/* ── RECENT LAYOUT FIXES (Contact & Country Pages) ───────── */
+@media (max-width: 900px) {
+  /* Contact Us layout reflow */
+  .contact-main-wrapper {
+    flex-direction: column !important;
+  }
+  .contact-find-us-card {
+    flex: none !important;
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    padding: 24px !important;
+  }
+  
+  /* Country Detail layout reflow */
+  .country-detail-layout {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Contact form and feature grids */
+  .contact-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-benefits-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── ADDITIONAL MOBILE FIXES (Approved in Plan) ───────── */
+@media (max-width: 900px) {
+  /* University Detail */
+  .uni-detail-layout {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  
+  /* Countries Grid */
+  .countries-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Careers / Perks Grids */
+  .careers-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Home Stats & Form Grids */
+  .home-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* FORCE HARDWARE ACCELERATION ON IOS TO PREVENT BLANK SCREEN */
+.home-hero-sticky {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+

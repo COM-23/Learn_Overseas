@@ -1,0 +1,199 @@
+.team-section-wrapper {
+    position: relative;
+    background-color: transparent;
+    color: white;
+}
+
+.team-webgl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0; 
+    position: sticky;
+}
+
+.team-container {
+    position: relative;
+    z-index: 1;
+}
+
+.team-pulse-glow {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(249, 212, 64, 0.12) 0%, transparent 60%);
+    (60px);
+    pointer-events: none;
+    z-index: 0;
+    animation: teamPulseGlow 8s infinite alternate;
+}
+
+@keyframes teamPulseGlow {
+    0% { transform: scale(1) translateY(0); opacity: 0.8; }
+    100% { transform: scale(1.1) translateY(-20px); opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(0deg); }
+}
+
+.team-float-1 {
+    animation: float 6s ease-in-out infinite;
+}
+
+.team-float-2 {
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.team-glass-panel-premium {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.team-gradient-text {
+    background: linear-gradient(to right, #fff, #a0a0a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4.5rem;
+    line-height: 1;
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+}
+
+.team-btn {
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.team-btn:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.team-text-content {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.live-photo {
+    animation: slowPan 15s ease-in-out infinite alternate;
+}
+
+@keyframes slowPan {
+    0% { transform: scale(1.05) translate(0, 0); }
+    25% { transform: scale(1.08) translate(1%, -1%); }
+    50% { transform: scale(1.06) translate(-1%, 1%); }
+    75% { transform: scale(1.08) translate(1%, 1%); }
+    100% { transform: scale(1.05) translate(-1%, -1%); }
+}
+
+/* Modal */
+.team-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(2, 2, 5, 0.95);
+    
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.team-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.team-modal-content {
+    width: 80vw;
+    height: 80vh;
+    max-width: 1200px;
+    background: linear-gradient(135deg, rgba(20,20,25,1) 0%, rgba(10,10,15,1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.team-close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    background: none; border: none;
+    color: white; font-size: 2.5rem;
+    cursor: pointer; z-index: 10;
+}
+
+.team-modal-sidebar {
+    width: 30%;
+    background: rgba(0,0,0,0.3);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-nav-item {
+    padding: 20px 40px;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.team-nav-item:hover {
+    color: white;
+    background: rgba(255,255,255,0.02);
+}
+
+.team-nav-item.active {
+    color: var(--accent-gold, #F9D428);
+    border-left: 3px solid var(--accent-gold, #F9D428);
+    background: rgba(249, 212, 64, 0.05);
+    font-weight: bold;
+}
+
+.team-modal-pages {
+    flex: 1;
+    position: relative;
+    padding: 60px;
+}
+
+.team-page {
+    position: absolute;
+    top: 60px; left: 60px; right: 60px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-page.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.team-page h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #fff;
+    font-family: var(--font-serif);
+}
+
+.team-page p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+}

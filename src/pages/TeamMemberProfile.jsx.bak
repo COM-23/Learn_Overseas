@@ -1,0 +1,282 @@
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { TEAM_MEMBERS } from '../data/teamData';
+
+export default function TeamMemberProfile({ id, onClose }) {
+  const member = TEAM_MEMBERS.find(m => m.id === id);
+
+  const containerRef = useRef(null);
+  
+  // Track scroll on the fixed container itself
+  const { scrollYProgress } = useScroll({ container: containerRef });
+
+  // --- Dynamic Environment & Orbs ---
+  const bgColor = useTransform(scrollYProgress, [0, 0.5, 1], ["#020205", "#0a0a12", "#000000"]);
+  const blurAmount = useTransform(scrollYProgress, [0, 0.5, 1], ["blur(0px)", "blur(10px)", "blur(20px)"]);
+  const marqueeX = useTransform(scrollYProgress, [0, 1], ["0%", "-150%"]);
+  const marqueeXReverse = useTransform(scrollYProgress, [0, 1], ["-150%", "0%"]);
+  
+  // Parallax Marquees Y
+  const marquee1Y = useTransform(scrollYProgress, [0, 1], ["-10vh", "20vh"]);
+  const marquee2Y = useTransform(scrollYProgress, [0, 1], ["0vh", "-30vh"]);
+  const marquee3Y = useTransform(scrollYProgress, [0, 1], ["10vh", "40vh"]);
+
+  // Glowing Orbs
+  const orb1Y = useTransform(scrollYProgress, [0, 1], ["-20%", "120%"]);
+  const orb2Y = useTransform(scrollYProgress, [0, 1], ["120%", "-20%"]);
+  const orb3X = useTransform(scrollYProgress, [0, 1], ["-50%", "150%"]);
+
+  // --- Phase 1: Hero Intro (0 to 0.15) ---
+  const xTitle = useTransform(scrollYProgress, [0, 0.15], ["0vw", "-100vw"]);
+  const xBio = useTransform(scrollYProgress, [0, 0.15], ["0vw", "100vw"]);
+  const opacityHero = useTransform(scrollYProgress, [0, 0.1, 0.15], [1, 1, 0]);
+  const titleSpacing = useTransform(scrollYProgress, [0, 0.15], ["0px", "50px"]);
+  const bioRotateY = useTransform(scrollYProgress, [0, 0.15], ["0deg", "45deg"]); // 3D swing out
+
+  // --- Phase 1.5: Image Entry (0.1 to 0.25) ---
+  const imageY = useTransform(scrollYProgress, [0, 0.1, 0.25], ["100vh", "100vh", "0vh"]);
+  const imageOpacity = useTransform(scrollYProgress, [0, 0.1, 0.2], [0, 0, 1]);
+  const imageRotateX = useTransform(scrollYProgress, [0.05, 0.25], ["40deg", "0deg"]);
+  const imageScale = useTransform(scrollYProgress, [0.1, 0.25, 0.85, 1], [0.8, 1, 1, 1.3]);
+  const imageFilter = useTransform(scrollYProgress, [0.1, 0.25], ["brightness(0.2) contrast(1.5)", "brightness(0.9) contrast(1.1)"]);
+
+  // --- Phase 2: Philosophy Quote (0.25 to 0.45) ---
+  const yQuote = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], ["100vh", "0vh", "0vh", "-100vh"]);
+  const opacityQuote = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], [0, 1, 1, 0]);
+  const scaleQuote = useTransform(scrollYProgress, [0.35, 0.45], [1, 1.15]);
+  const quoteRotateX = useTransform(scrollYProgress, [0.25, 0.35], ["-30deg", "0deg"]);
+  const glowQuote = useTransform(scrollYProgress, [0.35, 0.45], ["0px 0px 0px rgba(255,215,0,0)", "0px 0px 40px rgba(255,215,0,0.3)"]);
+
+  // --- Phase 3: Expertise & Milestones (0.55 to 0.8) ---
+  const yExpertise = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], ["100vh", "0vh", "0vh", "-100vh"]);
+  const opacityExpertise = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], [0, 1, 1, 0]);
+  const rotateYExpertise = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], ["-40deg", "0deg", "0deg", "40deg"]);
+  const scaleExpertise = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], [0.8, 1, 1, 0.8]);
+
+  // --- Phase 4: Footer CTA (0.85 to 1.0) ---
+  const yCTA = useTransform(scrollYProgress, [0.85, 0.95], ["100vh", "0vh"]);
+  const opacityCTA = useTransform(scrollYProgress, [0.85, 0.95], [0, 1]);
+  const scaleCTA = useTransform(scrollYProgress, [0.85, 0.95], [0.8, 1]);
+
+  // --- Vertical Progress Indicator ---
+  const indicatorY = useTransform(scrollYProgress, [0, 1], ["0%", "400%"]);
+
+  if (!member) return null;
+
+  const marqueeText = "HARVARD • STANFORD • OXFORD • CAMBRIDGE • MIT • YALE • PRINCETON • COLUMBIA • CORNELL • PENN • ";
+
+  return (
+    <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        style={{ 
+            position: 'fixed', inset: 0, zIndex: 99999, 
+            background: bgColor,
+            overflow: 'hidden'
+        }}
+    >
+      {/* Cinematic Grain Overlay */}
+      <div style={{ position: 'absolute', inset: 0, opacity: 0.25, backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")', pointerEvents: 'none', zIndex: 9998, mixBlendMode: 'overlay' }} />
+
+      {/* Massive Glowing Orbs tied to Scroll */}
+      <motion.div style={{ position: 'absolute', top: orb1Y, left: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(249,212,64,0.15) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', zIndex: 1 }} />
+      <motion.div style={{ position: 'absolute', top: orb2Y, right: '-10%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(0,102,255,0.1) 0%, transparent 70%)', filter: 'blur(100px)', pointerEvents: 'none', zIndex: 1 }} />
+      <motion.div style={{ position: 'absolute', top: '40%', left: orb3X, width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(200,80,30,0.1) 0%, transparent 70%)', filter: 'blur(90px)', pointerEvents: 'none', zIndex: 1 }} />
+
+      {/* SCROLL SENSOR */}
+      <div 
+          ref={containerRef} 
+          style={{ position: 'absolute', inset: 0, overflowY: 'auto', overflowX: 'hidden', zIndex: 9999 }}
+      >
+          <div style={{ height: '500vh', position: 'relative' }}>
+              {/* Dynamic Background Typography Marquees with Y Parallax */}
+              <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '5vh', opacity: 0.4 }}>
+                  <motion.div style={{ x: marqueeX, y: marquee1Y, whiteSpace: 'nowrap', fontSize: '15vw', fontFamily: 'var(--font-sans)', color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)', fontWeight: 900, textTransform: 'uppercase', lineHeight: 0.8 }}>{marqueeText.repeat(5)}</motion.div>
+                  <motion.div style={{ x: marqueeXReverse, y: marquee2Y, whiteSpace: 'nowrap', fontSize: '15vw', fontFamily: 'var(--font-sans)', color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)', fontWeight: 900, textTransform: 'uppercase', lineHeight: 0.8 }}>{marqueeText.repeat(5)}</motion.div>
+                  <motion.div style={{ x: marqueeX, y: marquee3Y, whiteSpace: 'nowrap', fontSize: '15vw', fontFamily: 'var(--font-sans)', color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)', fontWeight: 900, textTransform: 'uppercase', lineHeight: 0.8 }}>{marqueeText.repeat(5)}</motion.div>
+              </div>
+          </div>
+      </div>
+
+      {/* VISUAL ELEMENTS LAYER */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 10000, perspective: '1200px' }}>
+          {/* Back Button */}
+          <button 
+              onClick={onClose} 
+              style={{ position: 'fixed', top: 40, left: '4vw', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600, letterSpacing: 4, textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 15, transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)', background: 'transparent', border: 'none', cursor: 'pointer', outline: 'none', pointerEvents: 'auto' }} 
+              onMouseOver={e => {e.currentTarget.style.color='#fff'; e.currentTarget.style.transform='translateX(5px)';}} 
+              onMouseOut={e => {e.currentTarget.style.color='rgba(255,255,255,0.7)'; e.currentTarget.style.transform='translateX(0)';}}
+          >
+            <div style={{ width: 45, height: 45, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)', transition: 'inherit' }} className="back-circle">
+                <span style={{ fontSize: '1.2rem', marginBottom: 2 }}>←</span>
+            </div> 
+            Directory
+          </button>
+
+          {/* Sticky Background Image with extreme 3D intro */}
+          <motion.div style={{ position: 'fixed', inset: 0, display: 'flex', justifyContent: 'center', alignItems: 'flex-end', pointerEvents: 'none', zIndex: 2, y: imageY, opacity: imageOpacity, rotateX: imageRotateX }}>
+             {member.image ? (
+                <motion.img 
+                  src={member.image} 
+                  alt={member.name} 
+                  style={{ 
+                      height: '95vh', 
+                      width: 'auto', 
+                      objectFit: 'contain', 
+                      filter: imageFilter,
+                      scale: imageScale,
+                      boxShadow: '0 0 100px rgba(0,0,0,0.8)' // Only applies to the bounding box unfortunately for imgs, so we rely on drop-shadow in a wrapper if needed. Kept for safety.
+                  }} 
+                />
+             ) : (
+                <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, rgba(255,255,255,0.02), transparent)' }} />
+             )}
+          </motion.div>
+
+          {/* Vignette Overlay & Ambient Glow */}
+          <div style={{ position: 'fixed', inset: 0, background: 'radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.95) 100%)', zIndex: 3, pointerEvents: 'none' }} />
+          <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, height: '40vh', background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%)', zIndex: 3, pointerEvents: 'none' }} />
+
+          {/* Vertical Progress Indicator */}
+          <div style={{ position: 'fixed', right: '4vw', top: '50%', transform: 'translateY(-50%)', height: '250px', width: '2px', background: 'rgba(255,255,255,0.05)', zIndex: 9999, display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '4px' }}>
+              <motion.div style={{ width: '100%', height: '20%', background: 'linear-gradient(to bottom, var(--accent-gold), var(--accent-copper))', y: indicatorY, borderRadius: '4px', boxShadow: '0 0 15px var(--accent-gold)' }} />
+          </div>
+
+          {/* --- Scrollable Overlay Content Container --- */}
+          <div style={{ position: 'fixed', inset: 0, zIndex: 10, pointerEvents: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'hidden', perspective: '1500px' }}>
+              
+                 {/* Phase 1: Hero */}
+                 <motion.div style={{ opacity: opacityHero, position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                     <motion.div style={{ x: xTitle, width: '100%', textAlign: 'right', paddingRight: '12vw', marginBottom: '8vh', position: 'relative' }}>
+                        {/* Ambient glow behind name */}
+                        <motion.div 
+                            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }} 
+                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                            style={{ position: 'absolute', right: '10vw', top: '50%', transform: 'translateY(-50%)', width: '400px', height: '100px', background: 'var(--accent-gold)', filter: 'blur(100px)', zIndex: -1 }} 
+                        />
+                        
+                        <motion.h1 style={{ fontSize: 'clamp(6rem, 12vw, 14rem)', fontFamily: 'var(--font-serif)', color: '#fff', margin: 0, lineHeight: 0.85, whiteSpace: 'nowrap', letterSpacing: titleSpacing, textShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+                            {member.name}
+                        </motion.h1>
+                        <p style={{ color: 'transparent', WebkitTextStroke: '1px var(--accent-gold)', WebkitTextFillColor: 'transparent', letterSpacing: 12, textTransform: 'uppercase', fontSize: '1.4rem', fontWeight: 900, margin: '30px 0 0 0', display: 'inline-block', position: 'relative' }}>
+                            <span style={{ position: 'absolute', left: '-60px', top: '50%', width: '40px', height: '1px', background: 'var(--accent-gold)', opacity: 0.5 }} />
+                            {member.role}
+                        </p>
+                     </motion.div>
+
+                     {/* Bio card swings in 3D */}
+                     <motion.div style={{ x: xBio, rotateY: bioRotateY, width: '100%', textAlign: 'left', paddingLeft: '12vw', marginTop: '2vh', transformStyle: 'preserve-3d' }}>
+                        {/* Continuous floating animation */}
+                        <motion.div 
+                            animate={{ y: [-10, 10, -10], rotateX: [-2, 2, -2], rotateY: [-2, 2, -2] }} 
+                            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                            style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', padding: '50px 60px', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.08)', borderTop: '1px solid rgba(255,255,255,0.2)', borderLeft: '1px solid rgba(255,255,255,0.15)', maxWidth: '650px', boxShadow: '0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)' }}
+                        >
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 15, marginBottom: 35 }}>
+                                <div style={{ width: 12, height: 12, background: '#10b981', borderRadius: '50%', boxShadow: '0 0 15px #10b981', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div style={{ width: 4, height: 4, background: '#fff', borderRadius: '50%', animation: 'pulse 2s infinite' }} />
+                                </div>
+                                <div style={{ color: '#fff', letterSpacing: 4, textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 800, opacity: 0.8 }}>
+                                    {member.category} Division
+                                </div>
+                            </div>
+                            <p style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, fontSize: '1.25rem', fontWeight: 300, margin: 0, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                                A dedicated architect of futures within our {member.category.toLowerCase()} division. Combining deep strategic insight with an uncompromising standard of excellence to place students in the world's most elite institutions.
+                            </p>
+                        </motion.div>
+                     </motion.div>
+                 </motion.div>
+
+                 {/* Phase 2: Philosophy Quote */}
+                 <motion.div style={{ opacity: opacityQuote, y: yQuote, scale: scaleQuote, rotateX: quoteRotateX, textShadow: glowQuote, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', transformStyle: 'preserve-3d' }}>
+                      <div style={{ textAlign: 'center', maxWidth: '1400px', padding: '0 5vw', position: 'relative' }}>
+                          <motion.div 
+                              animate={{ y: [-15, 15, -15], rotate: [-2, 2, -2] }}
+                              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                              style={{ position: 'absolute', top: '-120px', left: '10%', fontSize: '25rem', color: 'rgba(255,215,0,0.05)', fontFamily: 'var(--font-serif)', lineHeight: 1, zIndex: -1 }}
+                          >
+                              "
+                          </motion.div>
+                          <p style={{ color: 'var(--accent-gold)', letterSpacing: 8, textTransform: 'uppercase', fontSize: '1rem', fontWeight: 800, marginBottom: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
+                              <span style={{ width: '40px', height: '1px', background: 'var(--accent-gold)', opacity: 0.5 }} />
+                              The Philosophy
+                              <span style={{ width: '40px', height: '1px', background: 'var(--accent-gold)', opacity: 0.5 }} />
+                          </p>
+                          <h2 style={{ fontSize: 'clamp(3rem, 6.5vw, 6.5rem)', fontFamily: 'var(--font-serif)', color: '#fff', margin: 0, lineHeight: 1.15, textShadow: '0 20px 50px rgba(0,0,0,1)' }}>
+                              "True leadership in global education isn't just about placement. <br/><span style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>It's about architecting a student's trajectory towards greatness.</span>"
+                          </h2>
+                      </div>
+                 </motion.div>
+
+                 {/* Phase 3: Expertise & Milestones */}
+                 <motion.div style={{ opacity: opacityExpertise, y: yExpertise, scale: scaleExpertise, rotateY: rotateYExpertise, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingLeft: '10vw', transformStyle: 'preserve-3d' }}>
+                      <motion.div 
+                           animate={{ y: [10, -10, 10] }}
+                           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+                           style={{ width: '600px', background: 'linear-gradient(135deg, rgba(20,20,25,0.7) 0%, rgba(10,10,15,0.9) 100%)', backdropFilter: 'blur(30px)', padding: '70px', borderRadius: '40px', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 40px 100px rgba(0,0,0,0.8)' }}
+                      >
+                          <h3 style={{ fontSize: '3.5rem', fontFamily: 'var(--font-serif)', color: '#fff', margin: '0 0 60px 0', display: 'flex', alignItems: 'center', gap: 20 }}>
+                              Expertise <span style={{ width: '100%', height: '1px', background: 'linear-gradient(to right, rgba(255,255,255,0.2), transparent)' }} />
+                          </h3>
+                          
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
+                              {[
+                                  { title: 'Strategic Consulting', desc: 'Guiding students to Ivy League and Tier-1 institutions globally.', color: 'var(--accent-gold)' },
+                                  { title: 'Global Operations', desc: 'Streamlining application pipelines across 15+ countries.', color: 'var(--accent-blue)' },
+                                  { title: 'Visionary Leadership', desc: 'Pioneering new approaches to international student mobility.', color: 'var(--accent-copper)' }
+                              ].map((item, i) => (
+                                  <div key={i} style={{ borderLeft: `2px solid ${item.color}`, paddingLeft: '40px', position: 'relative' }}>
+                                      {/* Glowing Node */}
+                                      <div style={{ position: 'absolute', left: -9, top: 5, width: 16, height: 16, background: '#0a0a12', border: `3px solid ${item.color}`, borderRadius: '50%', boxShadow: `0 0 15px ${item.color}` }} />
+                                      
+                                      <h4 style={{ color: '#fff', fontSize: '1.6rem', margin: '0 0 12px 0', fontWeight: 600, letterSpacing: -0.5 }}>{item.title}</h4>
+                                      <p style={{ color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.7, fontSize: '1.15rem', fontWeight: 300 }}>{item.desc}</p>
+                                  </div>
+                              ))}
+                          </div>
+                      </motion.div>
+                 </motion.div>
+
+                 {/* Phase 4: CTA Footer */}
+                 <motion.div style={{ opacity: opacityCTA, y: yCTA, scale: scaleCTA, position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'radial-gradient(circle at center, rgba(2,2,5,0.8) 0%, rgba(0,0,0,1) 100%)', pointerEvents: 'auto' }}>
+                      <div style={{ textAlign: 'center', zIndex: 10, maxWidth: '800px', padding: '0 20px' }}>
+                          <motion.h2 
+                            style={{ fontSize: 'clamp(4rem, 8vw, 10rem)', fontFamily: 'var(--font-serif)', color: '#fff', margin: '0 0 30px 0', lineHeight: 0.9, textShadow: '0 20px 40px rgba(0,0,0,0.8)' }}
+                            animate={{ textShadow: ["0 20px 40px rgba(0,0,0,0.8)", "0 20px 60px rgba(249, 212, 64, 0.4)", "0 20px 40px rgba(0,0,0,0.8)"] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                          >
+                              Connect with <span style={{ color: 'var(--accent-gold)' }}>{member.name.split(' ')[0]}</span>
+                          </motion.h2>
+                          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '1.5rem', marginBottom: '80px', fontWeight: 300, lineHeight: 1.5 }}>
+                              Ready to architect your academic future with the finest strategists in the industry?
+                          </p>
+                          
+                          <div style={{ display: 'flex', gap: '30px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                              <motion.button 
+                                  animate={{ y: [-5, 5, -5] }}
+                                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                                  style={{ background: 'linear-gradient(135deg, #fff 0%, #e0e0e0 100%)', border: 'none', color: '#000', padding: '25px 60px', borderRadius: '100px', fontWeight: 900, letterSpacing: 3, textTransform: 'uppercase', cursor: 'pointer', transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }}
+                                  onMouseOver={e => {e.currentTarget.style.transform = 'scale(1.08)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1)';}}
+                                  onMouseOut={e => {e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none';}}
+                              >
+                                  LinkedIn Profile
+                              </motion.button>
+                              <motion.button 
+                                  animate={{ y: [5, -5, 5] }}
+                                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                                  style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', padding: '25px 60px', borderRadius: '100px', fontWeight: 900, letterSpacing: 3, textTransform: 'uppercase', cursor: 'pointer', transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }}
+                                  onMouseOver={e => {e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'var(--accent-gold)'; e.currentTarget.style.transform = 'scale(1.08)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(249, 212, 64, 0.15)'; e.currentTarget.style.color = 'var(--accent-gold)';}}
+                                  onMouseOut={e => {e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.color = '#fff';}}
+                              >
+                                  Email Directly
+                              </motion.button>
+                          </div>
+                      </div>
+                 </motion.div>
+          </div>
+      </div>
+    </motion.div>
+  );
+}

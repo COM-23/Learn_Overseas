@@ -1,0 +1,140 @@
+.custom-header {
+  width: 100%;
+  background: white;
+  padding: 15px 40px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Styles */
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.logo-text-main {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon-e {
+  /* This mimics the custom 'e' with a house inside from the image */
+  background: #1a1a1a;
+  color: white;
+  border-radius: 50% 50% 0 50%;
+  padding: 0 4px;
+  margin: 0 2px;
+  font-size: 24px;
+}
+
+.logo-text-sub {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.logo-stencil {
+  font-size: 8px;
+  color: #888;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  align-self: flex-end;
+}
+
+/* Navigation Styles */
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-item {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-item.active {
+  color: #FC7133;
+}
+
+.nav-item:hover {
+  color: #FC7133;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #FC7133;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.dropdown-icon {
+  margin-top: 2px;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px 40px 10px 20px;
+  border-radius: 30px;
+  border: 1.5px solid #1a1a1a;
+  font-size: 14px;
+  outline: none;
+  width: 180px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  width: 220px;
+  border-color: #FC7133;
+}
+
+.search-icon {
+  position: absolute;
+  right: 14px;
+  color: #1a1a1a;
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .nav-links {
+    display: none; /* Mobile menu needed later */
+  }
+}

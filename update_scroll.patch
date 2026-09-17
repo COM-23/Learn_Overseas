@@ -1,0 +1,26 @@
+--- src/pages/TeamMemberProfile.jsx
++++ src/pages/TeamMemberProfile.jsx
+@@ -87,6 +87,22 @@
+             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', color: 'white', mixBlendMode: 'difference' }}>
+                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '0.8rem', opacity: 0.5, letterSpacing: 2 }}>SYS.CORE.ACTIVE // SCROLL_DOWN</p>
+                <h1 style={{ margin: 0, fontSize: '5rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: -3, lineHeight: 0.85 }}>{member.name}</h1>
++            </div>
++            
++            {/* Scroll Indicator */}
++            <div style={{ position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', animation: 'bounce 2s infinite' }}>
++               <span style={{ color: 'white', fontSize: '0.8rem', letterSpacing: '2px', textTransform: 'uppercase' }}>Scroll to Explore</span>
++               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
++                 <path d="M12 5v14M19 12l-7 7-7-7"/>
++               </svg>
++               <style>
++                 {`
++                   @keyframes bounce {
++                     0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
++                     40% { transform: translateY(-10px) translateX(-50%); }
++                     60% { transform: translateY(-5px) translateX(-50%); }
++                   }
++                 `}
++               </style>
+             </div>
+           </div>
+ 

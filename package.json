@@ -1,0 +1,44 @@
+{
+  "name": "learn-overseas",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "kill-port 5173",
+    "dev": "vite --port 5173 --host --force",
+    "predev:about": "kill-port 5714",
+    "dev:about": "vite serve --port 5714 -c vite.config.about.js",
+    "predev:university": "kill-port 5715",
+    "dev:university": "vite serve --port 5715 -c vite.config.university.js",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:about\" \"npm run dev:university\"",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "framer-motion": "^13.1.1",
+    "gsap": "^3.15.0",
+    "is-even": "^1.0.0",
+    "jimp": "^1.6.1",
+    "lucide-react": "^1.37.0",
+    "playwright": "^1.62.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-globe.gl": "^2.38.0",
+    "react-router-dom": "^7.18.3",
+    "three": "^0.185.1",
+    "vanilla-tilt": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "concurrently": "^10.0.5",
+    "kill-port": "^2.0.1",
+    "oxlint": "^1.79.0",
+    "vite": "^8.2.2"
+  }
+}

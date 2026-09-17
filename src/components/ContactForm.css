@@ -1,0 +1,117 @@
+.contact-section {
+  padding: 120px 0;
+  width: 100%;
+}
+
+.contact-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.contact-info {
+  flex: 1;
+  padding: 60px;
+  background: linear-gradient(135deg, rgba(252,113,51,0.08), rgba(125,193,177,0.08));
+  color: #fff;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.contact-info h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -1.5px;
+  background: linear-gradient(135deg, #fff, #7DC1B1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-info p {
+  color: rgba(255,255,255,0.45);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-form-container {
+  flex: 1.5;
+  padding: 60px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #FC7133;
+}
+
+.form-group select option {
+  background: #1a1a2e;
+}
+
+.success-msg {
+  color: #7DC1B1;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.error-msg {
+  color: #FC7133;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 968px) {
+  .contact-wrapper { flex-direction: column; }
+  .form-row { flex-direction: column; }
+}

@@ -1,0 +1,188 @@
+/* Responsive styles for Home.jsx hero metrics */
+
+.metric-card {
+  padding: 16px 28px;
+  display: flex;
+  flex-direction: column;
+  background: #101520; /* Solid dark blue to match screenshot */
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* slight shadow to make it float */
+}
+
+/* Remove colored borders as screenshot has none */
+.metric-card.left { border: none; }
+.metric-card.right { border: none; align-items: flex-end; }
+.metric-card.copper { border: none; }
+
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-serif);
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.65rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+}
+
+.metric-label.blue { color: var(--accent-blue); }
+.metric-label.gold { color: var(--accent-gold); }
+.metric-label.copper { color: var(--accent-copper); }
+
+/* The bottom large stats bar */
+.metrics-stats-bar {
+  display: flex;
+  gap: clamp(15px, 3vw, 30px);
+  background: rgba(10,10,15,0.6);
+  
+  padding: clamp(12px, 3vw, 20px) clamp(20px, 4vw, 40px);
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.metrics-stats-bar .stat-value {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #fff;
+  font-weight: 700;
+  font-family: var(--font-serif);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.metrics-stats-bar .stat-label {
+  font-size: clamp(8px, 1.5vw, 11px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+.plane-hud-banner {
+  position: absolute;
+  left: 90%;
+  margin-left: 20px;
+  width: clamp(250px, 60vw, 1000px);
+  padding: clamp(24px, 5vw, 40px) clamp(30px, 6vw, 60px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  
+  
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.05);
+}
+
+.plane-hud-text {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.plane-hud-stat {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .metrics-stats-bar {
+    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  
+  .metric-card {
+    padding: 10px 14px;
+  }
+
+  .metric-value {
+    font-size: 1.4rem;
+  }
+
+  /* Scale down corner metric cards and reposition so they fit on screen */
+  .metric-card-wrapper {
+    transform: scale(0.6) !important;
+    transform-origin: top left !important;
+  }
+  .metric-card-wrapper.left  { left: 0 !important; top: 8% !important; }
+  .metric-card-wrapper.right { right: 0 !important; top: 4% !important; transform-origin: top right !important; }
+  .metric-card-wrapper.bottom-left  { left: 0 !important; bottom: 22% !important; transform-origin: bottom left !important; }
+  .metric-card-wrapper.bottom-right { right: 0 !important; bottom: 12% !important; transform-origin: bottom right !important; }
+
+  .plane-hud-banner {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 20px;
+    margin-left: 0;
+    width: 90vw;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hide all 4 metric corner cards on very small screens (they overlap the globe) */
+  .metric-card-wrapper {
+    display: none !important;
+  }
+}
+
+/* CSS-only ring spin — GPU-composited, zero main-thread cost */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Floating hero badges — replaces Framer Motion repeat:Infinity */
+@keyframes float-up {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-15px) rotate(5deg); }
+}
+@keyframes float-down {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(20px) rotate(-5deg); }
+}
+.float-badge-1 { animation: float-up 5s ease-in-out infinite; }
+.float-badge-2 { animation: float-down 6s ease-in-out infinite 1s; }
+
+/* Scroll indicator dot */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.3; height: 6px; }
+  50%       { transform: translateY(16px); opacity: 1; height: 12px; }
+}
+.scroll-dot { animation: scroll-bounce 1.8s ease-in-out infinite; }
+
+/* Ambient CTA orbs */
+@keyframes orb-float-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(20px, -30px); }
+}
+@keyframes orb-float-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-30px, 40px); }
+}
+.ambient-orb-1 { animation: orb-float-1 8s ease-in-out infinite; }
+.ambient-orb-2 { animation: orb-float-2 10s ease-in-out infinite 1s; }
+
+.ticket-stub {
+  display: none;
+}
+@media (min-width: 768px) {
+  .ticket-stub {
+    display: flex;
+  }
+}
