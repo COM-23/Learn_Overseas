@@ -190,6 +190,26 @@ export default function Countries() {
         style={{ position: 'fixed', bottom: '-10%', right: '-10%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(249, 212, 64, 0.15) 0%, transparent 60%)', pointerEvents: 'none', zIndex: 0 }}
       />
       
+      {/* 3D WebGL Globe Background */}
+      <div className="countries-globe-wrapper" style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        {/* Ambient Backlight to illuminate the globe */}
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)', pointerEvents: 'none', zIndex: -1 }} />
+        <Globe
+          ref={globeRef}
+          globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+          bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
+          atmosphereColor="#f9d440"
+          atmosphereAltitude={0.25}
+          backgroundColor="rgba(0,0,0,0)"
+          enablePointerInteraction={true} 
+          htmlElementsData={COUNTRIES}
+          htmlElement={createMarker}
+        />
+        {/* Light overlay to ensure text readability without hiding globe - Reduced opacity for brightness */}
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, transparent 0%, rgba(2,2,5,0.15) 100%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(2,2,5,0.6) 0%, rgba(2,2,5,0) 40%, rgba(2,2,5,0.1) 100%)', pointerEvents: 'none' }} />
+      </div>
+      
       {/* Main Content Grid */}
       <div className="container countries-main-grid" style={{ position: 'relative', zIndex: 10, flex: 1, display: 'grid', gridTemplateColumns: '350px 1fr', gap: '5vw', alignItems: 'center', pointerEvents: 'none' }}>
         
@@ -237,26 +257,6 @@ export default function Countries() {
 
         {/* Right Area: Country Details */}
         <div className="countries-right-col" style={{ flex: 1, height: '80vh', position: 'relative', pointerEvents: zoomedIn ? 'auto' : 'none' }}>
-          
-          {/* 3D WebGL Globe Background - Now perfectly centered inside the right column */}
-          <div className="countries-globe-wrapper" style={{ position: 'absolute', inset: '-30%', zIndex: 0, pointerEvents: 'auto' }}>
-            {/* Ambient Backlight to illuminate the globe */}
-            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)', pointerEvents: 'none', zIndex: -1 }} />
-            <Globe
-              ref={globeRef}
-              globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-              bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
-              atmosphereColor="#f9d440"
-              atmosphereAltitude={0.25}
-              backgroundColor="rgba(0,0,0,0)"
-              enablePointerInteraction={true} 
-              htmlElementsData={COUNTRIES}
-              htmlElement={createMarker}
-            />
-            {/* Light overlay to ensure text readability without hiding globe - Reduced opacity for brightness */}
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, transparent 0%, rgba(2,2,5,0.15) 100%)', pointerEvents: 'none' }} />
-          </div>
-          
           <AnimatePresence mode="wait">
             {zoomedIn && (
               <motion.div 
