@@ -233,6 +233,7 @@ function UniversityCard({ uni, index, onHover }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.85, delay: index * 0.07, ease: [0.16, 1, 0.3, 1] }}
+      className="bento-card-mobile-full"
       style={{
         position: 'relative',
         height: h,
@@ -639,7 +640,7 @@ export default function Universities() {
                   </div>
 
                   {/* Search Bar */}
-                  <div style={{ flexShrink: 0, width: '100%', maxWidth: 300 }}>
+                  <div style={{ flexShrink: 0, width: '100%', maxWidth: '100%' }}>
                     <input
                       type="text"
                       placeholder="Search universities..."
@@ -650,7 +651,7 @@ export default function Universities() {
                         border: '1px solid rgba(255,255,255,0.07)',
                         background: 'rgba(255,255,255,0.02)',
                         color: 'rgba(255,255,255,0.8)',
-                        width: '100%',
+                        width: '100%', boxSizing: 'border-box',
                         fontSize: 11, fontWeight: 800, letterSpacing: 3,
                         textTransform: 'uppercase', outline: 'none'
                       }}
@@ -666,11 +667,8 @@ export default function Universities() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.45 }}
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(12, 1fr)',
-                      gap: '20px',
-                    }}
+                    className="grid-12-col"
+                    style={{ gap: '20px' }}
                   >
                     {filtered.map((uni, i) => (
                       <UniversityCard key={uni.id} uni={uni} index={i} onHover={setHoveredUni} />

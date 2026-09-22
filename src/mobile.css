@@ -99,15 +99,17 @@
   }
   .glass-carousel-inner {
     position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
     display: flex !important;
     flex-direction: row !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 20px !important;
-    padding: 20px !important;
-    transform: none !important;
     width: 100% !important;
     height: auto !important;
+    gap: 20px !important;
+    padding: 0 5vw !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;
     scrollbar-width: none !important;
   }
@@ -416,6 +418,7 @@
   }
   .countries-list-button {
     white-space: nowrap !important;
+    min-width: 180px !important;
     padding: 10px 16px !important;
     flex-shrink: 0 !important;
     font-size: 0.85rem !important;
@@ -780,3 +783,48 @@
   transform: translate3d(0, 0, 0) !important;
 }
 
+
+/* ── RESPONSIVE GRID UTILITIES ────────────────────────────── */
+.grid-12-col { display: grid; grid-template-columns: repeat(12, 1fr); }
+.grid-5-col { display: grid; grid-template-columns: repeat(5, 1fr); }
+.grid-4-col { display: grid; grid-template-columns: repeat(4, 1fr); }
+.grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid-2-col { display: grid; grid-template-columns: repeat(2, 1fr); }
+
+.flex-wrap-mobile { display: flex; }
+
+@media (max-width: 768px) {
+  /* Override grids to stack vertically */
+  .grid-12-col, .grid-5-col, .grid-4-col, .grid-3-col, .grid-2-col {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Reset span restrictions for bento grid */
+  .bento-card-mobile-full {
+    grid-column: span 1 !important; /* Stack normally in 1-column grid */
+  }
+
+  /* Wrap flex items */
+  .flex-wrap-mobile {
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sticky-desktop-only {
+    position: relative !important;
+    top: 0 !important;
+  }
+  .hud-pill {
+    text-wrap: wrap !important;
+    text-align: center !important;
+  }
+  .hud-stat-cards > div {
+    width: 100% !important;
+  }
+}
+
+  /* Team Image Fix */
+  .team-img {
+    object-position: top center !important;
+  }

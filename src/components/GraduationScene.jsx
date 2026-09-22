@@ -85,6 +85,7 @@ export default function GraduationScene() {
 
         {/* The hardware-accelerated video tag */}
         <video
+          className="graduation-video"
           ref={videoRef}
           muted
           playsInline

@@ -270,7 +270,7 @@ function ProcessJourney() {
       </div>
       
       {/* Horizontal Timeline Track */}
-      <div style={{ position: 'relative', width: '100%', display: 'flex', gap: 24, padding: '20px 0' }}>
+      <div className="grid-4-col" style={{ position: 'relative', width: '100%', gap: 24, padding: '20px 0' }}>
         {/* Glow Line behind cards */}
         <div style={{ position: 'absolute', top: '50%', left: '5%', right: '5%', height: 2, background: 'linear-gradient(90deg, rgba(249,212,64,0) 0%, rgba(249,212,64,0.5) 50%, rgba(125,193,177,0) 100%)', zIndex: 0, filter: 'blur(2px)' }} />
 

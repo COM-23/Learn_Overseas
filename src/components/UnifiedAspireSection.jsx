@@ -323,7 +323,7 @@ export default function UnifiedAspireSection() {
           </h2>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 2, position: 'relative' }}>
+        <div className="grid-5-col" style={{ gap: 2, position: 'relative' }}>
           {/* Connecting line */}
           <div style={{
             position: 'absolute', top: 28, left: '10%', right: '10%', height: 1,
@@ -388,7 +388,7 @@ export default function UnifiedAspireSection() {
           </h2>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' }}>
+        <div className="grid-2-col" style={{ gap: 24, alignItems: 'start' }}>
 
           {/* ── Aspire ── */}
           <motion.div
@@ -598,7 +598,7 @@ export default function UnifiedAspireSection() {
         padding: '80px 6vw',
         background: 'rgba(249,212,64,0.02)',
       }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 80, alignItems: 'center' }}>
+        <div className="grid-2-col" style={{ maxWidth: 1100, margin: '0 auto', gap: 80, alignItems: 'center' }}>
           <div>
             <div style={{ fontSize: 10, letterSpacing: 5, textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 16, fontWeight: 800 }}>
               Student Voices

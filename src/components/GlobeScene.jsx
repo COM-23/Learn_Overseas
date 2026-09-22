@@ -215,8 +215,8 @@ export default function GlobeScene() {
                   <div class="unique-globe-marker" style="
                     cursor: pointer; pointer-events: auto;
                     display: flex; flex-direction: column; align-items: center;
-                    position: relative;
-                    margin-top: -30px;
+                    position: absolute;
+                    transform: translate(-50%, -50%);
                   ">
                       <div class="globe-marker-pill" style="
                         background: rgba(15, 20, 35, 0.85);
@@ -327,8 +327,8 @@ export default function GlobeScene() {
                     top: '50%', left: '50%',
                     width: 0, height: 0,
                     animation: 'orbitDOMGlobe 60s linear infinite',
-                    // Delay animation based on longitude so they are spaced out around the globe
-                    animationDelay: `-${((d.lng + 180) / 360) * 60}s`
+                    // Sync perfectly with equirectangular map where lng=0 is front (0s delay maps to rotateY(0))
+                    animationDelay: `-${(((d.lng + 360) % 360) / 360) * 60}s`
                   }}>
                     <div style={{
                       position: 'absolute',
