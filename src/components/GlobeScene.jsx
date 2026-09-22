@@ -218,10 +218,9 @@ export default function GlobeScene() {
                     position: relative;
                     margin-top: -30px;
                   ">
-                    <!-- Glass Pill -->
-                    <div class="globe-marker-pill" style="
-                      background: rgba(15, 20, 35, 0.85);
-                      border: 1px solid rgba(255, 255, 255, 0.15);
+                      <div style="
+                        background: rgba(15, 20, 35, 0.85);
+                        border: 1px solid rgba(255, 255, 255, 0.15);
                       border-radius: 20px;
                       padding: 4px 8px 4px 4px;
                       display: flex; align-items: center; gap: 6px;
@@ -340,7 +339,7 @@ export default function GlobeScene() {
                     }} onClick={(e) => { e.stopPropagation(); setSelectedCountry(d); }}>
                       {/* Mobile AR Pill */}
                       <div style={{
-                        background: 'rgba(15, 20, 35, 0.85)',
+                        background: 'rgba(15, 20, 35, 0.95)',
                         border: '1px solid rgba(255, 255, 255, 0.2)',
                         borderRadius: '16px',
                         padding: '3px 6px 3px 3px',
