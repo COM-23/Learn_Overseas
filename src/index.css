@@ -53,11 +53,13 @@
 html { 
   background: var(--bg-dark);
   scroll-behavior: smooth;
-  /* vw-based scaling: consistent across all browsers (Chrome, Safari, Firefox).
-     clamp(min, preferred, max) — scales smoothly with viewport width.
-     At 1440px → 14px. At 1280px → ~12.4px. At 768px → ~10px but clamped to 10px min. */
-  font-size: clamp(10px, 0.97vw, 16px);
+  font-size: clamp(9px, 0.76vw, 12px); /* ~11.2px at 1470px — matches local Safari view */
 }
+
+@media (max-width: 768px) {
+  html { font-size: 14px; } /* restore readable size on mobile */
+}
+
 
 body {
   background: var(--bg-dark);
