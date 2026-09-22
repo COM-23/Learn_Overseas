@@ -53,17 +53,11 @@
 html { 
   background: var(--bg-dark);
   scroll-behavior: smooth;
-  font-size: 14px; /* Default slightly smaller to prevent 'zoomed in' look on large screens */
+  /* vw-based scaling: consistent across all browsers (Chrome, Safari, Firefox).
+     clamp(min, preferred, max) — scales smoothly with viewport width.
+     At 1440px → 14px. At 1280px → ~12.4px. At 768px → ~10px but clamped to 10px min. */
+  font-size: clamp(10px, 0.97vw, 16px);
 }
-
-/* 
-  Scale down the entire UI proportionally for laptops/tablets 
-*/
-@media (max-width: 1600px) { html { font-size: 14px; } }
-@media (max-width: 1440px) { html { font-size: 13px; } }
-@media (max-width: 1280px) { html { font-size: 12px; } }
-@media (max-width: 1024px) { html { font-size: 11px; } }
-@media (max-width: 768px) { html { font-size: 14px; } } /* Reset slightly for mobile viewing */
 
 body {
   background: var(--bg-dark);
