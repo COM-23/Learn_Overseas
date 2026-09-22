@@ -218,7 +218,7 @@ export default function GlobeScene() {
                     position: relative;
                     margin-top: -30px;
                   ">
-                      <div style="
+                      <div class="globe-marker-pill" style="
                         background: rgba(15, 20, 35, 0.85);
                         border: 1px solid rgba(255, 255, 255, 0.15);
                       border-radius: 20px;
