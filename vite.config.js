@@ -16,10 +16,15 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        about: resolve(__dirname, 'about.html'),
+        university: resolve(__dirname, 'university.html'),
       },
       output: {
-        manualChunks: undefined,
-        inlineDynamicImports: true,
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor'; // Groups all node_modules into a single vendor chunk
+          }
+        }
       }
     }
   }
