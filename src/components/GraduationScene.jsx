@@ -93,12 +93,11 @@ export default function GraduationScene() {
           x-webkit-airplay="deny"
           disablePictureInPicture
           style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
+            position: 'absolute',
+            top: '-3%', left: '-3%',
+            width: '106%', height: '106%',
             objectFit: 'cover',
             display: 'block',
-            transform: 'scale(1.06)',
-            transformOrigin: 'center center',
           }}
         >
           <source src="/graduation_scrub.mp4" type="video/mp4" />
