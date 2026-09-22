@@ -295,7 +295,7 @@ export default function Home() {
                   initial={{ y: '100%', opacity: 0 }} 
                   animate={{ y: 0, opacity: 1 }} 
                   transition={{ duration: 1.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ display: 'block', fontSize: 'clamp(2.5rem, 5.5vw, 5.5rem)', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', lineHeight: 0.9, fontFamily: 'var(--font-sans)', background: 'linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 20%, #ff8c00 70%, var(--accent-copper) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))' }}>
+                  style={{ display: 'block', fontSize: 'clamp(2.5rem, 5.5vw, 5.5rem)', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', lineHeight: 0.9, fontFamily: 'var(--font-sans)', background: 'linear-gradient(135deg, #ffffff 0%, var(--accent-gold) 20%, #ff8c00 70%, var(--accent-copper) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   OVERSEAS
                 </motion.span>
               </div>
@@ -334,7 +334,7 @@ export default function Home() {
 
             <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 'clamp(4.5rem, 9vw, 9rem)', lineHeight: 1.1, paddingTop: '0.1em', color: '#fff', marginBottom: '24px', textShadow: '0 20px 60px rgba(0,0,0,0.9)' }}>
               Study<br />
-              <span style={{ color: 'var(--accent-blue)', fontStyle: 'italic', background: 'linear-gradient(90deg, #fff 0%, var(--accent-blue) 50%, #4CAF50 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 0 40px rgba(125,193,177,0.6))' }}>Anywhere.</span>
+              <span style={{ color: 'var(--accent-blue)', fontStyle: 'italic', background: 'linear-gradient(90deg, #fff 0%, var(--accent-blue) 50%, #4CAF50 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Anywhere.</span>
             </h1>
 
             <p className="study-anywhere-desc" style={{ fontFamily: "var(--font-sans)", fontSize: '1.3rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.85)', maxWidth: '550px', marginBottom: '60px', fontWeight: 300, textShadow: '0 4px 15px rgba(0,0,0,0.9)', background: 'rgba(4,4,8,0.92)', padding: '20px 30px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.06)' }}>
@@ -413,7 +413,7 @@ export default function Home() {
 
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)', color: '#fff', margin: 0, fontWeight: 400, lineHeight: 1.05, textShadow: '0 30px 60px rgba(0,0,0,0.9)' }}>
                 Engineer Your <br />
-                <span style={{ fontStyle: 'italic', color: 'var(--accent-gold)', background: 'linear-gradient(90deg, #fff 0%, var(--accent-gold) 40%, var(--accent-copper) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 0 50px rgba(249,212,64,0.6))' }}>Acceptance.</span>
+                <span style={{ fontStyle: 'italic', color: 'var(--accent-gold)', background: 'linear-gradient(90deg, #fff 0%, var(--accent-gold) 40%, var(--accent-copper) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Acceptance.</span>
               </h2>
 
               <div className="hud-stat-cards" style={{ display: 'flex', gap: '3vw', marginTop: '3vh', flexWrap: 'wrap', justifyContent: 'center' }}>

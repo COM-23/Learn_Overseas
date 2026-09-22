@@ -28,17 +28,15 @@ export default function InfiniteMarquee() {
       <style>
         {`
           .marquee-track:hover .marquee-item {
-            opacity: 0.2;
-            filter: grayscale(80%);
-            transition: opacity 0.4s ease, filter 0.4s ease;
+            opacity: 0.3;
+            transition: opacity 0.4s ease;
           }
           .marquee-track .marquee-item {
-            transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
           }
           .marquee-track .marquee-item:hover {
             opacity: 1 !important;
-            filter: grayscale(0%) drop-shadow(0 0 30px rgba(249,212,64,0.6)) !important;
             transform: scale(1.15) translateY(-5px);
             z-index: 20;
           }
@@ -101,8 +99,7 @@ export default function InfiniteMarquee() {
                     height: '60px',
                     width: 'auto',
                     objectFit: 'contain',
-                    flexShrink: 0,
-                    filter: 'drop-shadow(0 0 15px rgba(255,255,255,0.1))',
+                    flexShrink: 0
                   }}
                 />
                 <span style={{ 

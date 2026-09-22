@@ -521,7 +521,8 @@ function GlassCarouselLoop({ activeCountryIndex }) {
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => setSelectedStudent(student)}
                 style={{ width: '340px', height: '480px', borderRadius: '24px', position: 'relative', overflow: 'hidden', border: `1px solid ${hoveredIndex === i ? student.color : 'rgba(255,255,255,0.1)'}`, boxShadow: hoveredIndex === i ? `0 40px 80px rgba(0,0,0,0.9), 0 0 40px ${student.color}40` : `0 40px 80px rgba(0,0,0,0.9)`, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transform: 'rotateX(-5deg)', background: '#020205', cursor: 'pointer', transition: 'box-shadow 0.5s, border-color 0.5s' }}>
-                <img src={student.img} alt={student.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: hoveredIndex === i ? 'grayscale(0%) brightness(1.1)' : 'grayscale(100%) brightness(0.65)', transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)', transform: hoveredIndex === i ? 'scale(1.05)' : 'scale(1)' }} />
+                <img src={student.img} alt={student.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)', transform: hoveredIndex === i ? 'scale(1.05)' : 'scale(1)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: '#000', opacity: hoveredIndex === i ? 0 : 0.5, transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)', pointerEvents: 'none', zIndex: 1 }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '65%', background: 'linear-gradient(to top, rgba(5,7,12,0.97) 0%, transparent 100%)', zIndex: 1, pointerEvents: 'none' }} />
                 <div style={{ position: 'relative', zIndex: 2, padding: '32px 24px', textAlign: 'center', pointerEvents: 'none' }}>
                   <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>{student.country}</div>
@@ -626,7 +627,7 @@ export default function StudentSuccessWall() {
       {/* Cinematic Vignette removed to eliminate the seam with InfiniteMarquee */}
 
       {/* Dynamic Cursor Spotlight */}
-      <motion.div style={{ position: 'fixed', top: 0, left: 0, x: useTransform(mouseX, v => v - 350), y: useTransform(mouseY, v => v - 350), width: 700, height: 700, background: 'radial-gradient(circle, rgba(249,212,64,0.06) 0%, transparent 60%)', pointerEvents: 'none', zIndex: 3, mixBlendMode: 'screen' }} />
+      <motion.div style={{ position: 'fixed', top: 0, left: 0, x: useTransform(mouseX, v => v - 350), y: useTransform(mouseY, v => v - 350), width: 700, height: 700, background: 'radial-gradient(circle, rgba(249,212,64,0.06) 0%, transparent 60%)', pointerEvents: 'none', zIndex: 3 }} />
 
       
 

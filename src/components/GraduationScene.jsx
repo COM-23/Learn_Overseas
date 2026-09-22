@@ -132,7 +132,6 @@ export default function GraduationScene() {
             position: 'absolute', inset: 0,
             width: '100%', height: '100%',
             display: 'block',
-            filter: 'contrast(1.15) saturate(1.1)',
             transform: 'scale(1.06)',
             transformOrigin: 'center center',
           }}
