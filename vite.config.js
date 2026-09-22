@@ -18,7 +18,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
       },
       output: {
-        manualChunks: () => 'app',
+        manualChunks: undefined,
+        inlineDynamicImports: true,
       }
     }
   }
