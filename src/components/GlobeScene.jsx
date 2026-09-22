@@ -109,7 +109,13 @@ export default function GlobeScene() {
       globeRef.current.controls().enableZoom = false; // Disable scroll zoom so we don't break page flow
       
       if (!selectedCountry) {
-        globeRef.current.pointOfView({ lat: 20, lng: 70, altitude: 2.6 }, 2000);
+        const ratio = windowSize.width / windowSize.height;
+        // Base altitude 2.6 is optimized for 16:9 widescreen (ratio ~1.77).
+        // If the screen is taller (ratio < 1.77), the globe renders too large physically.
+        // We dynamically increase altitude to push the camera back and keep the Earth the same relative size.
+        const dynamicAltitude = ratio < 1.77 ? 2.6 * (1.77 / ratio) : 2.6;
+        
+        globeRef.current.pointOfView({ lat: 20, lng: 70, altitude: dynamicAltitude }, 2000);
       } else {
         globeRef.current.pointOfView({ lat: selectedCountry.lat, lng: selectedCountry.lng, altitude: 1.5 }, 1200);
       }
