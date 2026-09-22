@@ -44,6 +44,10 @@ function LivingStarCanvas() {
           0% { opacity: 0.3; }
           100% { opacity: 1; }
         }
+        @keyframes pulseGlobeMarker {
+          0% { transform: scale(0.5); opacity: 0.8; }
+          100% { transform: scale(1.5); opacity: 0; }
+        }
       `}</style>
     </div>
   );
@@ -204,18 +208,33 @@ export default function GlobeScene() {
               htmlElement={(d) => {
                 const el = document.createElement('div');
                 el.innerHTML = `
-                  <div style="cursor: pointer; display: flex; flex-direction: column; align-items: center; pointer-events: auto; padding: 20px; margin: -20px; gap: 4px;">
-                    <div class="globe-flag" style="
-                      font-size: 22px;
-                      text-shadow: 0 0 8px rgba(255,255,255,0.6);
-                      transition: transform 0.25s ease, text-shadow 0.25s ease;
-                      line-height: 1;
-                    ">${d.flag}</div>
+                  <div style="cursor: pointer; display: flex; flex-direction: column; align-items: center; pointer-events: auto; padding: 20px; margin: -20px; position: relative;">
                     <div style="
-                      width: 5px; height: 5px; border-radius: 50%;
-                      background: rgba(217,30,54,0.9);
-                      box-shadow: 0 0 6px 2px rgba(217,30,54,0.5);
-                      transition: transform 0.25s ease;
+                      position: absolute; top: 12px;
+                      width: 40px; height: 40px;
+                      background: rgba(249, 212, 64, 0.2);
+                      border-radius: 50%;
+                      animation: pulseGlobeMarker 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+                      z-index: 0;
+                      pointer-events: none;
+                    "></div>
+                    <div class="globe-flag" style="
+                      width: 32px; height: 32px;
+                      background: rgba(15,15,20,0.9);
+                      border: 1.5px solid rgba(249, 212, 64, 0.8);
+                      border-radius: 50%;
+                      display: flex; align-items: center; justify-content: center;
+                      box-shadow: 0 0 15px rgba(249, 212, 64, 0.5);
+                      overflow: hidden;
+                      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+                      z-index: 1;
+                    ">
+                      <img src="https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png" alt="${d.country}" style="width: 22px; height: auto; border-radius: 2px;" />
+                    </div>
+                    <div class="globe-stem" style="
+                      width: 2px; height: 14px;
+                      background: linear-gradient(to bottom, rgba(249, 212, 64, 0.9), transparent);
+                      transition: height 0.25s ease, opacity 0.25s ease;
                     "></div>
                   </div>
                 `;
@@ -227,12 +246,16 @@ export default function GlobeScene() {
                 el.onpointerdown = handleSelect;
                 el.ontouchend = handleSelect;
                 el.onmouseenter = () => {
-                  el.querySelector('.globe-flag').style.transform = 'scale(1.5)';
-                  el.querySelector('.globe-flag').style.textShadow = '0 0 14px rgba(255,220,100,0.9)';
+                  el.querySelector('.globe-flag').style.transform = 'scale(1.25) translateY(-3px)';
+                  el.querySelector('.globe-flag').style.boxShadow = '0 0 20px rgba(255,255,255,0.8)';
+                  el.querySelector('.globe-flag').style.borderColor = '#fff';
+                  el.querySelector('.globe-stem').style.height = '17px';
                 };
                 el.onmouseleave = () => {
-                  el.querySelector('.globe-flag').style.transform = 'scale(1)';
-                  el.querySelector('.globe-flag').style.textShadow = '0 0 8px rgba(255,255,255,0.6)';
+                  el.querySelector('.globe-flag').style.transform = 'scale(1) translateY(0)';
+                  el.querySelector('.globe-flag').style.boxShadow = '0 0 15px rgba(249, 212, 64, 0.5)';
+                  el.querySelector('.globe-flag').style.borderColor = 'rgba(249, 212, 64, 0.8)';
+                  el.querySelector('.globe-stem').style.height = '14px';
                 };
                 return el;
               }}
@@ -278,8 +301,19 @@ export default function GlobeScene() {
                       display: 'flex', flexDirection: 'column', alignItems: 'center',
                       cursor: 'pointer', padding: '10px'
                     }} onClick={(e) => { e.stopPropagation(); setSelectedCountry(d); }}>
-                      <div style={{ fontSize: '18px', textShadow: '0 0 5px rgba(0,0,0,0.8)' }}>{d.flag}</div>
-                      <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ff3366', boxShadow: '0 0 10px #ff3366' }} />
+                      <div style={{
+                        width: '28px', height: '28px',
+                        background: 'rgba(15,15,20,0.9)',
+                        border: '1.5px solid rgba(249, 212, 64, 0.8)',
+                        borderRadius: '50%',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        boxShadow: '0 0 12px rgba(249, 212, 64, 0.5)',
+                        overflow: 'hidden',
+                        position: 'relative'
+                      }}>
+                        <img src={`https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png`} alt={d.country} style={{ width: '18px', height: 'auto', borderRadius: '1px' }} />
+                      </div>
+                      <div style={{ width: '2px', height: '10px', background: 'linear-gradient(to bottom, rgba(249, 212, 64, 0.9), transparent)' }} />
                     </div>
                   </div>
                 );
@@ -379,10 +413,10 @@ export default function GlobeScene() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
                   <motion.div 
                     initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', damping: 15, delay: 0.1 }}
-                    style={{ fontSize: '3.5rem', textShadow: '0 10px 20px rgba(0,0,0,0.5)', position: 'relative', flexShrink: 0, minWidth: '60px', display: 'flex', justifyContent: 'center' }}
+                    style={{ position: 'relative', flexShrink: 0, width: '60px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)' }}
                   >
-                    {selectedCountry.flag}
-                    <div style={{ position: 'absolute', inset: -10, background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)', zIndex: -1, borderRadius: '50%' }} />
+                    <img src={`https://flagcdn.com/w80/${selectedCountry.iso2.toLowerCase()}.png`} alt={selectedCountry.country} style={{ width: '36px', height: 'auto', borderRadius: '4px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }} />
+                    <div style={{ position: 'absolute', inset: -10, background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)', zIndex: -1, borderRadius: '50%' }} />
                   </motion.div>
                   <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
                     <div style={{ color: 'var(--accent-gold)', letterSpacing: '4px', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 800, marginBottom: '5px', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{selectedCountry.route}</div>

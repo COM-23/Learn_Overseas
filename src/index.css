@@ -35,7 +35,7 @@
   --glass-border:  rgba(255, 255, 255, 0.05);
 
   /* Typography */
-  --font-sans:     'Outfit', system-ui, -apple-system, sans-serif;
+  --font-sans:     'DM Sans', system-ui, -apple-system, sans-serif;
   --font-serif:    'Playfair Display', Georgia, serif;
 
   /* Easing */

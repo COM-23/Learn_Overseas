@@ -140,11 +140,6 @@ function App() {
       </AnimatePresence>
       <div style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.8s ease' }}>
         <BrowserRouter>
-          {window.innerWidth <= 768 && (
-            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', background: 'red', color: 'white', zIndex: 999999, textAlign: 'center', padding: '10px', fontSize: '14px', fontWeight: 'bold' }}>
-              DIAGNOSTIC BANNER: MOBILE ROUTING ACTIVE
-            </div>
-          )}
           <ScrollToTop />
           <AnimatedRoutes />
           <GlobalToasts />

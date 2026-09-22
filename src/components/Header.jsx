@@ -259,8 +259,9 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile menu toggle */}
         <motion.button
+          aria-label="Open mobile menu"
           whileTap={{ scale: 0.9 }}
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
