@@ -1,58 +1,23 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export default function GraduationScene() {
   const containerRef = useRef(null);
   const videoRef     = useRef(null);
-  const canvasRef    = useRef(null);
-  const rafRef       = useRef(null);
   const durationRef  = useRef(0);
-  const readyRef     = useRef(false); // true once decoder is warm
 
-  // ── Canvas render loop ─────────────────────────────────────────────────
-  const startRenderLoop = useCallback(() => {
-    const video  = videoRef.current;
-    const canvas = canvasRef.current;
-    if (!video || !canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    const draw = () => {
-      if (readyRef.current && video.readyState >= 2) {
-        const vW = video.videoWidth  || canvas.width;
-        const vH = video.videoHeight || canvas.height;
-        const cW = canvas.width;
-        const cH = canvas.height;
-        const scale = Math.max(cW / vW, cH / vH);
-        const dW = vW * scale;
-        const dH = vH * scale;
-        ctx.drawImage(video, (cW - dW) / 2, (cH - dH) / 2, dW, dH);
-      }
-      rafRef.current = requestAnimationFrame(draw);
-    };
-    rafRef.current = requestAnimationFrame(draw);
-  }, []);
-
-  // ── Boot: size canvas, warm decoder ────────────────────────────────────
+  // ── Boot: warm decoder ────────────────────────────────────
   useEffect(() => {
     const video  = videoRef.current;
-    const canvas = canvasRef.current;
-    if (!video || !canvas) return;
+    if (!video) return;
 
-    // 1. Keep canvas sized to viewport
-    const syncSize = () => {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    syncSize();
-    window.addEventListener('resize', syncSize);
-
-    // 2. Capture duration once metadata arrives
+    // Capture duration once metadata arrives
     const onMeta = () => { durationRef.current = video.duration || 10; };
     if (video.readyState >= 1) onMeta();
     else video.addEventListener('loadedmetadata', onMeta);
 
-    // 3. Warm the decoder (play a tiny bit, then pause)
-    //    This is required for Safari AND Chrome to enable currentTime seeking.
+    // Warm the decoder (play a tiny bit, then pause)
+    // This is required for Safari AND Chrome to enable currentTime seeking.
     const warmDecoder = async () => {
       try {
         video.muted = true;
@@ -61,18 +26,13 @@ export default function GraduationScene() {
         setTimeout(() => {
           video.pause();
           video.currentTime = 0;
-          readyRef.current = true;
-          startRenderLoop();
         }, 200);
       } catch (err) {
-        // Autoplay blocked (rare on localhost) — still start the loop;
-        // frames will appear once the user interacts.
-        readyRef.current = true;
-        startRenderLoop();
+        // Autoplay blocked
       }
     };
 
-    // 4. Wait until the video has buffered a bit before warming
+    // Wait until the video has buffered a bit before warming
     if (video.readyState >= 3) {
       warmDecoder();
     } else {
@@ -80,12 +40,10 @@ export default function GraduationScene() {
     }
 
     return () => {
-      window.removeEventListener('resize', syncSize);
       video.removeEventListener('loadedmetadata', onMeta);
       video.removeEventListener('canplay', warmDecoder);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [startRenderLoop]);
+  }, []);
 
   // ── Scroll → video.currentTime ─────────────────────────────────────────
   useEffect(() => {
@@ -125,19 +83,7 @@ export default function GraduationScene() {
         overflow: 'hidden',
       }}>
 
-        {/* Canvas — receives decoded frames */}
-        <canvas
-          ref={canvasRef}
-          style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
-            display: 'block',
-            transform: 'scale(1.06)',
-            transformOrigin: 'center center',
-          }}
-        />
-
-        {/* Hidden video — only used for decoding */}
+        {/* The hardware-accelerated video tag */}
         <video
           ref={videoRef}
           muted
@@ -146,7 +92,14 @@ export default function GraduationScene() {
           webkit-playsinline="true"
           x-webkit-airplay="deny"
           disablePictureInPicture
-          style={{ display: 'none' }}
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+            transform: 'scale(1.06)',
+            transformOrigin: 'center center',
+          }}
         >
           <source src="/graduation_scrub.mp4" type="video/mp4" />
           <source src="/graduation.mp4"        type="video/mp4" />
