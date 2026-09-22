@@ -395,8 +395,8 @@ function CinematicHoverGallery() {
                 transition={{ duration: 0.5 }}
                 style={{
                   display: 'flex', alignItems: 'center', gap: 12,
-                  background: 'rgba(0,0,0,0.6)', border: `1px solid ${palette.accent}50`,
-                  padding: '10px 20px', borderRadius: 100, backdropFilter: 'blur(10px)'
+                  background: 'rgba(0,0,0,0.8)', border: `1px solid ${palette.accent}50`,
+                  padding: '10px 20px', borderRadius: 100
                 }}
               >
                 <div style={{ color: palette.accent }}><feature.icon size={16} strokeWidth={2.5} /></div>

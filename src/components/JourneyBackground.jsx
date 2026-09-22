@@ -89,7 +89,7 @@ export default function JourneyBackground({ scrollYProgress }) {
           style={{
             position: 'absolute', top: '-20%', left: '-20%', width: '140%', height: '140%',
             background: 'radial-gradient(circle at 30% 50%, rgba(249, 212, 64, 0.18) 0%, transparent 60%)',
-            mixBlendMode: 'screen', zIndex: 999,
+            zIndex: 999,
             animation: 'lightleak1 15s ease-in-out infinite',
             willChange: 'opacity',
           }}
@@ -99,7 +99,7 @@ export default function JourneyBackground({ scrollYProgress }) {
           style={{
             position: 'absolute', top: '-20%', left: '-20%', width: '140%', height: '140%',
             background: 'radial-gradient(circle at 70% 30%, rgba(126, 87, 194, 0.18) 0%, transparent 50%)',
-            mixBlendMode: 'screen', zIndex: 999,
+            zIndex: 999,
             animation: 'lightleak2 20s ease-in-out 2s infinite',
             willChange: 'opacity',
           }}
