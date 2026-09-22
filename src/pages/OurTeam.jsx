@@ -5,7 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ParticleTransition from '../components/ParticleTransition';
 
 export default function OurTeam() {
-  const [showParticle, setShowParticle] = React.useState(true);
+  const [showParticle, setShowParticle] = React.useState(() => {
+    return !sessionStorage.getItem('teamParticlePlayed');
+  });
+
+  const handleParticleComplete = () => {
+    setShowParticle(false);
+    sessionStorage.setItem('teamParticlePlayed', 'true');
+  };
 
   return (
     <div style={{ background: 'radial-gradient(circle at 50% -20%, #1a1a2e 0%, #020205 70%)', minHeight: '100vh', position: 'relative', overflow: 'clip' }}>
@@ -18,7 +25,7 @@ export default function OurTeam() {
               transition={{ duration: 1 }}
               style={{ position: 'fixed', inset: 0, zIndex: 1000000, background: '#020205' }}
             >
-              <ParticleTransition onComplete={() => setShowParticle(false)} />
+              <ParticleTransition onComplete={handleParticleComplete} />
             </motion.div>
         )}
       </AnimatePresence>

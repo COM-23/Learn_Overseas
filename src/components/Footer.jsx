@@ -115,8 +115,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="footer-bottom-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ fontSize: 12, color: '#252530', margin: 0 }}>
-            © {new Date().getFullYear()} Learn Overseas. All rights reserved.
+          <p style={{ fontSize: 12, color: '#4a4a5a', margin: 0 }}>
+            © {new Date().getFullYear()} Learn Overseas by Stencil. All rights reserved.
           </p>
           <div className="footer-bottom-links" style={{ display: 'flex', gap: 24 }}>
             {[{ label: 'Privacy Policy', to: '/privacy' }, { label: 'Terms of Service', to: '/terms' }, { label: 'Careers', to: '/careers' }].map(l => (

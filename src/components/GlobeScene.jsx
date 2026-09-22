@@ -44,9 +44,13 @@ function LivingStarCanvas() {
           0% { opacity: 0.3; }
           100% { opacity: 1; }
         }
-        @keyframes pulseGlobeMarker {
-          0% { transform: scale(0.5); opacity: 0.8; }
-          100% { transform: scale(1.5); opacity: 0; }
+        @keyframes markerPulseBase {
+          0% { transform: scale(0.6); opacity: 0.4; }
+          100% { transform: scale(1.4); opacity: 1; }
+        }
+        @keyframes markerFloat {
+          0% { transform: translateY(0px); }
+          100% { transform: translateY(-4px); }
         }
       `}</style>
     </div>
@@ -208,33 +212,64 @@ export default function GlobeScene() {
               htmlElement={(d) => {
                 const el = document.createElement('div');
                 el.innerHTML = `
-                  <div style="cursor: pointer; display: flex; flex-direction: column; align-items: center; pointer-events: auto; padding: 20px; margin: -20px; position: relative;">
-                    <div style="
-                      position: absolute; top: 12px;
-                      width: 40px; height: 40px;
-                      background: rgba(249, 212, 64, 0.2);
-                      border-radius: 50%;
-                      animation: pulseGlobeMarker 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-                      z-index: 0;
-                      pointer-events: none;
-                    "></div>
-                    <div class="globe-flag" style="
-                      width: 32px; height: 32px;
-                      background: rgba(15,15,20,0.9);
-                      border: 1.5px solid rgba(249, 212, 64, 0.8);
-                      border-radius: 50%;
-                      display: flex; align-items: center; justify-content: center;
-                      box-shadow: 0 0 15px rgba(249, 212, 64, 0.5);
-                      overflow: hidden;
-                      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-                      z-index: 1;
+                  <div class="unique-globe-marker" style="
+                    cursor: pointer; pointer-events: auto;
+                    display: flex; flex-direction: column; align-items: center;
+                    position: relative;
+                    margin-top: -30px;
+                  ">
+                    <!-- Glass Pill -->
+                    <div class="globe-marker-pill" style="
+                      background: rgba(15, 20, 35, 0.45);
+                      backdrop-filter: blur(6px);
+                      -webkit-backdrop-filter: blur(6px);
+                      border: 1px solid rgba(255, 255, 255, 0.15);
+                      border-radius: 20px;
+                      padding: 4px 8px 4px 4px;
+                      display: flex; align-items: center; gap: 6px;
+                      box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
+                      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                      transform-origin: bottom center;
+                      animation: markerFloat 2s ease-in-out infinite alternate;
                     ">
-                      <img src="https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png" alt="${d.country}" style="width: 22px; height: auto; border-radius: 2px;" />
+                      <!-- Flag SVG -->
+                      <div style="
+                        width: 22px; height: 22px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        display: flex; align-items: center; justify-content: center;
+                        background: #000;
+                        border: 1px solid rgba(255,255,255,0.2);
+                        flex-shrink: 0;
+                      ">
+                        <img src="https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png" alt="${d.country}" style="height: 100%; width: auto; min-width: 100%; object-fit: cover;" />
+                      </div>
+                      <!-- Route Code -->
+                      <span style="
+                        color: rgba(255,255,255,0.9);
+                        font-family: system-ui, -apple-system, sans-serif;
+                        font-size: 11px;
+                        font-weight: 700;
+                        letter-spacing: 0.5px;
+                        padding-right: 4px;
+                        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+                      ">${d.route}</span>
                     </div>
-                    <div class="globe-stem" style="
-                      width: 2px; height: 14px;
-                      background: linear-gradient(to bottom, rgba(249, 212, 64, 0.9), transparent);
-                      transition: height 0.25s ease, opacity 0.25s ease;
+
+                    <!-- Glowing Stem -->
+                    <div class="globe-marker-stem" style="
+                      width: 1px; height: 25px;
+                      background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+                      transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    "></div>
+                    
+                    <!-- Glowing Base on Globe Surface -->
+                    <div class="globe-marker-base" style="
+                      position: absolute; bottom: -8px;
+                      width: 30px; height: 10px;
+                      background: radial-gradient(ellipse at center, rgba(125, 193, 177, 0.8) 0%, rgba(125, 193, 177, 0) 70%);
+                      animation: markerPulseBase 2s infinite alternate;
+                      pointer-events: none;
                     "></div>
                   </div>
                 `;
@@ -246,16 +281,20 @@ export default function GlobeScene() {
                 el.onpointerdown = handleSelect;
                 el.ontouchend = handleSelect;
                 el.onmouseenter = () => {
-                  el.querySelector('.globe-flag').style.transform = 'scale(1.25) translateY(-3px)';
-                  el.querySelector('.globe-flag').style.boxShadow = '0 0 20px rgba(255,255,255,0.8)';
-                  el.querySelector('.globe-flag').style.borderColor = '#fff';
-                  el.querySelector('.globe-stem').style.height = '17px';
+                  el.querySelector('.globe-marker-pill').style.transform = 'scale(1.15) translateY(-8px)';
+                  el.querySelector('.globe-marker-pill').style.background = 'rgba(255, 255, 255, 0.15)';
+                  el.querySelector('.globe-marker-pill').style.borderColor = 'rgba(125, 193, 177, 0.8)';
+                  el.querySelector('.globe-marker-pill').style.boxShadow = '0 10px 25px rgba(125, 193, 177, 0.4)';
+                  el.querySelector('.globe-marker-stem').style.height = '33px';
+                  el.querySelector('.globe-marker-stem').style.background = 'linear-gradient(to bottom, rgba(125, 193, 177, 0.9), transparent)';
                 };
                 el.onmouseleave = () => {
-                  el.querySelector('.globe-flag').style.transform = 'scale(1) translateY(0)';
-                  el.querySelector('.globe-flag').style.boxShadow = '0 0 15px rgba(249, 212, 64, 0.5)';
-                  el.querySelector('.globe-flag').style.borderColor = 'rgba(249, 212, 64, 0.8)';
-                  el.querySelector('.globe-stem').style.height = '14px';
+                  el.querySelector('.globe-marker-pill').style.transform = 'scale(1) translateY(0)';
+                  el.querySelector('.globe-marker-pill').style.background = 'rgba(15, 20, 35, 0.45)';
+                  el.querySelector('.globe-marker-pill').style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                  el.querySelector('.globe-marker-pill').style.boxShadow = '0 8px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.05)';
+                  el.querySelector('.globe-marker-stem').style.height = '25px';
+                  el.querySelector('.globe-marker-stem').style.background = 'linear-gradient(to bottom, rgba(255,255,255,0.6), transparent)';
                 };
                 return el;
               }}
@@ -301,19 +340,47 @@ export default function GlobeScene() {
                       display: 'flex', flexDirection: 'column', alignItems: 'center',
                       cursor: 'pointer', padding: '10px'
                     }} onClick={(e) => { e.stopPropagation(); setSelectedCountry(d); }}>
+                      {/* Mobile AR Pill */}
                       <div style={{
-                        width: '28px', height: '28px',
-                        background: 'rgba(15,15,20,0.9)',
-                        border: '1.5px solid rgba(249, 212, 64, 0.8)',
-                        borderRadius: '50%',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        boxShadow: '0 0 12px rgba(249, 212, 64, 0.5)',
-                        overflow: 'hidden',
-                        position: 'relative'
+                        background: 'rgba(15, 20, 35, 0.65)',
+                        backdropFilter: 'blur(4px)',
+                        WebkitBackdropFilter: 'blur(4px)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        borderRadius: '16px',
+                        padding: '3px 6px 3px 3px',
+                        display: 'flex', alignItems: 'center', gap: '4px',
+                        boxShadow: '0 4px 10px rgba(0,0,0,0.5)',
+                        animation: 'markerFloat 2s ease-in-out infinite alternate',
                       }}>
-                        <img src={`https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png`} alt={d.country} style={{ width: '18px', height: 'auto', borderRadius: '1px' }} />
+                        <div style={{
+                          width: '16px', height: '16px',
+                          borderRadius: '50%',
+                          overflow: 'hidden',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          background: '#000',
+                          border: '1px solid rgba(255,255,255,0.2)',
+                          flexShrink: 0
+                        }}>
+                          <img src={`https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png`} alt={d.country} style={{ height: '100%', width: 'auto', minWidth: '100%', objectFit: 'cover' }} />
+                        </div>
+                        <span style={{
+                          color: '#fff',
+                          fontFamily: 'system-ui, -apple-system, sans-serif',
+                          fontSize: '9px',
+                          fontWeight: '700',
+                          letterSpacing: '0.5px'
+                        }}>{d.route}</span>
                       </div>
-                      <div style={{ width: '2px', height: '10px', background: 'linear-gradient(to bottom, rgba(249, 212, 64, 0.9), transparent)' }} />
+                      
+                      <div style={{ width: '1px', height: '12px', background: 'linear-gradient(to bottom, rgba(255,255,255,0.6), transparent)' }} />
+                      
+                      <div style={{
+                        position: 'absolute', bottom: '2px',
+                        width: '20px', height: '6px',
+                        background: 'radial-gradient(ellipse at center, rgba(125, 193, 177, 0.8) 0%, rgba(125, 193, 177, 0) 70%)',
+                        animation: 'markerPulseBase 2s infinite alternate',
+                        pointerEvents: 'none'
+                      }}></div>
                     </div>
                   </div>
                 );
