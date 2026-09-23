@@ -527,9 +527,7 @@ export default function Home() {
         {/* ── Content layers scrolling normally over the background ── */}
         
         {/* ACT II: Marquee + Success Wall */}
-        {/* Added 100vh padding so this content doesn't scroll up and crash into the fading Wormhole portal! */}
-        <div style={{ position: 'relative', zIndex: 2, paddingTop: '100vh' }}>
-
+        <div style={{ position: 'relative', zIndex: 2, paddingTop: '20vh' }}>
           <InfiniteMarquee />
           <StudentSuccessWall />
         </div>

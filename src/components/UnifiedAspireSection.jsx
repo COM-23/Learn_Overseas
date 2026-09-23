@@ -203,8 +203,8 @@ export default function UnifiedAspireSection() {
           }}
         />
         
-        <div className="ambient-orb-1" style={{ position: 'absolute', top: '10%', left: '10%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(125, 193, 177, 0.08) 0%, transparent 60%)', filter: 'blur(40px)', mixBlendMode: 'screen', pointerEvents: 'none' }} />
-        <div className="ambient-orb-2" style={{ position: 'absolute', bottom: '10%', right: '10%', width: '30vw', height: '30vw', background: 'radial-gradient(circle, rgba(249, 212, 64, 0.05) 0%, transparent 60%)', filter: 'blur(40px)', mixBlendMode: 'screen', pointerEvents: 'none' }} />
+        <div className="ambient-orb-1" style={{ position: 'absolute', top: '10%', left: '10%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(125, 193, 177, 0.08) 0%, transparent 60%)', pointerEvents: 'none' }} />
+        <div className="ambient-orb-2" style={{ position: 'absolute', bottom: '10%', right: '10%', width: '30vw', height: '30vw', background: 'radial-gradient(circle, rgba(249, 212, 64, 0.05) 0%, transparent 60%)', pointerEvents: 'none' }} />
 
         <UniversityFloaters />
 

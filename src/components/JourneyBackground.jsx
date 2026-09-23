@@ -60,7 +60,6 @@ export default function JourneyBackground({ scrollYProgress }) {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               zIndex: 1,
-              opacity: 0.75,
             }}
           />
         )}
@@ -70,8 +69,8 @@ export default function JourneyBackground({ scrollYProgress }) {
           <motion.div
             key={currentIdx}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.75 }}
-            exit={{ opacity: 0.75 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
             transition={{ opacity: { duration: 2.5, ease: [0.43, 0.13, 0.23, 0.96] } }}
             style={{
               position: 'absolute',
@@ -83,6 +82,9 @@ export default function JourneyBackground({ scrollYProgress }) {
             }}
           />
         </AnimatePresence>
+
+        {/* Global Darkening Overlay to replace the 0.75 opacity on individual images, preventing ghosting */}
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(2,2,5,0.35)', zIndex: 3 }} />
 
         {/* Dynamic Light Leaks — CSS animation instead of framer-motion for zero JS overhead */}
         <div
