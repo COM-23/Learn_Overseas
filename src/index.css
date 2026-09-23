@@ -52,8 +52,10 @@
 
 html { 
   background: var(--bg-dark);
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* 'smooth' fights with Framer Motion scroll tracking, causing lag */
   font-size: clamp(9px, 0.76vw, 12px); /* ~11.2px at 1470px — matches local Safari view */
+  /* Prevent pull-to-refresh and overscroll bounce which cause scroll jank */
+  overscroll-behavior: none;
 }
 
 @media (max-width: 768px) {
@@ -69,6 +71,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   min-height: 100vh;
+  /* Prevent horizontal overflow at root level */
+  overflow-x: hidden;
+  /* Match html overscroll to prevent rubber-band lag on scroll */
+  overscroll-behavior: none;
 }
 
 /* Global Noise Texture Overlay */

@@ -135,7 +135,7 @@ export default function Home() {
   const badgeRightX = useTransform(scrollYProgress, [0, 0.25], ['0vw', '-15vw']);
   const badgeY = useTransform(scrollYProgress, [0, 0.25], ['0vh', '-10vh']);
   const text1Y = useTransform(scrollYProgress, [0, 0.15], [0, -50]);
-  const text1Display = useTransform(scrollYProgress, (v) => v > 0.15 ? 'none' : 'flex');
+  // REMOVED: text1Display toggle — caused overlap flash. Opacity alone handles visibility.
 
   // Metrics (Highlighters)
   const metricOpacity = useTransform(scrollYProgress, [0.10, 0.25, 0.40, 0.55], [0, 1, 1, 0]);
@@ -145,13 +145,13 @@ export default function Home() {
   // 2. Second Text (Study Anywhere)
   const text2Opacity = useTransform(scrollYProgress, [0.10, 0.25, 0.40, 0.55], [0, 1, 1, 0]);
   const text2Y = useTransform(scrollYProgress, [0.10, 0.25, 0.40, 0.55], [50, 0, 0, -50]);
-  const text2Display = useTransform(scrollYProgress, (v) => (v < 0.05 || v > 0.60) ? 'none' : 'flex');
+  // REMOVED: text2Display toggle — caused overlap flash. Opacity alone handles visibility.
 
   // 3. Cinematic Typographic HUD (Engineer Your Acceptance)
   const hudOpacity = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [0, 1, 1, 0]);
   const hudY = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [50, 0, 0, -50]);
   const hudScale = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [0.95, 1, 1, 1.05]);
-  const hudDisplay = useTransform(scrollYProgress, (v) => (v < 0.40 || v > 0.98) ? 'none' : 'flex');
+  // REMOVED: hudDisplay toggle — caused overlap flash. Opacity alone handles visibility.
   
   // Parallax Offsets for HUD Cards
   const hudCard1Y = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [100, 0, 0, -100]);
@@ -197,7 +197,6 @@ export default function Home() {
           position: 'sticky', top: 0, width: '100%', height: '100vh', overflow: 'hidden',
           background: 'radial-gradient(ellipse at top, #0c1220 0%, #020205 70%)',
           opacity: sceneOpacity,
-          display: sceneDisplay,
           pointerEvents: scenePointerEvents,
           transform: 'translateZ(0)',
           willChange: 'opacity'
@@ -225,7 +224,7 @@ export default function Home() {
 
           {/* 1. First Text (Learn OVERSEAS) - Upgraded Cinematic Typography */}
           <motion.div className="hero-ui container" style={{
-            position: 'absolute', inset: 0, zIndex: 10, display: text1Display, flexDirection: 'column',
+            position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column',
             justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
             opacity: text1Opacity, y: text1Y, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)'
           }}>
@@ -323,7 +322,7 @@ export default function Home() {
 
           {/* 2. Second Text (Study Anywhere) */}
           <motion.div className="hero-text-2" style={{
-            position: 'absolute', inset: 0, zIndex: 10, display: text2Display, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
+            position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
             opacity: text2Opacity, y: text2Y, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '30px' }}>
@@ -391,7 +390,7 @@ export default function Home() {
           {/* 3. Cinematic Typographic HUD (Proper Section Transition) */}
           <motion.div className="hero-hud" style={{
             position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-            pointerEvents: 'none', zIndex: 15, display: hudDisplay, alignItems: 'center', justifyContent: 'center',
+            pointerEvents: 'none', zIndex: 15, display: 'flex', alignItems: 'center', justifyContent: 'center',
             opacity: hudOpacity, y: hudY, scale: hudScale,
             willChange: 'transform, opacity'
           }}>

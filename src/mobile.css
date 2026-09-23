@@ -777,10 +777,31 @@
   }
 }
 
+
 /* FORCE HARDWARE ACCELERATION ON IOS TO PREVENT BLANK SCREEN */
+/* Also use dynamic viewport height so sticky panel never jumps when mobile browser toolbar shows/hides */
 .home-hero-sticky {
   -webkit-transform: translate3d(0, 0, 0) !important;
   transform: translate3d(0, 0, 0) !important;
+}
+
+/* On mobile, use dvh (dynamic viewport height) for sticky panel */
+@media (max-width: 1024px) {
+  .home-hero-sticky {
+    height: 100dvh !important;
+    height: -webkit-fill-available !important;
+  }
+  .home-hero-container {
+    /* Prevent horizontal bleed */
+    overflow-x: hidden !important;
+  }
+  /* Globe canvas: allow native vertical scroll to pass through WebGL canvas on touch */
+  .home-globe-wrapper {
+    touch-action: pan-y !important;
+  }
+  .home-globe-wrapper canvas {
+    touch-action: pan-y !important;
+  }
 }
 
 
