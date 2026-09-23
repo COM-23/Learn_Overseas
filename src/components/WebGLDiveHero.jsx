@@ -351,10 +351,10 @@ export default function WebGLDiveHero() {
   return (
     <>
     {/* Massive 250vh container to allow for a long, cinematic scroll transition without dead space */}
-    <div ref={containerRef} style={{ position: 'relative', width: '100vw', height: '250vh', background: 'transparent', zIndex: 2 }}>
+    <div ref={containerRef} style={{ position: 'relative', width: '100%', height: '250vh', background: 'transparent', zIndex: 2 }}>
       
       {/* Sticky wrapper stays fixed while the user scrolls through the 250vh. Fades out smoothly into the next section. */}
-      <motion.div style={{ position: 'sticky', top: 0, width: '100vw', height: '100vh', overflow: 'hidden', opacity: wrapperOpacity }}>
+      <motion.div style={{ position: 'sticky', top: 0, width: '100%', height: '100vh', overflow: 'hidden', opacity: wrapperOpacity }}>
         
         {/* City / Harvard → University Campus Study Abroad Transition Overlay */}
         <div 

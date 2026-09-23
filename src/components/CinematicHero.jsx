@@ -20,15 +20,15 @@ export default function CinematicHero() {
   // Smooth spring — lower stiffness = silkier
   const s = useSpring(scrollYProgress, { stiffness: 45, damping: 22 });
 
-  // ── SCENE TRANSITIONS — OVERLAPPING so there's NEVER a black gap ──
-  // Scene 1: 0 → 0.30 (fade-out at 0.22)
-  const op1 = useTransform(s, [0, 0.22, 0.30], [1, 1, 0]);
-  // Scene 2: 0.20 → 0.55
-  const op2 = useTransform(s, [0.20, 0.28, 0.45, 0.55], [0, 1, 1, 0]);
-  // Scene 3: 0.45 → 0.78
-  const op3 = useTransform(s, [0.45, 0.53, 0.68, 0.78], [0, 1, 1, 0]);
-  // Scene 4: 0.68 → 1.0 (stays until end)
-  const op4 = useTransform(s, [0.68, 0.78, 1.0], [0, 1, 1]);
+  // ── SCENE TRANSITIONS — Sequential to prevent overlapping double-exposure ──
+  // Scene 1: 0 → 0.23 (fade-out 0.23 -> 0.25)
+  const op1 = useTransform(s, [0, 0.23, 0.25], [1, 1, 0]);
+  // Scene 2: 0.25 → 0.48 (fade-in 0.25 -> 0.27, fade-out 0.48 -> 0.50)
+  const op2 = useTransform(s, [0.24, 0.25, 0.27, 0.48, 0.50], [0, 0, 1, 1, 0]);
+  // Scene 3: 0.50 → 0.73 (fade-in 0.50 -> 0.52, fade-out 0.73 -> 0.75)
+  const op3 = useTransform(s, [0.49, 0.50, 0.52, 0.73, 0.75], [0, 0, 1, 1, 0]);
+  // Scene 4: 0.75 → 1.0 (fade-in 0.75 -> 0.77)
+  const op4 = useTransform(s, [0.74, 0.75, 0.77, 1.0], [0, 0, 1, 1]);
 
   // Image zoom per scene
   const sc1 = useTransform(s, [0, 0.30], [1.0, 1.25]);

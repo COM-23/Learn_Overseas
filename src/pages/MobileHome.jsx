@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // Uses standard stacking context to completely avoid iOS Safari WebKit GPU crashes
 export default function MobileHome() {
   return (
-    <div style={{ backgroundColor: '#020205', minHeight: '100vh', width: '100vw', overflowX: 'hidden', paddingBottom: '100px' }}>
+    <div style={{ backgroundColor: '#020205', minHeight: '100vh', width: '100%', overflowX: 'hidden', paddingBottom: '100px' }}>
       
       {/* 1. HERO SECTION */}
       <div style={{ position: 'relative', width: '100%', minHeight: '90vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '100px', background: 'radial-gradient(ellipse at top, #0c1220 0%, #020205 100%)' }}>

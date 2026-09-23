@@ -66,7 +66,7 @@ export default function VisionSection() {
                     }}
                 >
                     {/* Panel 1 */}
-                    <div style={{ width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 5vw', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 5vw', position: 'relative', overflow: 'hidden' }}>
                         <motion.div style={{ y: bgY1, position: 'absolute', inset: -100, backgroundImage: 'url(https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=90&w=2560)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.15, zIndex: -1 }} />
                         <div style={{ maxWidth: 1000, background: 'rgba(2,2,5,0.9)', padding: '60px', borderRadius: 40, border: '1px solid rgba(75, 144, 255, 0.2)', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
                             <p style={{ color: 'var(--accent-blue)', letterSpacing: 6, textTransform: 'uppercase', fontSize: '1rem', fontWeight: 800, marginBottom: 20 }}>The Future</p>
@@ -80,7 +80,7 @@ export default function VisionSection() {
                     </div>
 
                     {/* Panel 2 */}
-                    <div style={{ width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 5vw', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 5vw', position: 'relative', overflow: 'hidden' }}>
                         <motion.div style={{ y: bgY2, position: 'absolute', inset: -100, backgroundImage: 'url(https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=90&w=2560)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.15, zIndex: -1 }} />
                         <div style={{ maxWidth: 1000, background: 'rgba(2,2,5,0.9)', padding: '60px', borderRadius: 40, border: '1px solid rgba(249, 212, 64, 0.2)', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
                             <p style={{ color: 'var(--accent-gold)', letterSpacing: 6, textTransform: 'uppercase', fontSize: '1rem', fontWeight: 800, marginBottom: 20 }}>Our Method</p>
@@ -94,7 +94,7 @@ export default function VisionSection() {
                     </div>
 
                     {/* Panel 3 */}
-                    <div style={{ width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 5vw', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 5vw', position: 'relative', overflow: 'hidden' }}>
                         <motion.div style={{ y: bgY3, position: 'absolute', inset: -100, backgroundImage: 'url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=90&w=2560)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.15, zIndex: -1 }} />
                         <div style={{ maxWidth: 1000, background: 'rgba(2,2,5,0.9)', padding: '60px', borderRadius: 40, border: '1px solid rgba(214, 122, 67, 0.2)', boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
                             <p style={{ color: 'var(--accent-copper)', letterSpacing: 6, textTransform: 'uppercase', fontSize: '1rem', fontWeight: 800, marginBottom: 20 }}>The Outcome</p>

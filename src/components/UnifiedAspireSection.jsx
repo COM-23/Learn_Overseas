@@ -198,7 +198,7 @@ export default function UnifiedAspireSection() {
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
           style={{
             position: 'absolute', top: '-20%', left: '50%', transform: 'translateX(-50%)',
-            width: '100vw', height: '100vw', pointerEvents: 'none',
+            width: '100%', height: '100vw', pointerEvents: 'none',
             background: 'radial-gradient(circle, rgba(249,212,64,0.15) 0%, transparent 60%)',
           }}
         />

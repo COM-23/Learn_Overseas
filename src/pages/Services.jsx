@@ -89,9 +89,10 @@ export default function Services() {
   const x = useTransform(scrollYProgress, [0, 0.85], [0, maxScroll]);
 
   // Plane animation (from right to left)
-  const planeX = useTransform(scrollYProgress, [0, 0.85], ['110vw', '-110vw']);
+  // Adjusted so it doesn't leave the screen before the content is finished scrolling
+  const planeX = useTransform(scrollYProgress, [0, 1.0], ['100vw', '-20vw']);
   const planeY = useTransform(scrollYProgress, [0, 1], ['15%', '35%']);
-  const planeOpacity = useTransform(scrollYProgress, [0.75, 0.85], [1, 0]);
+  const planeOpacity = useTransform(scrollYProgress, [0.95, 1.0], [1, 0]);
 
   const [planeFacingLeft, setPlaneFacingLeft] = useState(true);
 

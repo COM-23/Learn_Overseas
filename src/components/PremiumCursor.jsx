@@ -52,15 +52,15 @@ export default function PremiumCursor() {
         isPointer;
 
       if (isHover) {
-        el.style.transform = 'translate(-50%, -50%) scale(2.5)';
-        el.style.border = '2px solid var(--accent-gold)';
-        el.style.backgroundColor = 'transparent';
-        el.style.boxShadow = '0 0 20px rgba(249,212,64,0.8)';
+        el.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        el.style.border = '1px solid rgba(249,212,64,0.8)';
+        el.style.backgroundColor = 'rgba(249,212,64,0.1)';
+        el.style.boxShadow = '0 0 20px rgba(249,212,64,0.2)';
       } else {
         el.style.transform = 'translate(-50%, -50%) scale(1)';
-        el.style.border = 'none';
-        el.style.backgroundColor = 'rgba(249,212,64,0.5)';
-        el.style.boxShadow = '0 0 10px rgba(249,212,64,0.5)';
+        el.style.border = '1px solid rgba(255,255,255,0.4)';
+        el.style.backgroundColor = 'transparent';
+        el.style.boxShadow = 'none';
       }
     };
 
@@ -137,20 +137,40 @@ function MotionCursorOrb({ x, y }) {
         willChange: 'transform',
         pointerEvents: 'none',
         zIndex: 999999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
     >
+      {/* Outer elegant ring */}
       <div
         id="premium-cursor-orb"
         style={{
-          width: 20,
-          height: 20,
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: 40,
+          height: 40,
           borderRadius: '50%',
-          backgroundColor: 'rgba(249,212,64,0.5)',
-          boxShadow: '0 0 10px rgba(249,212,64,0.5)',
+          backgroundColor: 'transparent',
+          border: '1px solid rgba(255,255,255,0.4)',
           transform: 'translate(-50%, -50%) scale(1)',
-          // CSS transition handles hover state changes — zero JS, runs on compositor
-          transition: 'transform 0.15s ease, background-color 0.15s ease, border 0.15s ease, box-shadow 0.15s ease',
+          transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border 0.25s ease, box-shadow 0.25s ease',
           willChange: 'transform',
+        }}
+      />
+      {/* Sharp center dot */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: 6,
+          height: 6,
+          borderRadius: '50%',
+          backgroundColor: '#fff',
+          boxShadow: '0 0 10px rgba(255,255,255,0.8)',
+          transform: 'translate(-50%, -50%)',
         }}
       />
     </div>

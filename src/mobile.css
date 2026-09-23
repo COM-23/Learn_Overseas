@@ -11,8 +11,8 @@
 /* ── PREVENT GLOBAL OVERFLOW-X ───────────────────────────── */
 @media (max-width: 1024px) {
   html, body, #root {
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
     position: relative;
   }
   button, a {
@@ -436,7 +436,7 @@
   .countries-globe-wrapper {
     position: fixed !important;
     height: 100vh !important;
-    width: 100vw !important;
+    width: 100% !important;
   }
 }
 
@@ -851,3 +851,10 @@
   .team-img {
     object-position: top center !important;
   }
+
+@media (max-width: 768px) {
+  .cinematic-gallery-mobile {
+    flex-direction: column !important;
+    min-height: 900px !important;
+  }
+}

@@ -325,7 +325,7 @@ function CinematicHoverGallery() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
 
   return (
-    <div style={{
+    <div className="cinematic-gallery-mobile" style={{
       width: '100%',
       height: '75vh',
       minHeight: '600px',

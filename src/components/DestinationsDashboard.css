@@ -200,7 +200,7 @@
   /* ================= FULLSCREEN GLOBE MODE ================= */
   .destinations-dashboard.fullscreen-mode{ overflow:hidden; height:100vh; }
   .orbit-hero.fullscreen{
-    position:fixed; inset:0; width:100vw; height:100vh; min-height:0; z-index:100;
+    position:fixed; inset:0; width: 100%; height:100vh; min-height:0; z-index:100;
   }
   .destinations-dashboard.fullscreen-mode .orbit-nav,
   .destinations-dashboard.fullscreen-mode .orbit-scroll{ opacity:0; pointer-events:none; }

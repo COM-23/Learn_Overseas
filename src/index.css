@@ -54,10 +54,8 @@ html {
   background: var(--bg-dark);
   scroll-behavior: auto; /* 'smooth' fights with Framer Motion scroll tracking, causing lag */
   font-size: clamp(9px, 0.76vw, 12px); /* ~11.2px at 1470px — matches local Safari view */
-  /* IMPORTANT: Do NOT set overflow-x on html or body.
-     Any overflow value on a scroll ancestor breaks position:sticky.
-     Horizontal overflow is handled per-container where needed. */
   overscroll-behavior: none;
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -73,9 +71,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   min-height: 100vh;
-  /* NOTE: overflow-x:hidden is intentionally on <html>, NOT here.
-     Setting it on <body> changes the scroll container, breaks vw units
-     and breaks position:sticky on WebKit/Safari. */
+  max-width: 100%;
 }
 
 /* Global Noise Texture Overlay */
@@ -102,7 +98,7 @@ button {
   cursor: pointer;
 }
 
-img { 
+img, video { 
   display: block; 
   max-width: 100%; 
   height: auto;

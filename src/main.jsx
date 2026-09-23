@@ -6,14 +6,14 @@ import PremiumCursor from './components/PremiumCursor.jsx'
 
 window.onerror = function(message, source, lineno, colno, error) {
   const errDiv = document.createElement('div');
-  errDiv.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: red; color: white; z-index: 9999999; padding: 20px; font-family: monospace; overflow: auto;';
+  errDiv.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: red; color: white; z-index: 9999999; padding: 20px; font-family: monospace; overflow: auto;';
   errDiv.innerHTML = `<h3>FATAL MOBILE CRASH</h3><p>${message}</p><p>Source: ${source}:${lineno}:${colno}</p><pre>${error?.stack}</pre>`;
   document.body.appendChild(errDiv);
 };
 
 window.onunhandledrejection = function(event) {
   const errDiv = document.createElement('div');
-  errDiv.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: purple; color: white; z-index: 9999999; padding: 20px; font-family: monospace; overflow: auto;';
+  errDiv.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: purple; color: white; z-index: 9999999; padding: 20px; font-family: monospace; overflow: auto;';
   errDiv.innerHTML = `<h3>ASYNC MOBILE CRASH</h3><pre>${event.reason?.stack || event.reason}</pre>`;
   document.body.appendChild(errDiv);
 };

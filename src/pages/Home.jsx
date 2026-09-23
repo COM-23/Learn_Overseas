@@ -128,35 +128,35 @@ export default function Home() {
 
 
   // 1. First Text (Learn OVERSEAS)
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.10], [1, 0]);
   
   // Globe Badges Animation to Center
-  const badgeLeftX = useTransform(scrollYProgress, [0, 0.25], ['0vw', '15vw']);
-  const badgeRightX = useTransform(scrollYProgress, [0, 0.25], ['0vw', '-15vw']);
-  const badgeY = useTransform(scrollYProgress, [0, 0.25], ['0vh', '-10vh']);
-  const text1Y = useTransform(scrollYProgress, [0, 0.15], [0, -50]);
+  const badgeLeftX = useTransform(scrollYProgress, [0, 0.25], ['0%', '15%']);
+  const badgeRightX = useTransform(scrollYProgress, [0, 0.25], ['0%', '-15%']);
+  const badgeY = useTransform(scrollYProgress, [0, 0.25], ['0%', '-10%']);
+  const text1Y = useTransform(scrollYProgress, [0, 0.10], [0, -50]);
   // REMOVED: text1Display toggle — caused overlap flash. Opacity alone handles visibility.
 
   // Metrics (Highlighters)
-  const metricOpacity = useTransform(scrollYProgress, [0.10, 0.25, 0.40, 0.55], [0, 1, 1, 0]);
-  const metricY = useTransform(scrollYProgress, [0.10, 0.25, 0.40, 0.55], [50, 0, 0, -50]);
-  const metricScale = useTransform(scrollYProgress, [0.10, 0.25], [0.9, 1]);
+  const metricOpacity = useTransform(scrollYProgress, [0.15, 0.25, 0.35, 0.45], [0, 1, 1, 0]);
+  const metricY = useTransform(scrollYProgress, [0.15, 0.25, 0.35, 0.45], [50, 0, 0, -50]);
+  const metricScale = useTransform(scrollYProgress, [0.15, 0.25], [0.9, 1]);
 
   // 2. Second Text (Study Anywhere)
-  const text2Opacity = useTransform(scrollYProgress, [0.10, 0.25, 0.40, 0.55], [0, 1, 1, 0]);
-  const text2Y = useTransform(scrollYProgress, [0.10, 0.25, 0.40, 0.55], [50, 0, 0, -50]);
+  const text2Opacity = useTransform(scrollYProgress, [0.15, 0.25, 0.35, 0.45], [0, 1, 1, 0]);
+  const text2Y = useTransform(scrollYProgress, [0.15, 0.25, 0.35, 0.45], [50, 0, 0, -50]);
   // REMOVED: text2Display toggle — caused overlap flash. Opacity alone handles visibility.
 
   // 3. Cinematic Typographic HUD (Engineer Your Acceptance)
-  const hudOpacity = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [0, 1, 1, 0]);
-  const hudY = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [50, 0, 0, -50]);
-  const hudScale = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [0.95, 1, 1, 1.05]);
+  const hudOpacity = useTransform(scrollYProgress, [0.50, 0.60, 0.80, 0.88], [0, 1, 1, 0]);
+  const hudY = useTransform(scrollYProgress, [0.50, 0.60, 0.80, 0.88], [50, 0, 0, -50]);
+  const hudScale = useTransform(scrollYProgress, [0.50, 0.60, 0.80, 0.88], [0.95, 1, 1, 1.05]);
   // REMOVED: hudDisplay toggle — caused overlap flash. Opacity alone handles visibility.
   
   // Parallax Offsets for HUD Cards
-  const hudCard1Y = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [100, 0, 0, -100]);
-  const hudCard2Y = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [180, 0, 0, -180]);
-  const hudCard3Y = useTransform(scrollYProgress, [0.45, 0.60, 0.85, 0.95], [260, 0, 0, -260]);
+  const hudCard1Y = useTransform(scrollYProgress, [0.50, 0.60, 0.80, 0.88], [100, 0, 0, -100]);
+  const hudCard2Y = useTransform(scrollYProgress, [0.50, 0.60, 0.80, 0.88], [180, 0, 0, -180]);
+  const hudCard3Y = useTransform(scrollYProgress, [0.50, 0.60, 0.80, 0.88], [260, 0, 0, -260]);
 
   // 4. Earth Zoom — gentle zoom-in over a wide range so it never looks jarring
   const earthScale = useTransform(scrollYProgress, [0.75, 1.0], [1, 1.7]);
@@ -224,8 +224,9 @@ export default function Home() {
 
           {/* 1. First Text (Learn OVERSEAS) - Upgraded Cinematic Typography */}
           <motion.div className="hero-ui container" style={{
-            position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column',
+            position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, zIndex: 10, display: 'flex', flexDirection: 'column',
             justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
+            maxWidth: '1440px', margin: '0 auto', width: '100%',
             opacity: text1Opacity, y: text1Y, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)'
           }}>
             <motion.div
@@ -321,8 +322,10 @@ export default function Home() {
           </motion.div>
 
           {/* 2. Second Text (Study Anywhere) */}
-          <motion.div className="hero-text-2" style={{
-            position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
+          <motion.div className="hero-text-2 container" style={{
+            position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, zIndex: 10, display: 'flex', flexDirection: 'column',
+            justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
+            maxWidth: '1440px', margin: '0 auto', width: '100%',
             opacity: text2Opacity, y: text2Y, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '30px' }}>
@@ -342,54 +345,60 @@ export default function Home() {
           </motion.div>
 
           {/* 3. Metrics Cards (Appear as text2 fades) */}
-          <motion.div className="metric-card-wrapper left" style={{ position: 'absolute', top: '15%', left: '5%', zIndex: 20, pointerEvents: 'none', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
-            <TiltCard innerStyle={{ display: 'flex' }}>
-              <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(125,193,177,0.3)', borderColor: 'rgba(125,193,177,0.8)' }} className="metric-card" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
-                <span className="metric-value" style={{ background: 'linear-gradient(135deg, #fff, #888)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>99%</span>
-                <span className="metric-label blue" style={{ letterSpacing: 2, fontWeight: 700 }}>Visa Success</span>
-              </motion.div>
-            </TiltCard>
-          </motion.div>
-          <motion.div className="metric-card-wrapper right" style={{ position: 'absolute', top: '12%', right: '5%', zIndex: 20, pointerEvents: 'none', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
-            <TiltCard innerStyle={{ display: 'flex' }}>
-              <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(249,212,64,0.3)', borderColor: 'rgba(249,212,64,0.8)' }} className="metric-card" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(249,212,64,0.2)', boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(249,212,64,0.06)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
-                <span className="metric-value" style={{ color: 'var(--accent-gold)' }}>200+</span>
-                <span className="metric-label gold" style={{ letterSpacing: 2, fontWeight: 700 }}>Universities</span>
-              </motion.div>
-            </TiltCard>
-          </motion.div>
-          <motion.div className="metric-card-wrapper bottom-left" style={{ position: 'absolute', bottom: '22%', left: '5%', zIndex: 20, pointerEvents: 'none', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
-            <TiltCard innerStyle={{ display: 'flex' }}>
-              <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(180,120,60,0.4)', borderColor: 'rgba(180,120,60,0.8)' }} className="metric-card copper" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(180,120,60,0.2)', boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(180,120,60,0.06)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
-                <span className="metric-value" style={{ color: 'var(--accent-copper)' }}>$10M+</span>
-                <span className="metric-label copper" style={{ letterSpacing: 2, fontWeight: 700 }}>Scholarships</span>
-              </motion.div>
-            </TiltCard>
-          </motion.div>
-          <motion.div className="metric-card-wrapper bottom-right" style={{ position: 'absolute', bottom: '15%', right: '5%', zIndex: 20, pointerEvents: 'none', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
-            <TiltCard innerStyle={{ display: 'flex' }}>
-              <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.4)' }} className="metrics-stats-bar" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px rgba(0,0,0,0.8)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
-                <div>
-                  <div className="stat-value">35</div>
-                  <div className="stat-label">Countries</div>
-                </div>
-                <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,0.1)' }} />
-                <div>
-                  <div className="stat-value">500+</div>
-                  <div className="stat-label">Universities</div>
-                </div>
-                <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,0.1)' }} />
-                <div>
-                  <div className="stat-value">8k+</div>
-                  <div className="stat-label">Programs</div>
-                </div>
-              </motion.div>
-            </TiltCard>
-          </motion.div>
+          <div className="metrics-container" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, margin: '0 auto', maxWidth: '1440px', width: '100%', pointerEvents: 'none', zIndex: 20 }}>
+            <motion.div className="metric-card-wrapper left" style={{ position: 'absolute', top: '15%', left: '5%', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
+              <TiltCard innerStyle={{ display: 'flex' }}>
+                <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(125,193,177,0.3)', borderColor: 'rgba(125,193,177,0.8)' }} className="metric-card" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
+                  <span className="metric-value" style={{ background: 'linear-gradient(135deg, #fff, #888)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>99%</span>
+                  <span className="metric-label blue" style={{ letterSpacing: 2, fontWeight: 700 }}>Visa Success</span>
+                </motion.div>
+              </TiltCard>
+            </motion.div>
+            
+            <motion.div className="metric-card-wrapper right" style={{ position: 'absolute', top: '12%', right: '5%', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
+              <TiltCard innerStyle={{ display: 'flex' }}>
+                <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(249,212,64,0.3)', borderColor: 'rgba(249,212,64,0.8)' }} className="metric-card" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(249,212,64,0.2)', boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(249,212,64,0.06)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
+                  <span className="metric-value" style={{ color: 'var(--accent-gold)' }}>200+</span>
+                  <span className="metric-label gold" style={{ letterSpacing: 2, fontWeight: 700 }}>Universities</span>
+                </motion.div>
+              </TiltCard>
+            </motion.div>
+            
+            <motion.div className="metric-card-wrapper bottom-left" style={{ position: 'absolute', bottom: '22%', left: '5%', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
+              <TiltCard innerStyle={{ display: 'flex' }}>
+                <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(180,120,60,0.4)', borderColor: 'rgba(180,120,60,0.8)' }} className="metric-card copper" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(180,120,60,0.2)', boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(180,120,60,0.06)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
+                  <span className="metric-value" style={{ color: 'var(--accent-copper)' }}>$10M+</span>
+                  <span className="metric-label copper" style={{ letterSpacing: 2, fontWeight: 700 }}>Scholarships</span>
+                </motion.div>
+              </TiltCard>
+            </motion.div>
+            
+            <motion.div className="metric-card-wrapper bottom-right" style={{ position: 'absolute', bottom: '15%', right: '5%', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
+              <TiltCard innerStyle={{ display: 'flex' }}>
+                <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.4)' }} className="metrics-stats-bar" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px rgba(0,0,0,0.8)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
+                  <div>
+                    <div className="stat-value">35</div>
+                    <div className="stat-label">Countries</div>
+                  </div>
+                  <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,0.1)' }} />
+                  <div>
+                    <div className="stat-value">500+</div>
+                    <div className="stat-label">Universities</div>
+                  </div>
+                  <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,0.1)' }} />
+                  <div>
+                    <div className="stat-value">8k+</div>
+                    <div className="stat-label">Programs</div>
+                  </div>
+                </motion.div>
+              </TiltCard>
+            </motion.div>
+          </div>
 
           {/* 3. Cinematic Typographic HUD (Proper Section Transition) */}
-          <motion.div className="hero-hud" style={{
-            position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+          <motion.div className="hero-hud container" style={{
+            position: 'absolute', top: 0, bottom: 0, left: 0, right: 0,
+            maxWidth: '1440px', margin: '0 auto', width: '100%',
             pointerEvents: 'none', zIndex: 15, display: 'flex', alignItems: 'center', justifyContent: 'center',
             opacity: hudOpacity, y: hudY, scale: hudScale,
             willChange: 'transform, opacity'
@@ -518,8 +527,8 @@ export default function Home() {
         {/* ── Content layers scrolling normally over the background ── */}
         
         {/* ACT II: Marquee + Success Wall */}
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          {/* Gradient bridge removed as requested */}
+        {/* Added 100vh padding so this content doesn't scroll up and crash into the fading Wormhole portal! */}
+        <div style={{ position: 'relative', zIndex: 2, paddingTop: '100vh' }}>
 
           <InfiniteMarquee />
           <StudentSuccessWall />

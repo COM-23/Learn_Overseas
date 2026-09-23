@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export default function AdvantageSection() {
   return (
     <div style={{
-      width: '100vw',
+      width: '100%',
       backgroundImage: `linear-gradient(to bottom, rgba(2, 2, 5, 1) 0%, rgba(2, 2, 5, 0.2) 20%, rgba(2, 2, 5, 0.4) 80%, rgba(2, 2, 5, 1) 100%), url('/dive-clouds.jpg')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',

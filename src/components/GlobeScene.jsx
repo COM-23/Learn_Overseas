@@ -207,7 +207,7 @@ export default function GlobeScene() {
               ref={globeRef}
               onGlobeReady={() => setTimeout(() => setGlobeReady(true), 0)}
               backgroundColor="rgba(0,0,0,0)"
-              globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+              globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
               bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
               atmosphereColor="rgb(125, 193, 177)"
               atmosphereAltitude={0.25}
@@ -434,7 +434,7 @@ export default function GlobeScene() {
                 boxShadow: '30px 0 60px rgba(0,0,0,0.8), inset -1px 0 0 rgba(255,255,255,0.03)',
                 display: 'flex',
                 flexDirection: 'column',
-                zIndex: 100,
+                zIndex: 100000,
                 overflowY: 'auto',
                 overflowX: 'hidden',
                 overscrollBehavior: 'contain',

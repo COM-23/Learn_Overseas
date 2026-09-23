@@ -198,7 +198,7 @@ export default function Countries() {
         <Suspense fallback={<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)' }}>Loading 3D Globe...</div>}>
           <Globe
             ref={globeRef}
-            globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+            globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
             bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
             atmosphereColor="#f9d440"
             atmosphereAltitude={0.25}
@@ -342,15 +342,27 @@ export default function Countries() {
             
             {!zoomedIn && (
               <motion.div 
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
+                style={{ position: 'absolute', bottom: 40, right: 40, zIndex: 10 }}
               >
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ width: 40, height: 40, borderRadius: '50%', border: '1px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', color: 'var(--accent-gold)' }}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div style={{ 
+                  background: 'rgba(2, 2, 5, 0.75)', 
+                  backdropFilter: 'blur(12px)', 
+                  border: '1px solid rgba(255,255,255,0.1)', 
+                  padding: '20px 28px', 
+                  borderRadius: 20, 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: 20,
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05)'
+                }}>
+                  <div style={{ width: 44, height: 44, borderRadius: '50%', border: '1px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-gold)', background: 'rgba(249,212,64,0.05)', flexShrink: 0 }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                   </div>
-                  <div style={{ fontSize: 24, fontWeight: 600, color: '#fff', fontFamily: 'var(--font-serif)', marginBottom: 8 }}>Select a destination</div>
-                  <div style={{ color: 'var(--text-secondary)', fontSize: 14 }}>Click on a golden marker or use the list to explore opportunities.</div>
+                  <div>
+                    <div style={{ fontSize: 18, fontWeight: 700, color: '#fff', fontFamily: 'var(--font-serif)', marginBottom: 4 }}>Select a destination</div>
+                    <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, letterSpacing: '0.5px' }}>Click a golden marker or use the list.</div>
+                  </div>
                 </div>
               </motion.div>
             )}
