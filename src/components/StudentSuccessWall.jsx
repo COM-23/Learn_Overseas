@@ -500,8 +500,14 @@ function GlassCarouselLoop({ activeCountryIndex }) {
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
-  const CARD_WIDTH = 340;
-  const radius = Math.round((CARD_WIDTH * TARGET_CARDS) / (2 * Math.PI)) + 80;
+  const [vpWidth, setVpWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1920);
+  useEffect(() => {
+    const onResize = () => setVpWidth(window.innerWidth);
+    window.addEventListener('resize', onResize, { passive: true });
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  const CARD_WIDTH = vpWidth < 1600 ? 240 : 340;
+  const radius = Math.round((CARD_WIDTH * TARGET_CARDS) / (2 * Math.PI)) + 60;
 
   return (
     <>

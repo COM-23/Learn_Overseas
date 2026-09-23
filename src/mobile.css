@@ -1,12 +1,23 @@
 /* ════════════════════════════════════════════════════════════
    Learn Overseas — Mobile Responsive System  (v2 — full overhaul)
    Breakpoints:
+     1600px  → laptop (glass carousel smaller)
      1024px  → tablet (header collapses)
       900px  → footer reflows
       768px  → major layout changes (main mobile target)
       640px  → small mobile fine-tuning
       480px  → extra small screens
    ════════════════════════════════════════════════════════════ */
+
+/* ── LAPTOP (1025px – 1600px) ───────────────────────────── */
+@media (min-width: 1025px) and (max-width: 1600px) {
+  /* Match the JS CARD_WIDTH reduction so cards don't overflow */
+  .glass-carousel-item {
+    width: 240px !important;
+    height: 360px !important;
+  }
+}
+
 
 /* ── PREVENT GLOBAL OVERFLOW-X ───────────────────────────── */
 @media (max-width: 1024px) {

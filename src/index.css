@@ -52,11 +52,11 @@
 
 html { 
   background: var(--bg-dark);
-  scroll-behavior: auto; /* 'smooth' fights with Framer Motion scroll tracking, causing lag */
-  font-size: clamp(9px, 0.76vw, 12px); /* ~11.2px at 1470px — matches local Safari view */
+  scroll-behavior: auto;
+  font-size: clamp(9px, 0.76vw, 12px);
   overscroll-behavior: none;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @media (max-width: 768px) {
@@ -73,7 +73,7 @@ body {
   position: relative;
   min-height: 100vh;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Global Noise Texture Overlay */

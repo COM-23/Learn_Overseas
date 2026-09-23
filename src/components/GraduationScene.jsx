@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 export default function GraduationScene() {
   const containerRef = useRef(null);
-  const videoRef     = useRef(null);
-  const durationRef  = useRef(0);
+  const videoRef = useRef(null);
+  const durationRef = useRef(0);
 
   // ── Boot: warm decoder ────────────────────────────────────
   useEffect(() => {
-    const video  = videoRef.current;
+    const video = videoRef.current;
     if (!video) return;
 
     // Capture duration once metadata arrives
@@ -49,18 +49,18 @@ export default function GraduationScene() {
   useEffect(() => {
     const onScroll = () => {
       const container = containerRef.current;
-      const video     = videoRef.current;
+      const video = videoRef.current;
       if (!container || !video || !durationRef.current) return;
 
-      const rect       = container.getBoundingClientRect();
+      const rect = container.getBoundingClientRect();
       const scrollable = container.offsetHeight - window.innerHeight; // 200vh
-      const scrolled   = Math.max(0, Math.min(scrollable, -rect.top));
-      const progress   = scrolled / scrollable;
-      const t          = progress * durationRef.current;
+      const scrolled = Math.max(0, Math.min(scrollable, -rect.top));
+      const progress = scrolled / scrollable;
+      const t = progress * durationRef.current;
 
       // Direct assignment is smoother than fastSeek for scrubbing
       if (!video.seeking) {
-        try { video.currentTime = t; } catch (_) {}
+        try { video.currentTime = t; } catch (_) { }
       }
     };
 
@@ -102,7 +102,7 @@ export default function GraduationScene() {
           }}
         >
           <source src="/graduation_scrub.mp4" type="video/mp4" />
-          <source src="/graduation.mp4"        type="video/mp4" />
+          <source src="/graduation.mp4" type="video/mp4" />
         </video>
 
         {/* Top cinematic fade */}
@@ -200,3 +200,4 @@ export default function GraduationScene() {
     </div>
   );
 }
+
