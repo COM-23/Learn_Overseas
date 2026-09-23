@@ -54,7 +54,9 @@ html {
   background: var(--bg-dark);
   scroll-behavior: auto; /* 'smooth' fights with Framer Motion scroll tracking, causing lag */
   font-size: clamp(9px, 0.76vw, 12px); /* ~11.2px at 1470px — matches local Safari view */
-  /* Prevent pull-to-refresh and overscroll bounce which cause scroll jank */
+  /* overflow-x here is safe — html is always the true viewport root,
+     so vw units stay correct and sticky positioning is never broken */
+  overflow-x: hidden;
   overscroll-behavior: none;
 }
 
@@ -71,10 +73,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   min-height: 100vh;
-  /* Prevent horizontal overflow at root level */
-  overflow-x: hidden;
-  /* Match html overscroll to prevent rubber-band lag on scroll */
-  overscroll-behavior: none;
+  /* NOTE: overflow-x:hidden is intentionally on <html>, NOT here.
+     Setting it on <body> changes the scroll container, breaks vw units
+     and breaks position:sticky on WebKit/Safari. */
 }
 
 /* Global Noise Texture Overlay */
