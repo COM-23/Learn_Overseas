@@ -56,6 +56,7 @@ html {
   font-size: clamp(9px, 0.76vw, 12px); /* ~11.2px at 1470px — matches local Safari view */
   overscroll-behavior: none;
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
@@ -72,6 +73,7 @@ body {
   position: relative;
   min-height: 100vh;
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Global Noise Texture Overlay */

@@ -116,7 +116,7 @@ const DESTINATIONS = [
    NEW: Study Destination Cards
 ══════════════════════════════════════════════════════════════ */
 function DestinationShowcase({ activeIndex, onSelectIndex }) {
-  
+
   const d = activeIndex !== null ? DESTINATIONS[activeIndex] : {
     country: 'Global Network',
     flag: '🌍',
@@ -204,7 +204,7 @@ function StatsRow() {
     target: containerRef,
     offset: ["start end", "end start"]
   });
-  
+
   // Parallax offsets for each card to create a staggered, scroll-reactive depth effect
   const y1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
   const y2 = useTransform(scrollYProgress, [0, 1], [100, -100]);
@@ -217,20 +217,20 @@ function StatsRow() {
       <div style={{ width: '100%', height: '1px', background: 'linear-gradient(90deg, transparent 0%, rgba(249,212,64,0.5) 30%, rgba(249,212,64,0.5) 70%, transparent 100%)', marginBottom: '60px' }} />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 40 }}>
         {STATS.map((stat, i) => (
-          <motion.div key={i} 
-            initial={{ opacity: 0, scale: 0.9 }} 
-            whileInView={{ opacity: 1, scale: 1 }} 
-            viewport={{ once: true, margin: '-50px' }} 
-            transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }} 
+          <motion.div key={i}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }}
             whileHover={{ scale: 1.05, boxShadow: `0 30px 60px rgba(0,0,0,0.6), 0 0 40px ${stat.color}40` }}
-            style={{ 
+            style={{
               y: transforms[i % 4],
-              textAlign: 'center', position: 'relative', padding: '40px 20px', 
-              background: 'linear-gradient(145deg, rgba(16,20,32,0.8), rgba(5,7,12,0.9))', 
-              borderRadius: 20, border: `1px solid rgba(255,255,255,0.06)`, 
-              borderTop: `1px solid rgba(255,255,255,0.12)`, 
-              boxShadow: `0 20px 40px rgba(0,0,0,0.4)`, 
-              overflow: 'hidden', cursor: 'default' 
+              textAlign: 'center', position: 'relative', padding: '40px 20px',
+              background: 'linear-gradient(145deg, rgba(16,20,32,0.8), rgba(5,7,12,0.9))',
+              borderRadius: 20, border: `1px solid rgba(255,255,255,0.06)`,
+              borderTop: `1px solid rgba(255,255,255,0.12)`,
+              boxShadow: `0 20px 40px rgba(0,0,0,0.4)`,
+              overflow: 'hidden', cursor: 'default'
             }}
           >
             <div style={{ position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)', width: 120, height: 120, background: `radial-gradient(circle, ${stat.color}25 0%, transparent 70%)`, pointerEvents: 'none' }} />
@@ -268,20 +268,20 @@ function ProcessJourney() {
           From Dream to Degree in <span style={{ color: 'transparent', WebkitTextStroke: '2px #7E57C2', textShadow: '0 0 40px rgba(126,87,194,0.4)' }}>4 Steps</span>
         </h3>
       </div>
-      
+
       {/* Horizontal Timeline Track */}
       <div className="grid-4-col" style={{ position: 'relative', width: '100%', gap: 24, padding: '20px 0' }}>
         {/* Glow Line behind cards */}
         <div style={{ position: 'absolute', top: '50%', left: '5%', right: '5%', height: 2, background: 'linear-gradient(90deg, rgba(249,212,64,0) 0%, rgba(249,212,64,0.5) 50%, rgba(125,193,177,0) 100%)', zIndex: 0, filter: 'blur(2px)' }} />
 
         {PROCESS_STEPS.map((step, i) => (
-          <motion.div 
-            key={i} 
-            initial={{ opacity: 0, x: -40 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true, margin: '-100px' }} 
-            transition={{ delay: i * 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }} 
-            whileHover={{ y: -20, scale: 1.03 }} 
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ delay: i * 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -20, scale: 1.03 }}
             style={{ flex: 1, position: 'relative', cursor: 'pointer', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}
           >
             {/* Step Node */}
@@ -295,7 +295,7 @@ function ProcessJourney() {
             <div style={{ background: 'linear-gradient(160deg, rgba(16,20,32,0.9), rgba(5,7,12,0.95))', borderRadius: 24, padding: '40px 32px', border: `1px solid rgba(255,255,255,0.05)`, borderTop: `2px solid ${step.color}50`, boxShadow: `0 30px 60px rgba(0,0,0,0.6)`, position: 'relative', overflow: 'hidden', width: '100%', boxSizing: 'border-box', textAlign: 'center', minHeight: 220, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               {/* Ambient background glow */}
               <div style={{ position: 'absolute', top: -50, left: '50%', transform: 'translateX(-50%)', width: 150, height: 150, background: `radial-gradient(circle, ${step.color}15 0%, transparent 70%)`, pointerEvents: 'none' }} />
-              
+
               <h4 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '0 0 16px 0', letterSpacing: '-0.02em' }}>{step.title}</h4>
               <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: 0 }}>{step.desc}</p>
             </div>
@@ -325,7 +325,7 @@ function CinematicHoverGallery() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
 
   return (
-    <div className="cinematic-gallery-mobile" style={{
+    <div style={{
       width: '100%',
       height: '75vh',
       minHeight: '600px',
@@ -341,7 +341,7 @@ function CinematicHoverGallery() {
       {FEATURES.map((feature, i) => {
         const isHovered = hoveredIndex === i;
         const palette = FEATURE_PALETTES[i];
-        
+
         return (
           <motion.div
             key={i}
@@ -375,19 +375,19 @@ function CinematicHoverGallery() {
             />
 
             {/* Overlays */}
-            <motion.div 
+            <motion.div
               animate={{ opacity: isHovered ? 1 : 0.8 }}
               style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.1) 100%)' }}
             />
-            <motion.div 
+            <motion.div
               animate={{ opacity: isHovered ? 0.3 : 0 }}
               style={{ position: 'absolute', inset: 0, background: `linear-gradient(45deg, ${palette.accent}, transparent)` }}
             />
 
             {/* Top Badge (Always visible, but rotates/fades based on hover) */}
             <div style={{ position: 'absolute', top: 32, left: 32, zIndex: 10 }}>
-              <motion.div 
-                animate={{ 
+              <motion.div
+                animate={{
                   opacity: isHovered ? 1 : 0.5,
                   rotate: isHovered ? 0 : -90,
                   transformOrigin: 'left top'
@@ -407,7 +407,7 @@ function CinematicHoverGallery() {
             </div>
 
             {/* Huge Vertical Number for inactive state */}
-            <motion.div 
+            <motion.div
               animate={{ opacity: isHovered ? 0 : 0.1 }}
               style={{
                 position: 'absolute', bottom: 40, left: '50%', transform: 'translateX(-50%)',
@@ -420,9 +420,9 @@ function CinematicHoverGallery() {
 
             {/* Content Container (Revealed only on hover) */}
             <motion.div
-              animate={{ 
-                opacity: isHovered ? 1 : 0, 
-                y: isHovered ? 0 : 40 
+              animate={{
+                opacity: isHovered ? 1 : 0,
+                y: isHovered ? 0 : 40
               }}
               transition={{ duration: 0.6, delay: isHovered ? 0.2 : 0, ease: [0.16, 1, 0.3, 1] }}
               style={{
@@ -443,7 +443,7 @@ function CinematicHoverGallery() {
               }}>
                 {feature.title}
               </h3>
-              
+
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 60 }}>
                 <p style={{
                   fontSize: '1.25rem',
@@ -455,7 +455,7 @@ function CinematicHoverGallery() {
                 }}>
                   {feature.desc}
                 </p>
-                
+
                 {/* Stunning Button */}
                 <div style={{
                   display: 'flex', alignItems: 'center', gap: 16,
@@ -465,8 +465,8 @@ function CinematicHoverGallery() {
                   cursor: 'pointer',
                   transition: 'background 0.3s'
                 }}
-                onMouseOver={e => e.currentTarget.style.background = `${palette.accent}20`}
-                onMouseOut={e => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}
+                  onMouseOver={e => e.currentTarget.style.background = `${palette.accent}20`}
+                  onMouseOut={e => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}
                 >
                   <span style={{ fontSize: '0.8rem', letterSpacing: 4, textTransform: 'uppercase', color: '#fff', fontWeight: 700 }}>
                     Book Free Session
@@ -485,7 +485,7 @@ function CinematicHoverGallery() {
 
 function GlassCarouselLoop({ activeCountryIndex }) {
   // Step 1: get the raw filtered list
-  let filteredStudents = activeCountryIndex !== null 
+  let filteredStudents = activeCountryIndex !== null
     ? STUDENTS.filter(s => s.country === DESTINATIONS[activeCountryIndex].flag)
     : STUDENTS;
   if (filteredStudents.length === 0) filteredStudents = STUDENTS;
@@ -505,40 +505,40 @@ function GlassCarouselLoop({ activeCountryIndex }) {
 
   return (
     <>
-      <div className="glass-carousel-wrapper" style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '2000px', overflow: 'hidden', marginTop: '-40px', zIndex: 5 }}>
-      <div className="glass-carousel-title" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: 0, pointerEvents: 'none' }}>
-        <div style={{ fontSize: 13, letterSpacing: 10, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 12 }}>The Network</div>
-        <h2 style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: 900, fontFamily: 'var(--font-sans)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'transparent', WebkitTextStroke: '2px rgba(249,212,64,0.25)', margin: 0 }}>Global Alumni</h2>
-      </div>
-      <motion.div className="glass-carousel-inner" animate={{ rotateY: [0, -360] }} transition={{ duration: 60, repeat: Infinity, ease: 'linear' }} style={{ position: 'absolute', top: '50%', left: '50%', width: 0, height: 0, transformStyle: 'preserve-3d' }}>
-        {displayStudents.map((student, i) => {
-          const angle = (360 / displayStudents.length) * i;
-          return (
-            <div className="glass-carousel-item-wrapper" key={i} style={{ position: 'absolute', top: '50%', left: '50%', transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px)`, transformStyle: 'preserve-3d' }}>
-              <div
-                className="glass-carousel-item"
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setSelectedStudent(student)}
-                style={{ width: '340px', height: '480px', borderRadius: '24px', position: 'relative', overflow: 'hidden', border: `1px solid ${hoveredIndex === i ? student.color : 'rgba(255,255,255,0.1)'}`, boxShadow: hoveredIndex === i ? `0 40px 80px rgba(0,0,0,0.9), 0 0 40px ${student.color}40` : `0 40px 80px rgba(0,0,0,0.9)`, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transform: 'rotateX(-5deg)', background: '#020205', cursor: 'pointer', transition: 'box-shadow 0.5s, border-color 0.5s' }}>
-                <img src={student.img} alt={student.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)', transform: hoveredIndex === i ? 'scale(1.05)' : 'scale(1)' }} />
-                <div style={{ position: 'absolute', inset: 0, background: '#000', opacity: hoveredIndex === i ? 0 : 0.5, transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)', pointerEvents: 'none', zIndex: 1 }} />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '65%', background: 'linear-gradient(to top, rgba(5,7,12,0.97) 0%, transparent 100%)', zIndex: 1, pointerEvents: 'none' }} />
-                <div style={{ position: 'relative', zIndex: 2, padding: '32px 24px', textAlign: 'center', pointerEvents: 'none' }}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>{student.country}</div>
-                  <h4 style={{ fontSize: '1.6rem', color: '#fff', margin: '0 0 4px 0', fontFamily: 'var(--font-serif)' }}>{student.name}</h4>
-                  <div style={{ fontSize: '0.85rem', letterSpacing: 2, textTransform: 'uppercase', color: student.color, fontWeight: 800, margin: '0 0 12px 0' }}>{student.uni}</div>
-                  <div style={{ width: '60%', height: '1px', background: `linear-gradient(90deg, transparent, ${student.color}, transparent)`, margin: '0 auto 12px' }} />
-                  <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.75)' }}>{student.course}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', marginTop: 6 }}>Class of {student.year}</div>
+      <div className="glass-carousel-wrapper" style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '2000px', overflow: 'hidden', marginTop: '-40px', zIndex: 5, contain: 'paint', clipPath: 'inset(0)' }}>
+        <div className="glass-carousel-title" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: 0, pointerEvents: 'none' }}>
+          <div style={{ fontSize: 13, letterSpacing: 10, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 12 }}>The Network</div>
+          <h2 style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: 900, fontFamily: 'var(--font-sans)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'transparent', WebkitTextStroke: '2px rgba(249,212,64,0.25)', margin: 0 }}>Global Alumni</h2>
+        </div>
+        <motion.div className="glass-carousel-inner" animate={{ rotateY: [0, -360] }} transition={{ duration: 60, repeat: Infinity, ease: 'linear' }} style={{ position: 'absolute', top: '50%', left: '50%', width: 0, height: 0, transformStyle: 'preserve-3d' }}>
+          {displayStudents.map((student, i) => {
+            const angle = (360 / displayStudents.length) * i;
+            return (
+              <div className="glass-carousel-item-wrapper" key={i} style={{ position: 'absolute', top: '50%', left: '50%', transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px)`, transformStyle: 'preserve-3d' }}>
+                <div
+                  className="glass-carousel-item"
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => setSelectedStudent(student)}
+                  style={{ width: '340px', height: '480px', borderRadius: '24px', position: 'relative', overflow: 'hidden', border: `1px solid ${hoveredIndex === i ? student.color : 'rgba(255,255,255,0.1)'}`, boxShadow: hoveredIndex === i ? `0 40px 80px rgba(0,0,0,0.9), 0 0 40px ${student.color}40` : `0 40px 80px rgba(0,0,0,0.9)`, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transform: 'rotateX(-5deg)', background: '#020205', cursor: 'pointer', transition: 'box-shadow 0.5s, border-color 0.5s' }}>
+                  <img src={student.img} alt={student.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)', transform: hoveredIndex === i ? 'scale(1.05)' : 'scale(1)' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: '#000', opacity: hoveredIndex === i ? 0 : 0.5, transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)', pointerEvents: 'none', zIndex: 1 }} />
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '65%', background: 'linear-gradient(to top, rgba(5,7,12,0.97) 0%, transparent 100%)', zIndex: 1, pointerEvents: 'none' }} />
+                  <div style={{ position: 'relative', zIndex: 2, padding: '32px 24px', textAlign: 'center', pointerEvents: 'none' }}>
+                    <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>{student.country}</div>
+                    <h4 style={{ fontSize: '1.6rem', color: '#fff', margin: '0 0 4px 0', fontFamily: 'var(--font-serif)' }}>{student.name}</h4>
+                    <div style={{ fontSize: '0.85rem', letterSpacing: 2, textTransform: 'uppercase', color: student.color, fontWeight: 800, margin: '0 0 12px 0' }}>{student.uni}</div>
+                    <div style={{ width: '60%', height: '1px', background: `linear-gradient(90deg, transparent, ${student.color}, transparent)`, margin: '0 auto 12px' }} />
+                    <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.75)' }}>{student.course}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', marginTop: 6 }}>Class of {student.year}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </motion.div>
-      <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '20vw', background: 'linear-gradient(to right, #020205 0%, transparent 100%)', pointerEvents: 'none', zIndex: 10 }} />
-      <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '20vw', background: 'linear-gradient(to left, #020205 0%, transparent 100%)', pointerEvents: 'none', zIndex: 10 }} />
+            );
+          })}
+        </motion.div>
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '20vw', background: 'linear-gradient(to right, #020205 0%, transparent 100%)', pointerEvents: 'none', zIndex: 10 }} />
+        <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '20vw', background: 'linear-gradient(to left, #020205 0%, transparent 100%)', pointerEvents: 'none', zIndex: 10 }} />
       </div>
 
       {/* Student Detail Modal */}
@@ -623,13 +623,13 @@ export default function StudentSuccessWall() {
     <section ref={containerRef} onMouseMove={(e) => { mouseX.set(e.clientX); mouseY.set(e.clientY); }}
       style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '200px', background: 'transparent', overflow: 'hidden', isolation: 'isolate' }}>
 
-      
+
       {/* Cinematic Vignette removed to eliminate the seam with InfiniteMarquee */}
 
       {/* Dynamic Cursor Spotlight */}
       <motion.div style={{ position: 'fixed', top: 0, left: 0, x: useTransform(mouseX, v => v - 350), y: useTransform(mouseY, v => v - 350), width: 700, height: 700, background: 'radial-gradient(circle, rgba(249,212,64,0.06) 0%, transparent 60%)', pointerEvents: 'none', zIndex: 3 }} />
 
-      
+
 
       {/* Background Watermark */}
       <motion.div animate={{ x: ['0%', '-50%'] }} transition={{ duration: 120, repeat: Infinity, ease: 'linear' }} style={{ position: 'absolute', top: '8%', left: 0, whiteSpace: 'nowrap', zIndex: 0, pointerEvents: 'none', display: 'flex' }}>
