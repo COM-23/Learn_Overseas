@@ -157,7 +157,7 @@ function DestinationShowcase({ activeIndex, onSelectIndex }) {
         <AnimatePresence mode="wait">
           <motion.div key={activeIndex} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{ borderRadius: 24, overflow: 'hidden', position: 'relative', border: `1px solid ${d.color}30`, boxShadow: `0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)` }}>
-            <img src={d.img} alt={d.country} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.35) saturate(0.7)' }} />
+            <img src={d.img} alt={d.country} width={800} height={1000} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.35) saturate(0.7)' }} />
             <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(135deg, ${d.color}20 0%, transparent 50%), linear-gradient(to top, rgba(5,7,12,0.95) 0%, transparent 60%)` }} />
             <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(135deg, ${d.color}20 0%, transparent 50%), linear-gradient(to top, rgba(5,7,12,0.95) 0%, transparent 60%)` }} />
             <div style={{ position: 'relative', zIndex: 2, padding: '48px 40px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
@@ -527,7 +527,7 @@ function GlassCarouselLoop({ activeCountryIndex }) {
                   onMouseLeave={() => setHoveredIndex(null)}
                   onClick={() => setSelectedStudent(student)}
                   style={{ width: '340px', height: '480px', borderRadius: '24px', position: 'relative', overflow: 'hidden', border: `1px solid ${hoveredIndex === i ? student.color : 'rgba(255,255,255,0.1)'}`, boxShadow: hoveredIndex === i ? `0 40px 80px rgba(0,0,0,0.9), 0 0 40px ${student.color}40` : `0 40px 80px rgba(0,0,0,0.9)`, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', transform: 'rotateX(-5deg)', background: '#020205', cursor: 'pointer', transition: 'box-shadow 0.5s, border-color 0.5s' }}>
-                  <img src={student.img} alt={student.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)', transform: hoveredIndex === i ? 'scale(1.05)' : 'scale(1)' }} />
+                  <img src={student.img} alt={student.name} width={400} height={400} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)', transform: hoveredIndex === i ? 'scale(1.05)' : 'scale(1)' }} />
                   <div style={{ position: 'absolute', inset: 0, background: '#000', opacity: hoveredIndex === i ? 0 : 0.5, transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)', pointerEvents: 'none', zIndex: 1 }} />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '65%', background: 'linear-gradient(to top, rgba(5,7,12,0.97) 0%, transparent 100%)', zIndex: 1, pointerEvents: 'none' }} />
                   <div style={{ position: 'relative', zIndex: 2, padding: '32px 24px', textAlign: 'center', pointerEvents: 'none' }}>
@@ -567,7 +567,7 @@ function GlassCarouselLoop({ activeCountryIndex }) {
             >
               {/* Hero image */}
               <div style={{ position: 'relative', height: 300, overflow: 'hidden' }}>
-                <img src={selectedStudent.img} alt={selectedStudent.name} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)' }} />
+                <img src={selectedStudent.img} alt={selectedStudent.name} width={800} height={1000} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)' }} />
                 <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent 40%, rgba(4,5,10,0.98) 100%)` }} />
                 {/* Close button */}
                 <button onClick={() => setSelectedStudent(null)} style={{ position: 'absolute', top: 16, right: 16, width: 36, height: 36, borderRadius: '50%', background: 'rgba(4,5,10,0.8)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>

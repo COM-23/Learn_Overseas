@@ -257,7 +257,7 @@ export default function GlobeScene() {
                         border: 1px solid rgba(255,255,255,0.2);
                         flex-shrink: 0;
                       ">
-                        <img src="https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png" alt="${d.country}" style="height: 100%; width: auto; min-width: 100%; object-fit: cover;" />
+                        <img src="https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png" alt="${d.country}" width="40" height="27" style="height: 100%; width: auto; min-width: 100%; object-fit: cover;" />
                       </div>
                       <!-- Route Code -->
                       <span style="
@@ -374,7 +374,7 @@ export default function GlobeScene() {
                           border: '1px solid rgba(255,255,255,0.2)',
                           flexShrink: 0
                         }}>
-                          <img src={`https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png`} alt={d.country} style={{ height: '100%', width: 'auto', minWidth: '100%', objectFit: 'cover' }} />
+                          <img src={`https://flagcdn.com/w40/${d.iso2.toLowerCase()}.png`} alt={d.country} width={40} height={27} style={{ height: '100%', width: 'auto', minWidth: '100%', objectFit: 'cover' }} />
                         </div>
                         <span style={{
                           color: '#fff',
@@ -495,7 +495,7 @@ export default function GlobeScene() {
                     initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', damping: 15, delay: 0.1 }}
                     style={{ position: 'relative', flexShrink: 0, width: '60px', height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'rgba(255,255,255,0.05)', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)' }}
                   >
-                    <img src={`https://flagcdn.com/w80/${selectedCountry.iso2.toLowerCase()}.png`} alt={selectedCountry.country} style={{ width: '36px', height: 'auto', borderRadius: '4px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }} />
+                    <img src={`https://flagcdn.com/w80/${selectedCountry.iso2.toLowerCase()}.png`} alt={selectedCountry.country} width={80} height={53} style={{ width: '36px', height: 'auto', borderRadius: '4px', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }} />
                     <div style={{ position: 'absolute', inset: -10, background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)', zIndex: -1, borderRadius: '50%' }} />
                   </motion.div>
                   <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
