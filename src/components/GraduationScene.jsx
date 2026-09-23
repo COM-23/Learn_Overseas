@@ -95,10 +95,12 @@ export default function GraduationScene() {
           disablePictureInPicture
           style={{
             position: 'absolute',
-            top: '-3%', left: '-3%',
-            width: '106%', height: '106%',
+            inset: 0,
+            width: '100%',
+            height: '100%',
             objectFit: 'cover',
             display: 'block',
+            transform: 'scale(1.05)',
           }}
         >
           <source src="/Graduationcap.mp4" type="video/mp4" />
