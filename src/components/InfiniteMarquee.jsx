@@ -22,7 +22,7 @@ const alumniText = "ALUMNI NETWORK • GLOBAL REACH • ELITE PLACEMENT • ";
 export default function InfiniteMarquee() {
   return (
     <div style={{
-      position: 'relative', width: '100%', overflowX: 'clip', overflowY: 'visible',
+      position: 'relative', width: '100%', overflowX: 'hidden', overflowY: 'visible',
       padding: '40px 0', background: 'transparent', zIndex: 10,
     }}>
       <style>

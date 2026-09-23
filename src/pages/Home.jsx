@@ -194,7 +194,7 @@ export default function Home() {
 
         {/* Sticky wrapper stays fixed while the user scrolls through the 300vh. */}
         <motion.div className="home-hero-sticky" style={{
-          position: 'sticky', top: 0, width: '100%', height: '100vh', overflow: 'hidden',
+          position: 'sticky', top: 0, width: '100%', height: '100lvh', overflow: 'hidden',
           background: 'radial-gradient(ellipse at top, #0c1220 0%, #020205 70%)',
           opacity: sceneOpacity,
           pointerEvents: scenePointerEvents,
@@ -217,7 +217,8 @@ export default function Home() {
             opacity: earthExitOpacity,
             scale: earthScale,
             pointerEvents: globePointerEvents,
-            willChange: 'opacity, transform'
+            willChange: 'opacity, transform',
+            touchAction: 'pan-y'
           }}>
             <GlobeScene />
           </motion.div>
@@ -472,7 +473,7 @@ export default function Home() {
             opacity: gatewayOpacity, scale: gatewayScale, willChange: 'transform, opacity'
           }}>
             <div style={{
-              width: '100%', height: '100vh',
+              width: '100%', height: '100lvh',
               background: 'radial-gradient(circle at center, rgba(249,212,64,0.3) 0%, rgba(125,193,177,0.1) 40%, transparent 70%)',
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             }}>
@@ -519,7 +520,7 @@ export default function Home() {
            THE FINAL JOURNEY WRAPPER
            (Act II, Act III, Act IV)
       ══════════════════════════════════════════════════════════ */}
-      <div className="final-journey-wrapper" ref={finalJourneyRef} style={{ position: 'relative', zIndex: 1, marginTop: '-100vh', background: 'transparent' }}>
+      <div className="final-journey-wrapper" ref={finalJourneyRef} style={{ position: 'relative', zIndex: 1, marginTop: '-100lvh', background: 'transparent' }}>
         
         {/* The continuous sticky animated background */}
         <JourneyBackground scrollYProgress={journeyScroll} />
@@ -553,7 +554,7 @@ export default function Home() {
         {/* ACT IV: The Climax / Call to Action */}
         <div style={{
           position: 'relative', zIndex: 2,
-          minHeight: '100vh', display: 'flex', flexDirection: 'column',
+          minHeight: '100lvh', display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center', textAlign: 'center',
           overflow: 'hidden'
         }}>

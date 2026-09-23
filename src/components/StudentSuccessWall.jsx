@@ -511,7 +511,7 @@ function GlassCarouselLoop({ activeCountryIndex }) {
 
   return (
     <>
-      <div className="glass-carousel-wrapper" style={{ position: 'relative', width: '100%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '2000px', overflow: 'hidden', marginTop: '-40px', zIndex: 5, isolation: 'isolate', transform: 'translateZ(0)', WebkitTransform: 'translateZ(0)' }}>
+      <div className="glass-carousel-wrapper" style={{ position: 'relative', width: '100%', height: '100lvh', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '2000px', overflow: 'hidden', marginTop: '-40px', zIndex: 5, isolation: 'isolate', transform: 'translateZ(0)', WebkitTransform: 'translateZ(0)' }}>
         <div className="glass-carousel-title" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', zIndex: 0, pointerEvents: 'none' }}>
           <div style={{ fontSize: 13, letterSpacing: 10, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 12 }}>The Network</div>
           <h2 style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: 900, fontFamily: 'var(--font-sans)', letterSpacing: '0.05em', textTransform: 'uppercase', color: 'transparent', WebkitTextStroke: '2px rgba(249,212,64,0.25)', margin: 0 }}>Global Alumni</h2>

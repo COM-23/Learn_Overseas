@@ -54,7 +54,6 @@ html {
   background: var(--bg-dark);
   scroll-behavior: auto;
   font-size: clamp(9px, 0.76vw, 12px);
-  overscroll-behavior: none;
   max-width: 100%;
   overflow-x: clip;
 }

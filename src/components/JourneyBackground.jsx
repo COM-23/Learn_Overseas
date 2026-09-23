@@ -47,7 +47,7 @@ export default function JourneyBackground({ scrollYProgress }) {
 
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
-      <div style={{ position: 'sticky', top: 0, width: '100%', height: '100vh', overflow: 'hidden', background: '#020205' }}>
+      <div style={{ position: 'sticky', top: 0, width: '100%', height: '100lvh', overflow: 'hidden', background: '#020205' }}>
 
         {/* ── Smooth crossfade slideshow ── */}
         {/* Layer 1 — previous image stays fully opaque so there's never a black flash */}
