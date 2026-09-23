@@ -791,10 +791,12 @@
     height: 100dvh !important;
     height: -webkit-fill-available !important;
   }
-  .home-hero-container {
-    /* Prevent horizontal bleed */
-    overflow-x: hidden !important;
-  }
+  /* NOTE: overflow-x MUST NOT be set on .home-hero-container.
+     It is a direct ancestor of position:sticky (.home-hero-sticky).
+     Any overflow value other than visible on a sticky ancestor
+     silently breaks sticky — the element stops sticking and the
+     entire scroll-driven animation collapses. */
+
   /* Globe canvas: allow native vertical scroll to pass through WebGL canvas on touch */
   .home-globe-wrapper {
     touch-action: pan-y !important;
