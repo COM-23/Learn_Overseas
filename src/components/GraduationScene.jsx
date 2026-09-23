@@ -101,8 +101,7 @@ export default function GraduationScene() {
             display: 'block',
           }}
         >
-          <source src="/graduation_scrub.mp4" type="video/mp4" />
-          <source src="/graduation.mp4" type="video/mp4" />
+          <source src="/Graduationcap.mp4" type="video/mp4" />
         </video>
 
         {/* Top cinematic fade */}
