@@ -166,7 +166,7 @@ function UniversitiesDropdown({ isActive }) {
             letterSpacing: 2,
             cursor: 'pointer',
             overflow: 'hidden',
-            
+
           }}
         >
           {/* Unique animated border effect */}
@@ -233,7 +233,7 @@ export default function Header() {
         }}
       >
         <Link to="/" style={{ display: 'flex', alignItems: 'center', marginRight: 'auto', textDecoration: 'none' }}>
-          <img src="/stencil-logo.png" alt="Learn Overseas" style={{ height: scrolled ? 54 : 80, width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease' }} />
+          <img src="/stencil-logo.png" alt="Learn Overseas" width={161} height={85} style={{ height: scrolled ? 54 : 80, width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease' }} />
         </Link>
 
         <nav style={{ display: 'flex', gap: 8, alignItems: 'center' }} className="hide-mobile">
@@ -288,7 +288,7 @@ export default function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             style={{
-              position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh',
+              position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
               background: 'rgb(2,2,5)',
               display: 'flex', flexDirection: 'column',
               alignItems: 'center', justifyContent: 'center', gap: 16,
@@ -388,11 +388,11 @@ export default function Header() {
       {/* Basic media query for the hide-mobile/show-mobile classes */}
       <style dangerouslySetInnerHTML={{
         __html: `
-        @media (max-width: 1200px) {
+        @media (max-width: 1024px) {
           .hide-mobile { display: none !important; }
           .show-mobile { display: flex !important; align-items: center; justify-content: center; }
         }
-        @media (min-width: 1201px) {
+        @media (min-width: 1025px) {
           .show-mobile { display: none !important; }
         }
       `}} />

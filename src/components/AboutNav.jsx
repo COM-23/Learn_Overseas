@@ -30,7 +30,7 @@ export default function AboutNav() {
       }}
     >
       <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
-        <img src="/stencil-logo.png" alt="Learn Overseas" width="121" height="64" width="auto" style={{ height: 36 }} />
+        <img src="/stencil-logo.png" alt="Learn Overseas" width="121" height="64" style={{ height: 36, width: 'auto' }} />
       </Link>
 
       <div className="about-nav-links" style={{ display: 'flex', gap: 10, alignItems: 'center' }}>

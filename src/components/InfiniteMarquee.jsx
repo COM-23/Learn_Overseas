@@ -95,6 +95,8 @@ export default function InfiniteMarquee() {
                 <img
                   src={uni.logo}
                   alt={uni.name}
+                  width={60}
+                  height={60}
                   style={{
                     height: '60px',
                     width: 'auto',
