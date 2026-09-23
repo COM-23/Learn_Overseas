@@ -9,36 +9,48 @@ import { DESTINATIONS } from '../data/destinations.js';
 import { useInView } from 'framer-motion';
 
 function LivingStarCanvas() {
-  const [layers, setLayers] = useState(null);
+  const canvas1 = useRef(null);
+  const canvas2 = useRef(null);
+  const canvas3 = useRef(null);
 
   useEffect(() => {
-    const generateShadows = (count, size, baseOpacity) => {
-      let shadows = [];
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    
+    const drawStars = (canvas, count, size, baseOpacity) => {
+      if (!canvas) return;
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = '#ffffff';
       for (let i = 0; i < count; i++) {
         const x = Math.floor(Math.random() * w);
         const y = Math.floor(Math.random() * h);
-        const opacity = baseOpacity + (Math.random() * 0.4);
-        shadows.push(`${x}px ${y}px 0 ${size}px rgba(255, 255, 255, ${opacity.toFixed(2)})`);
+        ctx.globalAlpha = baseOpacity + (Math.random() * 0.4);
+        ctx.fillRect(x, y, size, size);
       }
-      return shadows.join(', ');
     };
 
-    setLayers({
-      small: generateShadows(250, 0.5, 0.2),
-      medium: generateShadows(88, 1, 0.3),
-      hero: generateShadows(12, 1.5, 0.5)
-    });
+    drawStars(canvas1.current, 250, 1.2, 0.2); // small (1.2px avoids subpixel blurring)
+    drawStars(canvas2.current, 88, 2, 0.3);    // medium
+    drawStars(canvas3.current, 12, 3, 0.5);    // hero
+    
+    // Optional: handle resize
+    const handleResize = () => {
+      drawStars(canvas1.current, 250, 1.2, 0.2);
+      drawStars(canvas2.current, 88, 2, 0.3);
+      drawStars(canvas3.current, 12, 3, 0.5);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (!layers) return null;
-
   return (
-    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0, pointerEvents: 'none' }}>
-      <div style={{ width: 1, height: 1, boxShadow: layers.small, animation: 'twinkleCSS 3s infinite alternate ease-in-out', willChange: 'opacity' }} />
-      <div style={{ width: 1, height: 1, boxShadow: layers.medium, animation: 'twinkleCSS 4s infinite alternate-reverse ease-in-out', willChange: 'opacity' }} />
-      <div style={{ width: 1, height: 1, boxShadow: layers.hero, animation: 'twinkleCSS 5s infinite alternate ease-in-out', willChange: 'opacity' }} />
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0, pointerEvents: 'none', contain: 'strict' }}>
+      <canvas ref={canvas1} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', animation: 'twinkleCSS 3s infinite alternate ease-in-out', willChange: 'opacity' }} />
+      <canvas ref={canvas2} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', animation: 'twinkleCSS 4s infinite alternate-reverse ease-in-out', willChange: 'opacity' }} />
+      <canvas ref={canvas3} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', animation: 'twinkleCSS 5s infinite alternate ease-in-out', willChange: 'opacity' }} />
       <style>{`
         @keyframes twinkleCSS {
           0% { opacity: 0.3; }
