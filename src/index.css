@@ -54,9 +54,10 @@ html {
   background: var(--bg-dark);
   scroll-behavior: auto; /* 'smooth' fights with Framer Motion scroll tracking, causing lag */
   font-size: clamp(9px, 0.76vw, 12px); /* ~11.2px at 1470px — matches local Safari view */
-  /* overflow-x here is safe — html is always the true viewport root,
-     so vw units stay correct and sticky positioning is never broken */
-  overflow-x: hidden;
+  /* overflow-x: clip (NOT hidden!) — clips horizontal bleed visually
+     without creating a scroll container or blocking window.scrollY / scroll events.
+     'hidden' on html kills all page scrolling; 'clip' is the safe modern alternative. */
+  overflow-x: clip;
   overscroll-behavior: none;
 }
 
