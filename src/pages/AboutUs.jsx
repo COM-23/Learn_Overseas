@@ -36,7 +36,7 @@ function ParallaxHero() {
   const textOpacity = useTransform(smooth, [0, 0.5, 0.85], [1, 1, 0]);
 
   return (
-    <div className="about-hero-container" ref={heroRef} style={{ position: 'relative', height: '130vh', overflow: 'hidden' }}>
+    <div className="about-hero-container" ref={heroRef} style={{ position: 'relative', height: '130vh', overflow: 'clip' }}>
 
       {/* Sticky viewport */}
       <div className="about-hero-sticky" style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
