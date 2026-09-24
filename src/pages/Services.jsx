@@ -88,10 +88,10 @@ export default function Services() {
   const maxScroll = trackWidth > viewportWidth ? (trackWidth - viewportWidth) : 0;
   const x = useTransform(scrollYProgress, [0, 0.85], [0, maxScroll]);
 
-  // Plane animation (from right to left) - Slower so it stays visible while cards are scrolling
-  const planeX = useTransform(scrollYProgress, [0, 1], ['100vw', '-50vw']);
-  const planeY = useTransform(scrollYProgress, [0, 1], ['15%', '35%']);
-  const planeOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0]);
+  // Plane animation (from right to left)
+  const planeX = useTransform(scrollYProgress, [0, 0.85], ['110vw', '-110vw']);
+  const planeY = useTransform(scrollYProgress, [0, 1], ['5%', '15%']); // Moved higher so it doesn't overlap cards
+  const planeOpacity = useTransform(scrollYProgress, [0.75, 0.85], [1, 0]);
 
   const [planeFacingLeft, setPlaneFacingLeft] = useState(true);
 
@@ -143,7 +143,7 @@ export default function Services() {
             top: 0, left: 0,
             x: planeX,
             y: planeY,
-            zIndex: 10,
+            zIndex: 1,
             pointerEvents: 'none',
             opacity: planeOpacity
           }}
