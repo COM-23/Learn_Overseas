@@ -198,6 +198,13 @@ export default function Header() {
 
   // Track scroll direction for hiding/showing header
   const [hidden, setHidden] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 50);
@@ -226,7 +233,7 @@ export default function Header() {
           height: scrolled ? 72 : 96,
           display: 'flex',
           alignItems: 'center',
-          padding: scrolled ? (window.innerWidth < 768 ? '0 16px' : '0 32px') : '0 5vw',
+          padding: scrolled ? (isMobile ? '0 16px' : '0 32px') : '0 5vw',
           background: scrolled ? 'rgba(5, 8, 12, 0.7)' : 'transparent',
           border: scrolled ? `1px solid rgba(255,255,255,0.08)` : '1px solid transparent',
           boxShadow: scrolled ? '0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)' : 'none'

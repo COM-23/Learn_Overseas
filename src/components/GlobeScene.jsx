@@ -465,7 +465,7 @@ export default function GlobeScene() {
               />
 
               {/* X Close button — top right, no overlap */}
-              <div style={{ padding: '40px 32px 0', display: 'flex', justifyContent: 'flex-end', position: 'relative', zIndex: 10 }}>
+              <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 50 }}>
                 <motion.button 
                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.12)' }}
                   whileTap={{ scale: 0.9 }}
@@ -489,7 +489,7 @@ export default function GlobeScene() {
               </div>
 
               {/* Header / Flag */}
-              <div style={{ padding: '20px 30px 10px', position: 'relative', zIndex: 10 }}>
+              <div style={{ padding: '40px 30px 10px', position: 'relative', zIndex: 10 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
                   <motion.div 
                     initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', damping: 15, delay: 0.1 }}
@@ -505,11 +505,10 @@ export default function GlobeScene() {
                 </div>
                 <motion.h2 
                   initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}
-                  style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontFamily: 'var(--font-serif)', color: '#fff', margin: '0 0 10px 0', lineHeight: 1.1, background: 'linear-gradient(135deg, #fff 0%, #aaa 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }}
+                  style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontFamily: 'var(--font-serif)', color: '#fff', margin: '0', paddingBottom: '0.1em', lineHeight: 1.2, background: 'linear-gradient(135deg, #fff 0%, #aaa 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.3))' }}
                 >
                   {selectedCountry.country}
                 </motion.h2>
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} style={{ color: 'rgba(255,255,255,0.6)', margin: 0, fontSize: '0.95rem', letterSpacing: '0.5px' }}>From Bengaluru, India</motion.p>
               </div>
 
               {/* Metrics Grid */}

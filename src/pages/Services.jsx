@@ -89,10 +89,9 @@ export default function Services() {
   const x = useTransform(scrollYProgress, [0, 0.85], [0, maxScroll]);
 
   // Plane animation (from right to left)
-  // Adjusted so it doesn't leave the screen before the content is finished scrolling
-  const planeX = useTransform(scrollYProgress, [0, 1.0], ['100vw', '-20vw']);
+  const planeX = useTransform(scrollYProgress, [0, 0.85], ['110vw', '-110vw']);
   const planeY = useTransform(scrollYProgress, [0, 1], ['15%', '35%']);
-  const planeOpacity = useTransform(scrollYProgress, [0.95, 1.0], [1, 0]);
+  const planeOpacity = useTransform(scrollYProgress, [0.75, 0.85], [1, 0]);
 
   const [planeFacingLeft, setPlaneFacingLeft] = useState(true);
 
@@ -109,7 +108,7 @@ export default function Services() {
 
   return (
     <section ref={containerRef} style={{ background: '#020205', height: '400vh', position: 'relative' }}>
-      
+
       <style>{`
         @keyframes pulseRotate1 {
           0% { transform: scale(1) rotate(0deg); }
@@ -122,7 +121,7 @@ export default function Services() {
           100% { transform: scale(1) rotate(-90deg); }
         }
       `}</style>
-      
+
       <div
         style={{ position: 'fixed', top: '-10%', left: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(125, 193, 177, 0.06) 0%, transparent 60%)', pointerEvents: 'none', zIndex: 0, animation: 'pulseRotate1 25s linear infinite' }}
       />
@@ -131,7 +130,7 @@ export default function Services() {
       />
 
       <div className="services-sticky" style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        
+
         {/* Background grain/texture and Country Design */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=2560)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.04, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08, filter: 'invert(1)', pointerEvents: 'none' }} />
@@ -168,7 +167,7 @@ export default function Services() {
             x,
             display: 'flex',
             width: 'max-content',
-            gap: window.innerWidth < 768 ? 20 : 40,
+            gap: viewportWidth < 768 ? 20 : 40,
             paddingLeft: '10vw',
             paddingRight: '10vw',
             alignItems: 'center',
@@ -178,7 +177,7 @@ export default function Services() {
           }}
         >
           {/* Final CTA Card (Now on the far left) */}
-          <div style={{ width: 'clamp(280px, 85vw, 400px)', height: 'clamp(500px, 80vh, 620px)', flexShrink: 0, padding: window.innerWidth < 768 ? '10px' : '20px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: 'clamp(280px, 85vw, 400px)', height: 'clamp(500px, 80vh, 620px)', flexShrink: 0, padding: viewportWidth < 768 ? '10px' : '20px', display: 'flex', alignItems: 'center' }}>
             <div className="glass-panel" style={{ width: '100%', padding: '40px 20px', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontFamily: 'var(--font-serif)', color: '#fff', marginBottom: 16 }}>Ready to take off?</h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: 30, fontSize: '0.9rem' }}>Book a free strategy session with our senior counsellors.</p>
@@ -188,7 +187,7 @@ export default function Services() {
 
           {/* Map services in reverse */}
           {[...SERVICES].reverse().map((svc, i) => (
-            <div key={svc.id} style={{ width: 'clamp(280px, 85vw, 400px)', height: 'clamp(500px, 80vh, 620px)', flexShrink: 0, padding: window.innerWidth < 768 ? '10px' : '20px' }}>
+            <div key={svc.id} style={{ width: 'clamp(280px, 85vw, 400px)', height: 'clamp(500px, 80vh, 620px)', flexShrink: 0, padding: viewportWidth < 768 ? '10px' : '20px' }}>
               <ServiceCard svc={svc} index={i} onClick={(service) => navigate(`/services/${service.id}`)} />
             </div>
           ))}

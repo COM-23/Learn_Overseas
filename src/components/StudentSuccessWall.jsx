@@ -620,10 +620,8 @@ function GlassCarouselLoop({ activeCountryIndex }) {
 export default function StudentSuccessWall() {
   const [activeCountryIndex, setActiveCountryIndex] = useState(null);
   const containerRef = useRef(null);
-  const mouseX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 500);
-  const mouseY = useMotionValue(typeof window !== 'undefined' ? window.innerHeight / 2 : 400);
-  const w = typeof window !== 'undefined' ? window.innerWidth : 1000;
-  const h = typeof window !== 'undefined' ? window.innerHeight : 800;
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   return (
     <section ref={containerRef} onMouseMove={(e) => { mouseX.set(e.clientX); mouseY.set(e.clientY); }}

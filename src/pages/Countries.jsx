@@ -346,8 +346,7 @@ export default function Countries() {
                 style={{ position: 'absolute', bottom: 40, right: 0, zIndex: 10 }}
               >
                 <div style={{ 
-                  background: 'rgba(2, 2, 5, 0.75)', 
-                  backdropFilter: 'blur(12px)', 
+                  background: 'rgba(2, 2, 5, 0.95)', 
                   border: '1px solid rgba(255,255,255,0.1)', 
                   padding: '20px 28px', 
                   borderRadius: 20, 

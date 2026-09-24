@@ -81,8 +81,7 @@ export default function MobileHome() {
               padding: '20px',
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
-              backdropFilter: 'blur(10px)'
+              alignItems: 'center'
             }}
           >
             <span style={{ fontSize: '2.5rem', color: 'var(--accent-gold)', fontWeight: 800 }}>{stat.v}</span>

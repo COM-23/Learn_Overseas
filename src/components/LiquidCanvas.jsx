@@ -3,8 +3,8 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 export default function LiquidCanvas() {
   // Use MotionValues instead of React state for mouse tracking to eliminate re-renders on mousemove
-  const mouseX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
-  const mouseY = useMotionValue(typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   useEffect(() => {
     // High performance mouse tracking that bypasses React render cycle
