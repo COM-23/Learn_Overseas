@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
-// Premium Unsplash campus images — ZERO watermarks, ZERO text
+// Premium Unsplash campus images — ZERO watermarks, ZERO text (Optimized for LCP: WebP, lower res, high compression)
 const IMGS = [
-  'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&q=80&w=1600', // Beautiful aerial campus
-  'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=1600', // Students studying
-  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1600', // Team collaboration
-  'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1600', // Airplane wing over clouds
+  'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&q=60&w=1080&fm=webp', // Beautiful aerial campus
+  'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=60&w=1080&fm=webp', // Students studying
+  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=60&w=1080&fm=webp', // Team collaboration
+  'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=60&w=1080&fm=webp', // Airplane wing over clouds
 ];
 
 export default function CinematicHero() {
@@ -49,24 +49,24 @@ export default function CinematicHero() {
         {/* ══ PERSISTENT FALLBACK BG (prevents black flashes) ══ */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #020205 0%, #080810 100%)', zIndex: 0 }} />
 
-        {/* ══ SCENE 1 BG ══ */}
+        {/* ══ SCENE 1 BG (LCP Element) ══ */}
         <motion.div style={{ position: 'absolute', inset: '-8%', opacity: op1, zIndex: 1, scale: sc1 }}>
-          <img src={IMGS[0]} alt="" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.4) saturate(1.3)' }} />
+          <img src={IMGS[0]} alt="Campus Aerial" fetchPriority="high" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.4) saturate(1.3)' }} />
         </motion.div>
 
         {/* ══ SCENE 2 BG ══ */}
         <motion.div style={{ position: 'absolute', inset: '-8%', opacity: op2, zIndex: 1, scale: sc2 }}>
-          <img src={IMGS[1]} alt="" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.35) saturate(1.1)' }} />
+          <img src={IMGS[1]} alt="Students Studying" loading="lazy" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.35) saturate(1.1)' }} />
         </motion.div>
 
         {/* ══ SCENE 3 BG ══ */}
         <motion.div style={{ position: 'absolute', inset: '-8%', opacity: op3, zIndex: 1, scale: sc3 }}>
-          <img src={IMGS[2]} alt="" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.3) saturate(1.2)' }} />
+          <img src={IMGS[2]} alt="Team Collaboration" loading="lazy" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.3) saturate(1.2)' }} />
         </motion.div>
 
         {/* ══ SCENE 4 BG ══ */}
         <motion.div style={{ position: 'absolute', inset: '-8%', opacity: op4, zIndex: 1, scale: sc4 }}>
-          <img src={IMGS[3]} alt="" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.45) saturate(1.4)' }} />
+          <img src={IMGS[3]} alt="Airplane Wing" loading="lazy" style={{ width: '116%', height: '116%', objectFit: 'cover', filter: 'brightness(0.45) saturate(1.4)' }} />
         </motion.div>
 
         {/* Cinematic gradient overlays — always on top of images */}
