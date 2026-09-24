@@ -7,7 +7,7 @@ import { motion, useTransform, useScroll as useFramerScroll } from 'framer-motio
 
 
 
-const Figure3D = ({ image, scrollYProgress }) => {
+const Figure3D = ({ member, scrollYProgress }) => {
   const groupRef = useRef();
 
   useFrame((state) => {
@@ -23,17 +23,19 @@ const Figure3D = ({ image, scrollYProgress }) => {
     // Zoom and position based on scroll
     const scrollVal = scrollYProgress.get(); // 0 to 1
     
-    const targetScale = 1 + scrollVal * 0.2; // Reduced zoom
+    const baseScale = member.profileScale || 1;
+    const targetScale = baseScale + scrollVal * 0.2; // Reduced zoom
     groupRef.current.scale.set(targetScale, targetScale, targetScale);
     
-    groupRef.current.position.y = -2.8 - (scrollVal * 0.5); // Push down to hide legs, showing upper body
+    const baseY = member.profileY || -2.8;
+    groupRef.current.position.y = baseY - (scrollVal * 0.5); // Push down to hide legs, showing upper body
     groupRef.current.position.z = 0;
   });
 
   return (
     <group ref={groupRef} position={[0, -0.5, 0]}>
-      {image && (
-        <Image url={image} transparent scale={[7, 9.1]} />
+      {member.image && (
+        <Image url={member.image} transparent scale={[7, 9.1]} />
       )}
 
       {/* Swirling Particles / Data nodes */}
@@ -97,7 +99,7 @@ const Scene = ({ member, scrollYProgress }) => {
   return (
     <React.Suspense fallback={null}>
       <BackgroundTypography name={member.name} scrollYProgress={scrollYProgress} />
-      <Figure3D image={member.image} scrollYProgress={scrollYProgress} />
+      <Figure3D member={member} scrollYProgress={scrollYProgress} />
 
       <Environment preset="city">
         <Lightformer intensity={4} position={[10, 5, 0]} scale={[10, 50, 1]} onUpdate={(self) => self.lookAt(0, 0, 0)} />
@@ -163,7 +165,7 @@ export default function TeamMemberProfile({ id, onClose }) {
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              mixBlendMode: 'difference',
+              textShadow: '0 2px 10px rgba(0,0,0,0.8)',
               transition: 'transform 0.2s',
             }}
             onMouseOver={(e) => e.currentTarget.style.transform = 'translateX(-10px)'}
@@ -173,7 +175,7 @@ export default function TeamMemberProfile({ id, onClose }) {
             RETURN TO DIRECTORY
           </button>
 
-          <div style={{ textAlign: 'right', color: 'white', mixBlendMode: 'difference' }}>
+          <div style={{ textAlign: 'right', color: 'white', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
             <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.7, fontFamily: 'monospace', letterSpacing: 1 }}>{member.category.toUpperCase()}</p>
           </div>
         </div>
@@ -186,7 +188,7 @@ export default function TeamMemberProfile({ id, onClose }) {
             viewport={{ margin: "-10%" }}
             transition={{ duration: 0.8 }}
             style={{
-              display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', color: 'white', mixBlendMode: 'difference'
+              display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', color: 'white', textShadow: '0 4px 20px rgba(0,0,0,0.8)'
             }}
           >
             <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '0.8rem', opacity: 0.5, letterSpacing: 2 }}>SYS.CORE.ACTIVE // SCROLL_DOWN</p>
