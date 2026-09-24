@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useMotionValue } from 'framer-motion';
+import { useMotionValue, useSpring, motion } from 'framer-motion';
 
-/**
- * PremiumCursor — rebuilt for performance.
- *
- * PERF CHANGES vs old version:
- * 1. Removed useSpring for cursorX/cursorY — springs run a RAF loop even when
- *    idle. Replaced with direct useMotionValue + CSS transition on the element.
- * 2. Removed stardust particles — each particle was a React state update which
- *    triggered a full re-render tree on every mouse move (catastrophic).
- * 3. Removed useSpring for cursorScale/dotScale — replaced with CSS transitions.
- * 4. The cursor div now uses CSS `transition` for scale/color changes, which runs
- *    entirely on the compositor thread with zero JS involvement.
- */
 export default function PremiumCursor() {
   const [isFinePointer, setIsFinePointer] = useState(true);
+  const [isHovering, setIsHovering] = useState(false);
 
-  // Raw motion values — no physics springs, no RAF loop when idle
+  // Raw motion values for instant tracking
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
+
+  // Smooth spring tracking for the outer ring
+  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  const ringX = useSpring(cursorX, springConfig);
+  const ringY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(pointer: fine)');
@@ -29,39 +23,28 @@ export default function PremiumCursor() {
   }, []);
 
   useEffect(() => {
-    const el = document.getElementById('premium-cursor-orb');
-
     const updateMousePosition = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
     };
 
     const handleMouseOver = (e) => {
-      if (!el) return;
       const target = e.target;
       let isPointer = false;
       try {
         isPointer = window.getComputedStyle(target).cursor === 'pointer';
-      } catch (_) {}
+      } catch (_) { }
 
       const isHover =
         target.closest('a') ||
         target.closest('button') ||
         target.closest('.team-card') ||
         target.closest('.glass-panel') ||
+        target.closest('input') ||
+        target.closest('textarea') ||
         isPointer;
 
-      if (isHover) {
-        el.style.transform = 'translate(-50%, -50%) scale(1.5)';
-        el.style.border = '1px solid rgba(249,212,64,0.8)';
-        el.style.backgroundColor = 'rgba(249,212,64,0.1)';
-        el.style.boxShadow = '0 0 20px rgba(249,212,64,0.2)';
-      } else {
-        el.style.transform = 'translate(-50%, -50%) scale(1)';
-        el.style.border = '1px solid rgba(255,255,255,0.4)';
-        el.style.backgroundColor = 'transparent';
-        el.style.boxShadow = 'none';
-      }
+      setIsHovering(!!isHover);
     };
 
     window.addEventListener('mousemove', updateMousePosition, { passive: true });
@@ -73,14 +56,13 @@ export default function PremiumCursor() {
     };
   }, [cursorX, cursorY]);
 
+  // Hide default cursor globally
   useEffect(() => {
-    document.body.style.cursor = 'none';
     const style = document.createElement('style');
     style.id = 'cursor-hide-style';
     style.innerHTML = `body, body * { cursor: none !important; }`;
     document.head.appendChild(style);
     return () => {
-      document.body.style.cursor = 'auto';
       const s = document.getElementById('cursor-hide-style');
       if (s) document.head.removeChild(s);
     };
@@ -89,90 +71,54 @@ export default function PremiumCursor() {
   if (!isFinePointer) return null;
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        pointerEvents: 'none',
-        zIndex: 999999,
-        // The actual cursor element is positioned via motionValue subscription below
-      }}
-    >
-      {/*
-        We use a raw div + motionValue subscription instead of motion.div + useSpring
-        to avoid a permanent RAF loop when the mouse is idle.
-      */}
-      <MotionCursorOrb x={cursorX} y={cursorY} />
-    </div>
-  );
-}
-
-// Separate component so the subscription is isolated
-function MotionCursorOrb({ x, y }) {
-  useEffect(() => {
-    const el = document.getElementById('premium-cursor-wrapper');
-    if (!el) return;
-
-    // Use hardware-accelerated translate3d instead of layout-thrashing left/top
-    const unsubX = x.on('change', (val) => {
-      el.style.transform = `translate3d(${val}px, ${y.get()}px, 0)`;
-    });
-    const unsubY = y.on('change', (val) => {
-      el.style.transform = `translate3d(${x.get()}px, ${val}px, 0)`;
-    });
-
-    return () => {
-      unsubX();
-      unsubY();
-    };
-  }, [x, y]);
-
-  return (
-    <div
-      id="premium-cursor-wrapper"
-      style={{
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        willChange: 'transform',
-        pointerEvents: 'none',
-        zIndex: 999999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      {/* Outer elegant ring */}
-      <div
-        id="premium-cursor-orb"
+    <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 999999 }}>
+      {/* Inner Dot - tracks instantly */}
+      <motion.div
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: 40,
-          height: 40,
+          left: -3, top: -3, // Offset by half width/height to center
+          x: cursorX, y: cursorY,
+          width: 6, height: 6,
+          backgroundColor: 'var(--accent-gold)',
           borderRadius: '50%',
-          backgroundColor: 'transparent',
-          border: '1px solid rgba(255,255,255,0.4)',
-          transform: 'translate(-50%, -50%) scale(1)',
-          transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border 0.25s ease, box-shadow 0.25s ease',
-          willChange: 'transform',
+          pointerEvents: 'none',
+          boxShadow: '0 0 10px rgba(249, 212, 64, 0.8)',
         }}
+        animate={{
+          scale: isHovering ? 0 : 1,
+          opacity: isHovering ? 0 : 1,
+        }}
+        transition={{ duration: 0.15 }}
       />
-      {/* Sharp center dot */}
-      <div
+
+      {/* Outer Ring - trails with spring physics */}
+      <motion.div
         style={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: 6,
-          height: 6,
+          left: -18, top: -18, // Offset by half width/height to center
+          x: ringX, y: ringY,
+          width: 36, height: 36,
           borderRadius: '50%',
-          backgroundColor: '#fff',
-          boxShadow: '0 0 10px rgba(255,255,255,0.8)',
-          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-      />
+        animate={{
+          scale: isHovering ? 1.5 : 1,
+          border: isHovering ? '1px solid rgba(249, 212, 64, 0.1)' : '1.5px solid rgba(249, 212, 64, 0.6)',
+          backgroundColor: isHovering ? 'rgba(249, 212, 64, 0.15)' : 'rgba(249, 212, 64, 0)',
+          boxShadow: isHovering ? '0 0 30px rgba(249, 212, 64, 0.3)' : '0 0 0px rgba(249, 212, 64, 0)',
+        }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      >
+        {/* Optional inner reticle when hovering over links (crosshairs) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: isHovering ? 1 : 0, scale: isHovering ? 1 : 0.5 }}
+          style={{ width: 4, height: 4, backgroundColor: 'var(--accent-gold)', borderRadius: '50%' }}
+        />
+      </motion.div>
     </div>
   );
 }
