@@ -56,10 +56,7 @@ function ParallaxHero() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(2,2,5,0.7) 0%, rgba(2,2,5,0.2) 40%, rgba(2,2,5,1) 100%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at center, transparent 10%, rgba(2,2,5,0.85) 100%)', pointerEvents: 'none' }} />
 
-        {/* Floating Parallax Geometry */}
-        <motion.div style={{ position: 'absolute', top: '20%', left: '10%', width: '150px', height: '150px', borderRadius: '50%', background: 'linear-gradient(135deg, rgba(249, 212, 64, 0.1), transparent)', border: '1px solid rgba(249, 212, 64, 0.2)', y: useTransform(smooth, [0, 1], [0, -300]), rotate: useTransform(smooth, [0, 1], [0, 90]) }} />
-        <motion.div style={{ position: 'absolute', top: '60%', right: '15%', width: '100px', height: '100px', background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent)', border: '1px solid rgba(255, 255, 255, 0.1)', y: useTransform(smooth, [0, 1], [0, -500]), rotate: useTransform(smooth, [0, 1], [0, -180]) }} />
-        <motion.div style={{ position: 'absolute', top: '80%', left: '20%', width: '80px', height: '80px', borderRadius: '20px', background: 'linear-gradient(135deg, rgba(125, 193, 177, 0.1), transparent)', border: '1px solid rgba(125, 193, 177, 0.2)', y: useTransform(smooth, [0, 1], [0, -200]), rotate: useTransform(smooth, [0, 1], [45, 180]) }} />
+        {/* Floating Parallax Geometry - Removed as per user request */}
 
         {/* Dynamic Architectural Grid Overlay */}
         <div style={{
@@ -134,68 +131,44 @@ function ParallaxHero() {
           className="hide-on-mobile"
         >
           <motion.div
-             animate={{ rotateY: [0, 8, -8, 0], rotateX: [0, -4, 4, 0], y: [0, -15, 0] }}
-             transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+             animate={{ y: [0, -10, 0] }}
+             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
              style={{ 
                width: 360, height: 480, 
-               background: 'linear-gradient(135deg, rgba(20,20,25,0.95), rgba(2,2,5,1))',
-               borderRadius: 30, 
-               border: '1px solid rgba(249, 212, 64, 0.15)',
-               boxShadow: '0 40px 100px rgba(0,0,0,0.9), inset 0 2px 20px rgba(255,255,255,0.08), inset 0 0 50px rgba(249, 212, 64, 0.08)',
-               padding: 40, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+               background: 'linear-gradient(180deg, rgba(16, 18, 27, 0.95) 0%, rgba(5, 6, 10, 0.98) 100%)',
+               borderRadius: 24, 
+               borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+               borderLeft: '1px solid rgba(255, 255, 255, 0.05)',
+               borderRight: '1px solid rgba(255, 255, 255, 0.02)',
+               borderBottom: '1px solid rgba(255, 255, 255, 0.02)',
+               boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05)',
+               padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                position: 'relative', overflow: 'hidden'
              }}
           >
-             {/* Scanning Light Sheen Effect */}
-             <motion.div
-                animate={{ x: ['-200%', '200%'] }}
-                transition={{ duration: 3, repeat: Infinity, repeatDelay: 5, ease: 'easeInOut' }}
-                style={{
-                  position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
-                  transform: 'skewX(-20deg)', pointerEvents: 'none', zIndex: 1
-                }}
-             />
-
-             {/* Inner Spotlight Gradient for Depth */}
-             <div style={{
-               position: 'absolute', bottom: -50, right: -50, width: 250, height: 250,
-               background: 'radial-gradient(circle, rgba(249, 212, 64, 0.15) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 1
-             }} />
-
-             {/* Geometric Globe/Compass Icon */}
-             <div style={{ alignSelf: 'flex-end', position: 'relative', width: 80, height: 80, zIndex: 2 }}>
-               {/* Rotating dashed ring */}
-               <motion.div 
-                 animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                 style={{ position: 'absolute', inset: 0, borderRadius: '50%', border: '1px dashed rgba(249, 212, 64, 0.3)' }} 
-               />
-               {/* Pulsing inner glow */}
-               <motion.div 
-                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                 style={{ position: 'absolute', inset: 10, borderRadius: '50%', background: 'radial-gradient(circle, rgba(249,212,64,0.15) 0%, transparent 70%)' }} 
-               />
-               {/* Icon */}
-               <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                 <Globe2 size={38} strokeWidth={1} color="var(--accent-gold)" />
-               </div>
+             {/* Glow behind globe */}
+             <div style={{ position: 'absolute', top: -50, right: -50, width: 200, height: 200, background: 'radial-gradient(circle, rgba(249, 212, 64, 0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
+             
+             {/* Globe Icon Area */}
+             <div style={{ alignSelf: 'flex-end', position: 'relative', width: 64, height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.03)', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.05)' }}>
+               <Globe2 size={28} strokeWidth={1.5} color="var(--accent-gold)" />
              </div>
 
              <div style={{ position: 'relative', zIndex: 2 }}>
-               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 15 }}>
-                 <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent-gold)', boxShadow: '0 0 10px var(--accent-gold)' }} />
-                 <div style={{ color: 'var(--accent-gold)', fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 800 }}>Exclusive Network</div>
+               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                 <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-gold)', boxShadow: '0 0 10px var(--accent-gold)' }} />
+                 <div style={{ color: 'var(--accent-gold)', fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', fontWeight: 700 }}>Exclusive Network</div>
                </div>
                
-               <div style={{ fontFamily: 'var(--font-serif)', fontSize: '2.8rem', lineHeight: 1.05, marginBottom: 20 }}>
-                 <span style={{ background: 'linear-gradient(90deg, #F9D440, #F2A65A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Top 50</span><br/>
-                 <span style={{ color: '#fff', fontStyle: 'italic' }}>Global</span><br/>
-                 <span style={{ color: 'rgba(255,255,255,0.9)' }}>Universities</span>
+               <div style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', lineHeight: 1.1, marginBottom: 24, letterSpacing: '-0.02em' }}>
+                 <span style={{ color: '#fff' }}>Top 50</span><br/>
+                 <span style={{ color: 'rgba(255,255,255,0.7)', fontStyle: 'italic' }}>Global</span><br/>
+                 <span style={{ color: 'rgba(255,255,255,0.7)' }}>Universities</span>
                </div>
                
-               <div style={{ height: 1, width: 80, background: 'linear-gradient(90deg, var(--accent-gold), transparent)', marginBottom: 25 }} />
+               <div style={{ height: 1, width: '100%', background: 'linear-gradient(90deg, rgba(255,255,255,0.1), transparent)', marginBottom: 24 }} />
                
-               <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', lineHeight: 1.7, fontWeight: 300 }}>
+               <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.95rem', lineHeight: 1.6, fontWeight: 300 }}>
                  Partnered with the world's most prestigious institutions to architect your global success.
                </div>
              </div>

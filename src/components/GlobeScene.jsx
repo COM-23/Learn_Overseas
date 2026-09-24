@@ -465,7 +465,7 @@ export default function GlobeScene() {
               />
 
               {/* X Close button — top right, no overlap */}
-              <div style={{ padding: '120px 20px 0', display: 'flex', justifyContent: 'flex-end', position: 'relative', zIndex: 10 }}>
+              <div style={{ padding: '40px 32px 0', display: 'flex', justifyContent: 'flex-end', position: 'relative', zIndex: 10 }}>
                 <motion.button 
                   whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.12)' }}
                   whileTap={{ scale: 0.9 }}
