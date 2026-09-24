@@ -10,7 +10,7 @@ export const SERVICES = [
     features: ['Profile evaluation & gap analysis', 'Course & University selection', 'Personalized career mapping', 'Application timeline planning'],
     stat: '8000+',
     statLabel: 'admissions secured',
-    img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=60&w=800&fm=webp',
   },
   {
     id: 'visa',
@@ -23,7 +23,7 @@ export const SERVICES = [
     features: ['Document checklist & preparation', 'Visa interview coaching', 'Real-time application tracking', 'Rejection appeal support'],
     stat: '98%',
     statLabel: 'visa success rate',
-    img: 'https://images.unsplash.com/photo-1575505586569-646b2ca898fc?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1575505586569-646b2ca898fc?auto=format&fit=crop&q=60&w=800&fm=webp',
   },
   {
     id: 'scholarships',
@@ -36,7 +36,7 @@ export const SERVICES = [
     features: ['Scholarship database matching', 'Essay & motivation letter support', 'Financial aid guidance', 'Deadline management'],
     stat: '$25M+',
     statLabel: 'in scholarships secured',
-    img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=800&fm=webp',
   },
   {
     id: 'loans',
@@ -49,7 +49,7 @@ export const SERVICES = [
     features: ['No-collateral loan options', 'Competitive interest rates', 'Forex & remittance services', 'Fast disbursement tracking'],
     stat: '25+',
     statLabel: 'banking partners',
-    img: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=60&w=800&fm=webp',
   },
   {
     id: 'tests',
@@ -62,7 +62,7 @@ export const SERVICES = [
     features: ['IELTS / TOEFL / PTE prep', 'GRE / GMAT / SAT coaching', 'Full-length mock exams', '1-on-1 score improvement coaching'],
     stat: '7+',
     statLabel: 'average IELTS score',
-    img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=60&w=800&fm=webp',
   },
   {
     id: 'accommodation',
@@ -75,6 +75,6 @@ export const SERVICES = [
     features: ['Accommodation assistance', 'Forex & Travel Insurance', 'Ticketing support', 'Pre-departure briefing'],
     stat: '100%',
     statLabel: 'arrival support',
-    img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200',
+    img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=60&w=800&fm=webp',
   },
 ];

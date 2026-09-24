@@ -25,7 +25,7 @@ function ServiceCard({ svc, index, onClick }) {
         }}
       >
         <div style={{ height: 160, overflow: 'hidden', position: 'relative', flexShrink: 0 }}>
-          <img src={svc.img} alt={svc.title} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6)' }} />
+          <img src={svc.img} alt={svc.title} fetchPriority={index === 0 ? "high" : "auto"} loading={index === 0 ? "eager" : "lazy"} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.6)' }} />
           <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to top, rgba(10,10,15,0.9) 0%, transparent 100%)` }} />
 
           <div style={{ position: 'absolute', top: 20, left: 20, right: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
