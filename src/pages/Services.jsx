@@ -89,9 +89,9 @@ export default function Services() {
   const x = useTransform(scrollYProgress, [0, 0.85], [0, maxScroll]);
 
   // Plane animation (from right to left)
-  const planeX = useTransform(scrollYProgress, [0, 0.85], ['110vw', '-110vw']);
+  const planeX = useTransform(scrollYProgress, [0, 0.95], ['110vw', '-110vw']); // Slightly slower so it finishes after cards (0.85)
   const planeY = useTransform(scrollYProgress, [0, 1], ['5%', '15%']); // Moved higher so it doesn't overlap cards
-  const planeOpacity = useTransform(scrollYProgress, [0.75, 0.85], [1, 0]);
+  const planeOpacity = useTransform(scrollYProgress, [0.95, 1], [1, 0]); // Fades out only at the very end
 
   const [planeFacingLeft, setPlaneFacingLeft] = useState(true);
 
