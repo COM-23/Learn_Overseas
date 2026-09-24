@@ -230,7 +230,7 @@ export default function Header() {
           position: 'fixed',
           top: 0, right: 0,
           zIndex: 99999,
-          height: scrolled ? 72 : 96,
+          height: scrolled ? 60 : 80,
           display: 'flex',
           alignItems: 'center',
           padding: scrolled ? (isMobile ? '0 16px' : '0 32px') : '0 5vw',
@@ -240,7 +240,7 @@ export default function Header() {
         }}
       >
         <Link to="/" style={{ display: 'flex', alignItems: 'center', marginRight: 'auto', textDecoration: 'none' }}>
-          <img src="/stencil-logo.png" alt="Learn Overseas" width={161} height={85} style={{ height: scrolled ? 54 : 80, width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease' }} />
+          <img src="/stencil-logo.png" alt="Learn Overseas" width={161} height={85} style={{ height: scrolled ? 44 : 68, width: 'auto', objectFit: 'contain', transition: 'height 0.3s ease' }} />
         </Link>
 
         <nav style={{ display: 'flex', gap: 8, alignItems: 'center' }} className="hide-mobile">
