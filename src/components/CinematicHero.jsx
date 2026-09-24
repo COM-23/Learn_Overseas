@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 // Premium Unsplash campus images — ZERO watermarks, ZERO text
 const IMGS = [
-  'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&q=90&w=2400', // Beautiful aerial campus
-  'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=90&w=2400', // Students studying
-  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=90&w=2400', // Team collaboration
-  'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=90&w=2400', // Airplane wing over clouds
+  'https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?auto=format&fit=crop&q=80&w=1600', // Beautiful aerial campus
+  'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=1600', // Students studying
+  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1600', // Team collaboration
+  'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1600', // Airplane wing over clouds
 ];
 
 export default function CinematicHero() {

@@ -47,7 +47,9 @@ export default function GraduationScene() {
 
   // ── Scroll → video.currentTime ─────────────────────────────────────────
   useEffect(() => {
-    const onScroll = () => {
+    let animationFrameId;
+
+    const updateVideoFrame = () => {
       const container = containerRef.current;
       const video = videoRef.current;
       if (!container || !video || !durationRef.current) return;
@@ -56,18 +58,27 @@ export default function GraduationScene() {
       const scrollable = container.offsetHeight - window.innerHeight; // 200vh
       const scrolled = Math.max(0, Math.min(scrollable, -rect.top));
       const progress = scrolled / scrollable;
-      const t = progress * durationRef.current;
+      const targetTime = progress * durationRef.current;
 
       // Direct assignment is smoother than fastSeek for scrubbing
-      if (!video.seeking) {
-        try { video.currentTime = t; } catch (_) { }
+      // Use 0.05s threshold to prevent micro-stuttering which causes CPU spikes
+      if (!video.seeking && Math.abs(video.currentTime - targetTime) > 0.05) {
+        try { video.currentTime = targetTime; } catch (_) { }
       }
+    };
+
+    const onScroll = () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updateVideoFrame);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
     // Run once on mount so frame 0 is shown at rest
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    updateVideoFrame();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (
@@ -96,11 +107,13 @@ export default function GraduationScene() {
           style={{
             position: 'absolute',
             inset: 0,
-            width: '100%',
+            width: '100vw',
             height: '100%',
             objectFit: 'cover',
             display: 'block',
             transform: 'scale(1.05)',
+            left: '50%',
+            transform: 'translate(-50%, 0) scale(1.05)',
           }}
         >
           <source src="/Graduationcap.mp4" type="video/mp4" />
