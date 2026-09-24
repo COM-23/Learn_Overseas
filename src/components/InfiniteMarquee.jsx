@@ -47,7 +47,7 @@ export default function InfiniteMarquee() {
       <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '15vw', background: 'linear-gradient(to left, #020205 0%, transparent 100%)', zIndex: 5, pointerEvents: 'none' }} />
 
       {/* ── Track A: Background Hollow Text (Moves Right) ── */}
-      <div style={{ display: 'flex', whiteSpace: 'nowrap', transform: 'translateX(-50%)', marginBottom: '-40px', opacity: 0.6 }}>
+      <div style={{ display: 'flex', whiteSpace: 'nowrap', transform: 'translateX(-50%)', marginBottom: '-40px', opacity: 0.15 }}>
         <motion.div
           animate={{ x: ['0%', '50%'] }}
           transition={{ repeat: Infinity, duration: 60, ease: 'linear' }}
@@ -57,7 +57,7 @@ export default function InfiniteMarquee() {
             fontSize: 'clamp(5rem, 12vw, 14rem)',
             fontFamily: 'var(--font-sans)',
             color: 'transparent',
-            WebkitTextStroke: '1.5px rgba(249,212,64,0.15)',
+            WebkitTextStroke: '1px rgba(255,255,255,0.06)',
             textTransform: 'uppercase',
             margin: 0, letterSpacing: 20, paddingRight: 40, fontWeight: 900,
           }}>

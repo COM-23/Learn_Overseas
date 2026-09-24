@@ -84,7 +84,7 @@ export default function JourneyBackground({ scrollYProgress }) {
         </AnimatePresence>
 
         {/* Global Darkening Overlay to replace the 0.75 opacity on individual images, preventing ghosting */}
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(2,2,5,0.35)', zIndex: 3 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(2,2,5,0.75)', zIndex: 3 }} />
 
         {/* Dynamic Light Leaks — CSS animation instead of framer-motion for zero JS overhead */}
         <div
