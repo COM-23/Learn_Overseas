@@ -343,7 +343,7 @@ export default function Countries() {
             {!zoomedIn && (
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}
-                style={{ position: 'absolute', bottom: 40, right: 40, zIndex: 10 }}
+                style={{ position: 'absolute', bottom: 40, right: 0, zIndex: 10 }}
               >
                 <div style={{ 
                   background: 'rgba(2, 2, 5, 0.75)', 
