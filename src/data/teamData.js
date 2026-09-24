@@ -25,7 +25,6 @@ export const TEAM_MEMBERS = [
   { id: "siva-priya", name: "Siva Priya", role: "Executive Student Advisor", category: "Advisors" , image: "/siva_priya.png" },
   { id: "suman-mandal", name: "Suman Mandal", role: "Executive Student Advisor", category: "Advisors" , image: "/suman.png" },
   { id: "soumya", name: "Soumya", role: "Executive Student Advisor", category: "Advisors" , image: "/soumya.png" },
-  { id: "shahid-reyan", name: "Shahid Reyan", role: "Executive Student Advisor", category: "Advisors" },
   { id: "tharun-m", name: "Tharun M", role: "Executive - Advisor Application", category: "Advisors" , image: "/tharun_m.png" },
   { id: "aswajith-m", name: "Aswajith M", role: "Executive - Advisor Application", category: "Advisors" , image: "/aswajith_m.png" },
   { id: "sharathi-r", name: "Sharathi R", role: "Executive - Advisor Application", category: "Advisors" , image: "/sharathi_r.png" },
