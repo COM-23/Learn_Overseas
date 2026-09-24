@@ -163,12 +163,12 @@ export default function Home() {
   // Earth stays visible while the HUD is up, then fades out as the Gateway portal appears
   const earthExitOpacity = useTransform(scrollYProgress, [0.85, 0.95], [1, 0]);
 
-  // 5. Gateway portal — fades in softly, no aggressive scale punch
-  const gatewayOpacity = useTransform(scrollYProgress, [0.88, 0.97], [0, 1]);
-  const gatewayScale = useTransform(scrollYProgress, [0.88, 1.0], [0.92, 1.3]);
+  // 5. Gateway portal — fades in softly, no aggressive scale punch, but FADES OUT before Marquee hits
+  const gatewayOpacity = useTransform(scrollYProgress, [0.85, 0.88, 0.91, 0.94], [0, 1, 1, 0]);
+  const gatewayScale = useTransform(scrollYProgress, [0.85, 0.95], [0.92, 1.3]);
 
   // 6. Full scene container: fades out smoothly after earth is already gone
-  const sceneOpacity = useTransform(scrollYProgress, [0.94, 1.0], [1, 0]);
+  const sceneOpacity = useTransform(scrollYProgress, [0.94, 0.98], [1, 0]);
 
   // 7. Pointer Events Disabler
   // The react-globe.gl captures the mouse wheel. When it fades out, we MUST disable its pointer events
