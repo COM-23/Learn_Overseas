@@ -143,7 +143,7 @@ export default function Services() {
             top: 0, left: 0,
             x: planeX,
             y: planeY,
-            zIndex: 1,
+            zIndex: 10,
             pointerEvents: 'none',
             opacity: planeOpacity
           }}
