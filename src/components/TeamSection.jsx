@@ -82,7 +82,7 @@ export default function TeamSection() {
                                                 <motion.img 
                                                     src={member.image} 
                                                     alt={member.name}
-                                                    style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) brightness(0.6)', transition: 'all 0.5s ease' }}
+                                                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', filter: 'grayscale(100%) brightness(0.6)', transition: 'all 0.5s ease' }}
                                                     className="team-img"
                                                 />
                                             ) : (

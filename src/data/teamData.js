@@ -9,7 +9,7 @@ export const TEAM_MEMBERS = [
   { id: "ruchita-patil", name: "Ruchita Patil", role: "Manager - Student Placement", category: "Management" , image: "/ruchita_patil.png" },
   { id: "preethi-m", name: "Preethi M", role: "Manager - Applications", category: "Management" , image: "/preethi_naidu.png" },
   { id: "udayavikram-b", name: "Udayavikram B", role: "Team Lead - Applications", category: "Management" , image: "/udaya_vikram.png" },
-  { id: "jonathan-sam-mathew", name: "Jonathan Sam Mathew", role: "IT Manager", category: "Management" },
+  { id: "jonathan-sam-mathew", name: "Jonathan Sam Mathew", role: "IT Manager", category: "Management", image: "/jonathan_sam_mathew.png" },
   { id: "swapna-rani-nayak", name: "Swapna Rani Nayak", role: "Senior Counselor", category: "Counseling" , image: "/swapna.png" },
   { id: "krishna-sharma", name: "Krishna Sharma", role: "Senior Counselor", category: "Counseling" },
   { id: "vibha", name: "Vibha", role: "Counselor", category: "Counseling" , image: "/vibha.png" },
