@@ -528,7 +528,7 @@ export default function Home() {
         {/* ── Content layers scrolling normally over the background ── */}
         
         {/* ACT II: Marquee + Success Wall */}
-        <div style={{ position: 'relative', zIndex: 2, paddingTop: '20vh' }}>
+        <div style={{ position: 'relative', zIndex: 2, paddingTop: '5vh' }}>
           <InfiniteMarquee />
           <StudentSuccessWall />
         </div>
