@@ -226,8 +226,8 @@ export default function Home() {
           {/* 1. First Text (Learn OVERSEAS) - Upgraded Cinematic Typography */}
           <motion.div className="hero-ui container" style={{
             position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, zIndex: 10, display: 'flex', flexDirection: 'column',
-            justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
-            maxWidth: '1440px', margin: '0 auto', width: '100%',
+            justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none', height: '100lvh',
+            maxWidth: '1440px', margin: '0 auto', width: '100%', height: '100lvh',
             opacity: text1Opacity, y: text1Y, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)'
           }}>
             <motion.div
@@ -326,7 +326,7 @@ export default function Home() {
           <motion.div className="hero-text-2 container" style={{
             position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, zIndex: 10, display: 'flex', flexDirection: 'column',
             justifyContent: 'center', alignItems: 'center', textAlign: 'center', pointerEvents: 'none',
-            maxWidth: '1440px', margin: '0 auto', width: '100%',
+            maxWidth: '1440px', margin: '0 auto', width: '100%', height: '100lvh',
             opacity: text2Opacity, y: text2Y, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '30px' }}>
@@ -346,7 +346,7 @@ export default function Home() {
           </motion.div>
 
           {/* 3. Metrics Cards (Appear as text2 fades) */}
-          <div className="metrics-container" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, margin: '0 auto', maxWidth: '1440px', width: '100%', pointerEvents: 'none', zIndex: 20 }}>
+          <div className="metrics-container" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, margin: '0 auto', maxWidth: '1440px', width: '100%', pointerEvents: 'none', zIndex: 20, height: '100lvh' }}>
             <motion.div className="metric-card-wrapper left" style={{ position: 'absolute', top: '15%', left: '5%', opacity: metricOpacity, y: metricY, scale: metricScale, willChange: 'transform, opacity', WebkitTransform: 'translateZ(0)' }}>
               <TiltCard innerStyle={{ display: 'flex' }}>
                 <motion.div whileHover={{ scale: 1.05, boxShadow: '0 40px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(125,193,177,0.3)', borderColor: 'rgba(125,193,177,0.8)' }} className="metric-card" style={{ background: 'rgba(10,10,15,0.6)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.05)', transition: 'box-shadow 0.3s, border-color 0.3s' }}>
@@ -399,7 +399,7 @@ export default function Home() {
           {/* 3. Cinematic Typographic HUD (Proper Section Transition) */}
           <motion.div className="hero-hud container" style={{
             position: 'absolute', top: 0, bottom: 0, left: 0, right: 0,
-            maxWidth: '1440px', margin: '0 auto', width: '100%',
+            maxWidth: '1440px', margin: '0 auto', width: '100%', height: '100lvh',
             pointerEvents: 'none', zIndex: 15, display: 'flex', alignItems: 'center', justifyContent: 'center',
             opacity: hudOpacity, y: hudY, scale: hudScale,
             willChange: 'transform, opacity'

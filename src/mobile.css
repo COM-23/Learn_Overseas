@@ -77,6 +77,11 @@
 
 /* ── HOME — HERO (Section 1) ─────────────────────────────── */
 @media (max-width: 768px) {
+  /* Fix scroll trap caused by Globe's OrbitControls capturing touch events on mobile */
+  .home-globe-wrapper {
+    pointer-events: none !important;
+  }
+  
   /* Restore sticky scrolling mechanics for mobile (as per user request) */
   /* Hide the duplicate flying metric cards since we have them in the HUD on mobile */
   .metric-card-wrapper {
