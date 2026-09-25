@@ -15,7 +15,7 @@ export default function GraduationScene() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const videoSrc = isMobile ? "/Mobile%20version.mov" : "/Graduationcap.mp4";
+  const videoSrc = isMobile ? "/Mobile_version.mov" : "/Graduationcap.mp4";
   const videoType = isMobile ? "video/quicktime" : "video/mp4";
 
   // ── Boot: warm decoder ────────────────────────────────────

@@ -805,7 +805,6 @@
 @media (max-width: 1024px) {
   .home-hero-sticky {
     height: 100dvh !important;
-    height: -webkit-fill-available !important;
   }
   /* NOTE: overflow-x MUST NOT be set on .home-hero-container.
      It is a direct ancestor of position:sticky (.home-hero-sticky).
