@@ -234,7 +234,7 @@ export default function Header() {
           display: 'flex',
           alignItems: 'center',
           padding: scrolled ? (isMobile ? '0 16px' : '0 32px') : '0 5vw',
-          background: scrolled ? 'rgba(5, 8, 12, 0.7)' : 'transparent',
+          background: scrolled ? 'rgba(5, 8, 12, 0.98)' : 'transparent',
           border: scrolled ? `1px solid rgba(255,255,255,0.08)` : '1px solid transparent',
           boxShadow: scrolled ? '0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)' : 'none'
         }}

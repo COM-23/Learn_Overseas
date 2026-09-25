@@ -853,8 +853,42 @@
     text-wrap: wrap !important;
     text-align: center !important;
   }
-  .hud-stat-cards > div {
+  
+  /* Fix cramped stats row in hero */
+  .hud-stat-cards {
+    flex-direction: column !important;
+    gap: 15px !important;
+    align-items: center;
+  }
+  
+  .hud-stat-cards > div, .hud-stat-card {
     width: 100% !important;
+    max-width: 320px;
+  }
+  
+  .hud-stat-card {
+    padding: 20px !important;
+  }
+
+  /* Fix floating toast overlapping footer */
+  .global-toasts-container {
+    bottom: 16px !important;
+    right: 16px !important;
+    left: 16px !important;
+    align-items: center;
+  }
+
+  .global-toasts-container > div {
+    min-width: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 14px !important;
+  }
+
+  /* Fix Cinematic Gallery Accordion on Mobile */
+  .cinematic-gallery-mobile {
+    flex-direction: column !important;
+    min-height: 900px !important;
   }
 }
 
@@ -862,10 +896,3 @@
   .team-img {
     object-position: top center !important;
   }
-
-@media (max-width: 768px) {
-  .cinematic-gallery-mobile {
-    flex-direction: column !important;
-    min-height: 900px !important;
-  }
-}

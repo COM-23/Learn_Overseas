@@ -28,7 +28,7 @@ export default function GlobalToasts() {
   }, []);
 
   return (
-    <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 1000, display: 'flex', flexDirection: 'column', gap: 12, pointerEvents: 'none' }}>
+    <div className="global-toasts-container">
       <AnimatePresence>
         {toasts.map(t => (
           <motion.div

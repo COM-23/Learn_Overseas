@@ -190,7 +190,7 @@ function DestinationShowcase({ activeIndex, onSelectIndex }) {
 function AnimatedCounter({ value, suffix, duration = 2 }) {
   const [display, setDisplay] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '0px' });
   useEffect(() => {
     if (!isInView) return;
     const controls = animate(0, value, { duration, ease: [0.16, 1, 0.3, 1], onUpdate: v => setDisplay(Math.floor(v)) });
@@ -264,8 +264,8 @@ function ProcessJourney() {
         <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ fontSize: 13, letterSpacing: 8, textTransform: 'uppercase', color: '#7E57C2', fontWeight: 800, border: '1px solid rgba(126,87,194,0.3)', padding: '12px 32px', borderRadius: 100, display: 'inline-block', marginBottom: 32, background: 'rgba(126,87,194,0.05)' }}>
           The Journey
         </motion.div>
-        <h3 style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 900, fontFamily: 'var(--font-sans)', color: '#fff', margin: 0, letterSpacing: '-0.03em' }}>
-          From Dream to Degree in <span style={{ color: 'transparent', WebkitTextStroke: '2px #7E57C2', textShadow: '0 0 40px rgba(126,87,194,0.4)' }}>4 Steps</span>
+        <h3 style={{ fontSize: 'clamp(2.2rem, 5vw, 4.5rem)', fontWeight: 900, fontFamily: 'var(--font-sans)', color: '#fff', margin: 0, letterSpacing: '-0.03em' }}>
+          From Dream to Degree in <span style={{ whiteSpace: 'nowrap', color: 'transparent', WebkitTextStroke: '2px #7E57C2', textShadow: '0 0 40px rgba(126,87,194,0.4)' }}>4 Steps</span>
         </h3>
       </div>
 
@@ -325,7 +325,7 @@ function CinematicHoverGallery() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
 
   return (
-    <div style={{
+    <div className="cinematic-gallery-mobile" style={{
       width: '100%',
       height: '75vh',
       minHeight: '600px',

@@ -1,10 +1,22 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function GraduationScene() {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const durationRef = useRef(0);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile(); // Check immediately on mount
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const videoSrc = isMobile ? "/Mobile%20version.mov" : "/Graduationcap.mp4";
+  const videoType = isMobile ? "video/quicktime" : "video/mp4";
 
   // ── Boot: warm decoder ────────────────────────────────────
   useEffect(() => {
@@ -43,7 +55,7 @@ export default function GraduationScene() {
       video.removeEventListener('loadedmetadata', onMeta);
       video.removeEventListener('canplay', warmDecoder);
     };
-  }, []);
+  }, [videoSrc]);
 
   // ── Scroll → video.currentTime ─────────────────────────────────────────
   useEffect(() => {
@@ -96,6 +108,7 @@ export default function GraduationScene() {
 
         {/* The hardware-accelerated video tag */}
         <video
+          key={videoSrc}
           className="graduation-video"
           ref={videoRef}
           muted
@@ -116,7 +129,7 @@ export default function GraduationScene() {
             transform: 'translate(-50%, 0) scale(1.05)',
           }}
         >
-          <source src="/Graduationcap.mp4" type="video/mp4" />
+          <source src={videoSrc} type={videoType} />
         </video>
 
         {/* Top cinematic fade */}
